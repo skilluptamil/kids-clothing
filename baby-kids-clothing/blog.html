@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The LittleBloom Journal — parenting tips, styling ideas, gifting guides and family life for little ones.">
+  <meta name="keywords" content="kids fashion blog, parenting tips, baby styling">
+  <meta name="author" content="LittleBloom">
+  <title>The Journal — LittleBloom Kids Clothing</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo/favicon.svg">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="The Journal — LittleBloom">
+  <meta property="og:description" content="Parenting tips, styling ideas and gifting guides.">
+  <meta property="og:image" content="assets/images/logo/logo.svg">
+  <meta property="og:site_name" content="LittleBloom">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Nunito:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5.3 + Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" data-bs-css>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <!-- Template styles -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+
+  <!-- Restore saved theme & RTL before paint -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("lb-theme") || "light";
+        document.documentElement.setAttribute("data-bs-theme", t);
+        var r = localStorage.getItem("lb-rtl") === "1";
+        document.documentElement.setAttribute("dir", r ? "rtl" : "ltr");
+        if (r) {
+          var l = document.querySelector("link[data-bs-css]");
+          if (l) l.href = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css";
+        }
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div class="preloader" id="preloader">
+    <div class="spinner-brand"><img src="assets/images/logo/logo.svg" alt="" width="30" height="30"></div>
+    <div class="brand-name">LittleBloom</div>
+    <div class="loading-bar"><span></span></div>
+  </div>
+
+  <!-- Navbar (injected by assets/js/navbar.js) -->
+  <div id="navbar-container"></div>
+
+  <main>
+
+    <!-- ============ PAGE BANNER ============ -->
+    <section class="page-banner">
+      <div class="animated-bg" aria-hidden="true">
+        <span class="blob b1"></span>
+        <span class="blob b2"></span>
+      </div>
+      <div class="container position-relative" style="z-index:2">
+        <span class="hero-badge"><i class="bi bi-journal-text"></i> The LittleBloom Journal</span>
+        <h1 class="mt-3">Stories, Style &amp; Parenting</h1>
+        <p>Practical tips and joyful reads for raising little ones with big personalities.</p>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Blog</li>
+          </ol>
+        </nav>
+      </div>
+    </section>
+
+    <!-- ============ FEATURED ============ -->
+    <section class="section-sm pt-4">
+      <div class="container">
+        <a href="blog-details.html?post=outfits" class="featured-post reveal">
+          <div class="fp-media">
+            <img src="assets/images/scenes/blog-featured.jpg" alt="Parent and child enjoying a sunny day">
+          </div>
+          <div class="fp-body">
+            <span class="pill mint"><i class="bi bi-bookmark-heart me-1"></i>Featured</span>
+            <h2 class="font-heading mt-3">10 Everyday Outfits That Make Mornings Easier</h2>
+            <p class="text-muted">Getting dressed doesn't have to be a battle. These ten mix-and-match combos take the meltdown out of morning — and the laundry pile down.</p>
+            <div class="meta d-flex gap-3 small text-muted mt-3">
+              <span><i class="bi bi-person me-1"></i>Maya Blooms</span>
+              <span><i class="bi bi-calendar3 me-1"></i>Aug 08, 2026</span>
+              <span><i class="bi bi-clock me-1"></i>6 min read</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============ FILTERS + GRID ============ -->
+    <section class="section-sm">
+      <div class="container">
+        <div class="row g-4 align-items-center mb-4">
+          <div class="col-md-6">
+            <h2 class="section-title mb-0">Latest Stories</h2>
+          </div>
+          <div class="col-md-6">
+            <div class="d-flex flex-wrap gap-2 justify-content-md-end">
+              <div class="input-group input-group-sm" style="max-width:240px">
+                <input type="search" id="blogSearch" class="form-control" placeholder="Search articles…" aria-label="Search articles">
+                <span class="input-group-text bg-transparent border-0"><i class="bi bi-search text-muted"></i></span>
+              </div>
+              <select id="blogCategory" class="form-select form-select-sm" aria-label="Filter by category" style="width:auto">
+                <option value="all">All Categories</option>
+                <option value="parenting">Parenting</option>
+                <option value="style">Style</option>
+                <option value="gifting">Gifting</option>
+                <option value="tips">Tips</option>
+                <option value="family">Family</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-4" id="blogGrid">
+          <div class="col-md-6 col-lg-4">
+            <article class="blog-card" data-cat="parenting" data-title="Screen-free quiet time ideas for toddlers" data-text="Quiet time doesn't mean screens. Fun activities to reset energy.">
+              <div class="thumb">
+                <span class="cat">Parenting</span>
+                <img src="assets/images/scenes/blog-1.jpg" alt="Toddler playing with blocks">
+              </div>
+              <div class="body">
+                <div class="meta">
+                  <span><i class="bi bi-calendar3"></i> Aug 01, 2026</span>
+                  <span><i class="bi bi-clock"></i> 4 min</span>
+                </div>
+                <h4><a href="blog-details.html">15 Screen-Free Quiet Time Ideas for Toddlers</a></h4>
+                <p>Gentle activities that give you a breather and them a reset — no batteries required.</p>
+                <a href="blog-details.html" class="btn-link">Read More <i class="bi bi-arrow-right ms-1"></i></a>
+              </div>
+            </article>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <article class="blog-card" data-cat="style" data-title="How to layer kids clothes for every season" data-text="Master layering so little ones stay comfy from chilly mornings to warm afternoons.">
+              <div class="thumb">
+                <span class="cat">Style</span>
+                <img src="assets/images/scenes/blog-2.jpg" alt="Father and child dressed for fall">
+              </div>
+              <div class="body">
+                <div class="meta">
+                  <span><i class="bi bi-calendar3"></i> Jul 25, 2026</span>
+                  <span><i class="bi bi-clock"></i> 5 min</span>
+                </div>
+                <h4><a href="blog-details.html">The Art of Layering: Comfy Looks for Every Season</a></h4>
+                <p>Bases, mid-layers and toppers — a simple formula for kids who never sit still.</p>
+                <a href="blog-details.html" class="btn-link">Read More <i class="bi bi-arrow-right ms-1"></i></a>
+              </div>
+            </article>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <article class="blog-card" data-cat="gifting" data-title="The ultimate baby shower gift guide" data-text="From keepsakes to practical picks, everything new parents actually want.">
+              <div class="thumb">
+                <span class="cat">Gifting</span>
+                <img src="assets/images/scenes/blog-3.jpg" alt="Baby feet holding hands">
+              </div>
+              <div class="body">
+                <div class="meta">
+                  <span><i class="bi bi-calendar3"></i> Jul 18, 2026</span>
+                  <span><i class="bi bi-clock"></i> 6 min</span>
+                </div>
+                <h4><a href="blog-details.html">The Ultimate Baby Shower Gift Guide (2026)</a></h4>
+                <p>Gifts that get used every single day — plus the ones to skip.</p>
+                <a href="blog-details.html" class="btn-link">Read More <i class="bi bi-arrow-right ms-1"></i></a>
+              </div>
+            </article>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <article class="blog-card" data-cat="tips" data-title="How to read a kids size chart like a pro" data-text="Sizes can be confusing. Here's how to get a perfect fit, every time.">
+              <div class="thumb">
+                <span class="cat">Tips</span>
+                <img src="assets/images/scenes/blog-4.jpg" alt="Child drawing with crayons">
+              </div>
+              <div class="body">
+                <div class="meta">
+                  <span><i class="bi bi-calendar3"></i> Jul 10, 2026</span>
+                  <span><i class="bi bi-clock"></i> 3 min</span>
+                </div>
+                <h4><a href="blog-details.html">How to Read a Kids Size Chart Like a Pro</a></h4>
+                <p>Height, weight, chest — decode the numbers so you never guess again.</p>
+                <a href="blog-details.html" class="btn-link">Read More <i class="bi bi-arrow-right ms-1"></i></a>
+              </div>
+            </article>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <article class="blog-card" data-cat="family" data-title="Raising little helpers through chores" data-text="Age-appropriate chores that build confidence (and lighten your load).">
+              <div class="thumb">
+                <span class="cat">Family</span>
+                <img src="assets/images/scenes/blog-5.jpg" alt="Happy family together">
+              </div>
+              <div class="body">
+                <div class="meta">
+                  <span><i class="bi bi-calendar3"></i> Jul 02, 2026</span>
+                  <span><i class="bi bi-clock"></i> 5 min</span>
+                </div>
+                <h4><a href="blog-details.html">Raising Little Helpers: Chores by Age</a></h4>
+                <p>Small tasks, big wins — a practical guide to sharing the load as a family.</p>
+                <a href="blog-details.html" class="btn-link">Read More <i class="bi bi-arrow-right ms-1"></i></a>
+              </div>
+            </article>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <article class="blog-card" data-cat="style" data-title="Uniforms that keep kids comfy all day" data-text="Fabric, fit and flexibility — what to look for in schoolwear.">
+              <div class="thumb">
+                <span class="cat">Style</span>
+                <img src="assets/images/scenes/blog-6.jpg" alt="Child with backpack ready for school">
+              </div>
+              <div class="body">
+                <div class="meta">
+                  <span><i class="bi bi-calendar3"></i> Jun 24, 2026</span>
+                  <span><i class="bi bi-clock"></i> 4 min</span>
+                </div>
+                <h4><a href="blog-details.html">School Uniforms That Keep Kids Comfy All Day</a></h4>
+                <p>Breathable fabrics and smart fits that survive recess and story time.</p>
+                <a href="blog-details.html" class="btn-link">Read More <i class="bi bi-arrow-right ms-1"></i></a>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="text-center mt-5">
+          <button type="button" class="btn btn-outline-brand"><i class="bi bi-plus-lg me-1"></i>Load More Stories</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ NEWSLETTER ============ -->
+    <section class="section bg-surface-2">
+      <div class="container">
+        <div class="newsletter-panel reveal">
+          <div class="np-inner">
+            <div class="np-emoji" aria-hidden="true">📬</div>
+            <span class="eyebrow" style="justify-content:center">The Sunday Bloom</span>
+            <h2 class="section-title mb-2">One Lovely Email a Week</h2>
+            <p class="section-subtitle mx-auto">Parenting tips, new arrivals and members-only offers. No spam, ever.</p>
+            <form class="newsletter-form" data-validate novalidate>
+              <div class="input-group">
+                <input type="email" class="form-control" placeholder="Enter your email address" aria-label="Email address" required>
+                <button class="btn btn-brand px-4" type="submit">Subscribe</button>
+              </div>
+              <div class="form-text newsletter-msg"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer (injected by assets/js/footer.js) -->
+  <div id="footer-container"></div>
+
+  <!-- Back to top -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="bi bi-arrow-up"></i></button>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/navbar.js"></script>
+  <script src="assets/js/footer.js"></script>
+  <script src="assets/js/products.js"></script>
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/rtl.js"></script>
+  <script src="assets/js/cart.js"></script>
+  <script src="assets/js/wishlist.js"></script>
+  <script src="assets/js/validation.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var slugs = {
+        "10 Everyday Outfits That Make Mornings Easier": "outfits",
+        "15 Screen-Free Quiet Time Ideas for Toddlers": "quiet-time",
+        "The Art of Layering: Comfy Looks for Every Season": "layering",
+        "The Ultimate Baby Shower Gift Guide (2026)": "gift-guide",
+        "How to Read a Kids Size Chart Like a Pro": "size-chart",
+        "Raising Little Helpers: Chores by Age": "chores",
+        "School Uniforms That Keep Kids Comfy All Day": "schoolwear"
+      };
+      var grid = document.getElementById("blogGrid");
+      if (grid) {
+        grid.querySelectorAll(".blog-card").forEach(function (card) {
+          var t = ((card.querySelector("h4 a") || {}).textContent || "").trim();
+          var slug = slugs[t] || "outfits";
+          card.querySelectorAll("a[href='blog-details.html']").forEach(function (a) {
+            a.setAttribute("href", "blog-details.html?post=" + slug);
+          });
+        });
+      }
+    });
+  </script>
+</body>
+</html>

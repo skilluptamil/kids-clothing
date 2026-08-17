@@ -1,0 +1,87 @@
+/* ==========================================================================
+   LITTLE BLOOM — RTL Support
+   --------------------------------------------------------------------------
+   File   : assets/css/rtl.css
+   Notes  : Loaded always (harmless in LTR). Fires only when <html dir="rtl">.
+            Most directional styles use logical properties (inset-inline,
+            margin-inline...) so only overrides for physical properties and
+            layout flips are needed here.
+   ========================================================================== */
+
+[dir="rtl"] body {
+  text-align: right;
+  direction: rtl;
+}
+
+/* Typography */
+[dir="rtl"] .hero-title .accent::after { transform: scaleX(-1); }
+[dir="rtl"] .eyebrow::before { order: 2; }
+
+/* Navbar */
+[dir="rtl"] .navbar { --bs-navbar-brand-margin-end: 0; }
+[dir="rtl"] .navbar-nav .dropdown-menu { text-align: right; }
+[dir="rtl"] .navbar-toggler i, [dir="rtl"] .icon-btn, [dir="rtl"] .theme-toggle { direction: ltr; }
+
+/* Dropdown caret flip */
+[dir="rtl"] .dropdown-toggle::after {
+  margin-inline-start: .255em;
+}
+
+/* Icon-only elements that should not mirror (arrows, carets in buttons) */
+[dir="rtl"] .bi-arrow-right { display: inline-block; transform: scaleX(-1); }
+[dir="rtl"] .bi-arrow-left { display: inline-block; transform: scaleX(-1); }
+
+/* Breadcrumb separator */
+[dir="rtl"] .breadcrumb-item + .breadcrumb-item::before {
+  content: "\F284"; /* bi-chevron-left */
+  font-family: "bootstrap-icons";
+  float: none;
+  padding-inline: .5rem;
+  color: var(--brand);
+}
+
+/* Carousel — testimonial carousel controls */
+[dir="rtl"] .carousel-control-prev, [dir="rtl"] .carousel-control-next {
+  transform: scaleX(-1);
+}
+
+/* Timeline */
+[dir="rtl"] .timeline { padding-inline-start: 0; padding-inline-end: 2.2rem; }
+[dir="rtl"] .timeline::before { inset-inline-start: auto; inset-inline-end: 9px; }
+[dir="rtl"] .timeline-item::before { inset-inline-start: auto; inset-inline-end: -2.2rem; }
+
+/* Quote border */
+[dir="rtl"] blockquote {
+  border-inline-start: none;
+  border-inline-end: 4px solid var(--brand);
+  border-radius: 1rem 0 0 1rem;
+}
+
+/* Range slider direction — flip fill */
+[dir="rtl"] .range-slider .range-fill {
+  right: 0; left: auto;
+}
+
+/* Rotating badge center icon */
+[dir="rtl"] .rotating-badge { animation-direction: reverse; }
+[dir="rtl"] .rotating-badge .center-icon { left: auto; right: 50%; transform: translate(50%, -50%); }
+
+/* Marquee in RTL is handled in style.css (animation-direction reverse) */
+
+/* Text-align utilities that are directional in Bootstrap */
+[dir="rtl"] .text-start { text-align: right !important; }
+[dir="rtl"] .text-end { text-align: left !important; }
+
+/* Float cards keep visual balance */
+[dir="rtl"] .hero-float-card.a { inset-inline-start: auto; inset-inline-end: -18px; }
+[dir="rtl"] .hero-float-card.b { inset-inline-end: auto; inset-inline-start: -14px; }
+
+/* Emoji / icon-only buttons should not mirror */
+[dir="rtl"] .icon-btn, [dir="rtl"] .pc-action, [dir="rtl"] .btn-quickview,
+[dir="rtl"] .carousel-control-custom button, [dir="rtl"] .back-to-top,
+[dir="rtl"] .theme-toggle, [dir="rtl"] .rtl-toggle { direction: ltr; }
+
+/* Form controls */
+[dir="rtl"] .form-control, [dir="rtl"] .form-select { text-align: right; }
+
+/* Offcanvas position flips with Bootstrap RTL automatically */

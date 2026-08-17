@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Product details at LittleBloom — sizes, colors, description, specifications, shipping, returns and customer reviews.">
+  <meta name="keywords" content="kids clothing product, baby dress, romper, school uniform, sizes">
+  <meta name="author" content="LittleBloom">
+  <title>Product Details — LittleBloom Kids Clothing</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo/favicon.svg">
+
+  <meta property="og:type" content="product">
+  <meta property="og:title" content="LittleBloom Product">
+  <meta property="og:description" content="Soft, adorable and thoughtfully designed kids clothing.">
+  <meta property="og:image" content="assets/images/logo/logo.svg">
+  <meta property="og:site_name" content="LittleBloom">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Nunito:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5.3 + Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" data-bs-css>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <!-- Template styles -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+
+  <!-- Restore saved theme & RTL before paint -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("lb-theme") || "light";
+        document.documentElement.setAttribute("data-bs-theme", t);
+        var r = localStorage.getItem("lb-rtl") === "1";
+        document.documentElement.setAttribute("dir", r ? "rtl" : "ltr");
+        if (r) {
+          var l = document.querySelector("link[data-bs-css]");
+          if (l) l.href = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css";
+        }
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div class="preloader" id="preloader">
+    <div class="spinner-brand"><img src="assets/images/logo/logo.svg" alt="" width="30" height="30"></div>
+    <div class="brand-name">LittleBloom</div>
+    <div class="loading-bar"><span></span></div>
+  </div>
+
+  <!-- Navbar (injected by assets/js/navbar.js) -->
+  <div id="navbar-container"></div>
+
+  <main>
+
+    <!-- ============ BREADCRUMB ============ -->
+    <section class="section-sm pt-4">
+      <div class="container">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-start mb-0">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item"><a href="shop.html">Shop</a></li>
+            <li class="breadcrumb-item active" aria-current="page" id="pdCrumb">Product Details</li>
+          </ol>
+        </nav>
+      </div>
+    </section>
+
+    <!-- ============ PRODUCT MAIN (rendered by main.js) ============ -->
+    <section class="section-sm pt-3">
+      <div class="container">
+        <div id="productDetails" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- ============ TABS ============ -->
+    <section class="section-sm">
+      <div class="container">
+        <ul class="nav nav-tabs neo-tabs mb-2" id="productTabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="descriptionTab" data-bs-toggle="tab" data-bs-target="#descPane" type="button" role="tab" aria-controls="descPane" aria-selected="true">Description</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="specsTab" data-bs-toggle="tab" data-bs-target="#specsPane" type="button" role="tab" aria-controls="specsPane" aria-selected="false">Specifications</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="sizeTab" data-bs-toggle="tab" data-bs-target="#sizePane" type="button" role="tab" aria-controls="sizePane" aria-selected="false">Size Guide</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="shippingTab" data-bs-toggle="tab" data-bs-target="#shippingPane" type="button" role="tab" aria-controls="shippingPane" aria-selected="false">Shipping &amp; Returns</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="reviewsTabBtn" data-bs-toggle="tab" data-bs-target="#reviewsPane" type="button" role="tab" aria-controls="reviewsPane" aria-selected="false">Reviews</button>
+          </li>
+        </ul>
+
+        <div class="tab-content" id="productTabsContent">
+          <!-- Description -->
+          <div class="tab-pane fade show active" id="descPane" role="tabpanel" aria-labelledby="descriptionTab">
+            <div id="descTab" class="article-content"></div>
+          </div>
+
+          <!-- Specifications -->
+          <div class="tab-pane fade" id="specsPane" role="tabpanel" aria-labelledby="specsTab">
+            <div class="table-responsive">
+              <table class="table table-neo align-middle" id="specTable" style="max-width:760px"></table>
+            </div>
+          </div>
+
+          <!-- Size guide -->
+          <div class="tab-pane fade" id="sizePane" role="tabpanel" aria-labelledby="sizeTab">
+            <div class="article-content">
+              <p>Measure your little one and match to the chart below. When between sizes, we recommend sizing up for growing room.</p>
+              <div class="table-responsive">
+                <table class="table table-neo align-middle">
+                  <thead><tr><th>Age</th><th>Height</th><th>Weight</th><th>Chest</th><th>Recommended</th></tr></thead>
+                  <tbody>
+                    <tr><td>Newborn</td><td>50–56 cm</td><td>3–5 kg</td><td>36–40 cm</td><td>0–3 months</td></tr>
+                    <tr><td>3–6 m</td><td>56–68 cm</td><td>5–7.5 kg</td><td>40–44 cm</td><td>3–6 months</td></tr>
+                    <tr><td>6–12 m</td><td>68–76 cm</td><td>7.5–9.5 kg</td><td>44–46 cm</td><td>6–12 months</td></tr>
+                    <tr><td>1–2 y</td><td>76–88 cm</td><td>9.5–12 kg</td><td>47–50 cm</td><td>12–24 months</td></tr>
+                    <tr><td>2–3 y</td><td>88–96 cm</td><td>12–14 kg</td><td>50–52 cm</td><td>2–3 years</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <a href="size-guide.html" class="btn btn-outline-brand"><i class="bi bi-rulers me-2"></i>Full Size Guide</a>
+            </div>
+          </div>
+
+          <!-- Shipping -->
+          <div class="tab-pane fade" id="shippingPane" role="tabpanel" aria-labelledby="shippingTab">
+            <div class="article-content">
+              <h3 class="font-heading">Shipping Information</h3>
+              <ul class="check-list">
+                <li><i class="bi bi-check-circle-fill"></i>Free standard shipping on orders over $50</li>
+                <li><i class="bi bi-check-circle-fill"></i>Standard delivery: 3–5 business days</li>
+                <li><i class="bi bi-check-circle-fill"></i>Express delivery: 1–2 business days</li>
+                <li><i class="bi bi-check-circle-fill"></i>Tracked &amp; insured on every order</li>
+              </ul>
+              <h3 class="font-heading mt-4">Returns &amp; Exchanges</h3>
+              <p>Unworn items can be returned within 30 days for a full refund or exchange. Please keep tags attached. See our full <a href="return-policy.html" class="text-brand fw-bold">returns policy</a>.</p>
+            </div>
+          </div>
+
+          <!-- Reviews -->
+          <div class="tab-pane fade" id="reviewsPane" role="tabpanel" aria-labelledby="reviewsTabBtn">
+            <div class="row g-4">
+              <div class="col-lg-4">
+                <div class="summary-card" style="position:static;text-align:center">
+                  <div class="font-heading fw-bold" style="font-size:3.4rem;color:var(--brand-dark)">4.8</div>
+                  <div class="stars mb-2" style="font-size:1.1rem"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+                  <p class="text-muted">Based on 214 verified reviews</p>
+                  <div class="text-start">
+                    <div class="d-flex align-items-center gap-2 mb-1"><span class="me-2" style="font-size:.8rem">5★</span><div class="progress flex-grow-1" style="height:8px"><div class="progress-bar bg-success" style="width:82%"></div></div><span style="font-size:.8rem">82%</span></div>
+                    <div class="d-flex align-items-center gap-2 mb-1"><span class="me-2" style="font-size:.8rem">4★</span><div class="progress flex-grow-1" style="height:8px"><div class="progress-bar" style="width:12%;background:var(--brand)"></div></div><span style="font-size:.8rem">12%</span></div>
+                    <div class="d-flex align-items-center gap-2 mb-1"><span class="me-2" style="font-size:.8rem">3★</span><div class="progress flex-grow-1" style="height:8px"><div class="progress-bar" style="width:4%;background:var(--gold)"></div></div><span style="font-size:.8rem">4%</span></div>
+                    <div class="d-flex align-items-center gap-2 mb-1"><span class="me-2" style="font-size:.8rem">2★</span><div class="progress flex-grow-1" style="height:8px"><div class="progress-bar" style="width:1%;background:var(--cream-deep)"></div></div><span style="font-size:.8rem">1%</span></div>
+                    <div class="d-flex align-items-center gap-2"><span class="me-2" style="font-size:.8rem">1★</span><div class="progress flex-grow-1" style="height:8px"><div class="progress-bar" style="width:1%;background:var(--cream-deep)"></div></div><span style="font-size:.8rem">1%</span></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-8">
+                <div class="summary-card" style="position:static">
+                  <h5 class="mb-4">Customer Reviews</h5>
+                  <div class="mb-4">
+                    <div class="stars mb-1"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+                    <p class="mb-0 fw-bold" style="color:var(--ink)">"Softer than expected, and the fit is perfect for my 8-month-old."</p>
+                    <span class="text-muted" style="font-size:.82rem">Nadia R. · Verified Buyer · Aug 02, 2026</span>
+                  </div>
+                  <div class="mb-4">
+                    <div class="stars mb-1"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i></div>
+                    <p class="mb-0 fw-bold" style="color:var(--ink)">"Great quality, runs slightly small — size up for comfort."</p>
+                    <span class="text-muted" style="font-size:.82rem">Tom H. · Verified Buyer · Jul 21, 2026</span>
+                  </div>
+                  <div class="mb-4">
+                    <div class="stars mb-1"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+                    <p class="mb-0 fw-bold" style="color:var(--ink)">"Ordered 3 more after the first. Our toddler lives in these."</p>
+                    <span class="text-muted" style="font-size:.82rem">Mei L. · Verified Buyer · Jul 05, 2026</span>
+                  </div>
+                </div>
+
+                <div class="summary-card mt-4" style="position:static">
+                  <h5 class="mb-3">Write a Review</h5>
+                  <form id="reviewForm" data-validate data-success="Thank you! Your review has been submitted (demo)." novalidate>
+                    <div class="row g-3">
+                      <div class="col-md-6 form-field">
+                        <label for="rvName" class="form-label">Your Name</label>
+                        <input type="text" class="form-control" id="rvName" required>
+                        <div class="error-msg"></div>
+                      </div>
+                      <div class="col-md-6 form-field">
+                        <label for="rvEmail" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="rvEmail" required>
+                        <div class="error-msg"></div>
+                      </div>
+                      <div class="col-12 form-field">
+                        <label class="form-label">Your Rating</label>
+                        <div class="d-flex gap-1 fs-3" id="ratingPicker" style="color:var(--gold);cursor:pointer" role="radiogroup" aria-label="Star rating">
+                          <i class="bi bi-star" data-star="1" role="radio" aria-checked="false" tabindex="0"></i>
+                          <i class="bi bi-star" data-star="2" role="radio" aria-checked="false" tabindex="0"></i>
+                          <i class="bi bi-star" data-star="3" role="radio" aria-checked="false" tabindex="0"></i>
+                          <i class="bi bi-star" data-star="4" role="radio" aria-checked="false" tabindex="0"></i>
+                          <i class="bi bi-star" data-star="5" role="radio" aria-checked="false" tabindex="0"></i>
+                        </div>
+                        <input type="hidden" id="rvRating" value="5">
+                      </div>
+                      <div class="col-12 form-field">
+                        <label for="rvComment" class="form-label">Your Review</label>
+                        <textarea class="form-control" id="rvComment" rows="4" placeholder="What did you love?" required></textarea>
+                        <div class="error-msg"></div>
+                      </div>
+                      <div class="col-12">
+                        <div class="form-msg"></div>
+                      </div>
+                      <div class="col-12">
+                        <button type="submit" class="btn btn-brand"><i class="bi bi-send me-1"></i>Submit Review</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ RELATED PRODUCTS ============ -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head center reveal">
+          <span class="eyebrow">You May Also Love</span>
+          <h2 class="section-title">Related Products</h2>
+          <div class="divider-brand"></div>
+        </div>
+        <div class="product-grid" id="relatedGrid"></div>
+      </div>
+    </section>
+
+    <!-- ============ NEWSLETTER ============ -->
+    <section class="section bg-surface-2">
+      <div class="container">
+        <div class="newsletter-panel reveal">
+          <div class="np-inner">
+            <div class="np-emoji" aria-hidden="true">💌</div>
+            <span class="eyebrow" style="justify-content:center">Never Miss a Drop</span>
+            <h2 class="section-title mb-2">Get 10% Off Your First Order</h2>
+            <p class="section-subtitle mx-auto">Join the Bloom Club for member-only offers and early access.</p>
+            <form class="newsletter-form" data-validate novalidate>
+              <div class="input-group">
+                <input type="email" class="form-control" placeholder="Enter your email address" aria-label="Email address" required>
+                <button class="btn btn-brand px-4" type="submit">Subscribe</button>
+              </div>
+              <div class="form-text newsletter-msg"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer (injected by assets/js/footer.js) -->
+  <div id="footer-container"></div>
+
+  <!-- Back to top -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="bi bi-arrow-up"></i></button>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/navbar.js"></script>
+  <script src="assets/js/footer.js"></script>
+  <script src="assets/js/products.js"></script>
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/rtl.js"></script>
+  <script src="assets/js/cart.js"></script>
+  <script src="assets/js/wishlist.js"></script>
+  <script src="assets/js/validation.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      /* interactive star rating picker */
+      var picker = document.getElementById("ratingPicker");
+      if (picker) {
+        var stars = picker.querySelectorAll("[data-star]");
+        function paint(n) {
+          stars.forEach(function (s) {
+            s.classList.toggle("bi-star-fill", parseInt(s.dataset.star, 10) <= n);
+            s.classList.toggle("bi-star", parseInt(s.dataset.star, 10) > n);
+          });
+        }
+        stars.forEach(function (s) {
+          s.addEventListener("click", function () {
+            var n = parseInt(s.dataset.star, 10);
+            document.getElementById("rvRating").value = n;
+            paint(n);
+          });
+          s.addEventListener("keydown", function (e) {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              s.click();
+            }
+          });
+        });
+        paint(5);
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,176 @@
+/* ==========================================================================
+   LITTLE BLOOM — Dark Mode
+   --------------------------------------------------------------------------
+   File   : assets/css/dark-mode.css
+   Notes  : Enabled via data-bs-theme="dark" on <html>. Overrides theme
+            tokens; everything else inherits from style.css automatically.
+   ========================================================================== */
+
+[data-bs-theme="dark"] {
+  /* Brand palette */
+  --brand:          #f7a183;
+  --brand-rgb:      247, 161, 131;
+  --brand-light:    #f9c3ae;
+  --brand-dark:     #f18b70;
+  --brand-deep:     #ffb39c;
+
+  /* Ambient bubbles — dimmer in dark mode */
+  --bubble-a: rgba(143, 195, 232, .14);
+  --bubble-b: rgba(242, 166, 190, .12);
+  --bubble-c: rgba(143, 208, 180, .12);
+
+  /* Accent pastels */
+  --baby-blue:      #7fb2d6;
+  --mint:           #7cc2a5;
+  --lavender:       #a293d4;
+  --pink:           #e58aa5;
+  --peach:          #8a4b3a;
+  --gold:           #d6a15c;
+
+  /* Neutral pastels */
+  --cream:          #1d1713;
+  --beige:          #17120f;
+  --cream-deep:     #26201b;
+
+  --surface:        #241d18;
+  --surface-2:      #1b1612;
+  --surface-3:      #2a221c;
+
+  --ink:            #f2e8dd;
+  --muted:          #b3a293;
+
+  --border-soft:    #3a2f27;
+
+  /* Bootstrap overrides */
+  --bs-body-color:  var(--ink);
+  --bs-body-bg:     var(--cream);
+  --bs-border-color: var(--border-soft);
+  --bs-link-color:  var(--brand-dark);
+  --bs-link-hover-color: var(--brand-light);
+
+  /* Neomorphism shadows (dark = light top-left, dark bottom-right) */
+  --neo-shadow:     10px 10px 24px rgba(0, 0, 0, .55),
+                    -10px -10px 24px rgba(82, 61, 44, .12);
+  --neo-shadow-sm:  6px 6px 14px rgba(0, 0, 0, .5),
+                    -6px -6px 14px rgba(82, 61, 44, .12);
+  --neo-shadow-hover: 14px 14px 30px rgba(0, 0, 0, .62),
+                    -14px -14px 30px rgba(82, 61, 44, .14);
+  --neo-inset:      inset 6px 6px 12px rgba(0, 0, 0, .5),
+                    inset -6px -6px 12px rgba(82, 61, 44, .1);
+  --neo-inset-sm:   inset 3px 3px 7px rgba(0, 0, 0, .45),
+                    inset -3px -3px 7px rgba(82, 61, 44, .1);
+
+  --shadow-sm:      0 4px 14px rgba(0, 0, 0, .35);
+  --shadow-md:      0 12px 32px rgba(0, 0, 0, .45);
+  --shadow-lg:      0 24px 56px rgba(0, 0, 0, .6);
+  --shadow-brand:   0 12px 26px rgba(247, 161, 131, .3);
+
+  --hero-grad-a:    #2a221c;
+  --hero-grad-b:    #1d1713;
+}
+
+/* Surfaces that should keep a hard edge in dark mode */
+[data-bs-theme="dark"] .hero,
+[data-bs-theme="dark"] .page-banner,
+[data-bs-theme="dark"] .hero-fashion,
+[data-bs-theme="dark"] .h1-hero,
+[data-bs-theme="dark"] .h2-hero,
+[data-bs-theme="dark"] .newsletter-panel { background-blend-mode: normal; }
+
+/* Navbar background */
+[data-bs-theme="dark"] .main-nav {
+  background: rgba(29, 23, 19, .92);
+}
+
+/* Preloader */
+[data-bs-theme="dark"] .preloader { background: var(--cream); }
+[data-bs-theme="dark"] .preloader .brand-name { color: var(--brand-dark); }
+
+/* Category / age overlays */
+[data-bs-theme="dark"] .category-card .cat-overlay,
+[data-bs-theme="dark"] .age-card .age-body,
+[data-bs-theme="dark"] .h2-age .h2-age-overlay,
+[data-bs-theme="dark"] .h2-cb .h2-cb-overlay {
+  background: linear-gradient(180deg, transparent 30%, rgba(0, 0, 0, .82));
+}
+
+/* Collection banner overlay */
+[data-bs-theme="dark"] .collection-banner .cb-overlay {
+  background: linear-gradient(90deg, rgba(0, 0, 0, .78) 0%, rgba(0, 0, 0, .35) 55%, transparent 80%);
+}
+[data-bs-theme="dark"][dir="rtl"] .collection-banner .cb-overlay {
+  background: linear-gradient(-90deg, rgba(0, 0, 0, .78) 0%, rgba(0, 0, 0, .35) 55%, transparent 80%);
+}
+
+/* Buttons on dark surfaces */
+[data-bs-theme="dark"] .btn-brand {
+  background: linear-gradient(135deg, var(--brand), var(--brand-deep));
+}
+[data-bs-theme="dark"] .btn-soft { color: var(--ink); }
+[data-bs-theme="dark"] .btn-soft:hover { color: var(--brand-dark); }
+[data-bs-theme="dark"] .btn-outline-soft { color: var(--ink); }
+[data-bs-theme="dark"] .btn-outline-soft:hover { color: var(--brand-dark); }
+
+/* Table hover on dark */
+[data-bs-theme="dark"] .table-neo tbody tr:hover { background: rgba(var(--brand-rgb), .08); }
+
+/* Form focus */
+[data-bs-theme="dark"] .form-control, [data-bs-theme="dark"] .form-select {
+  background: var(--surface-2);
+}
+[data-bs-theme="dark"] .form-control:focus, [data-bs-theme="dark"] .form-select:focus {
+  background: var(--surface);
+}
+
+/* Footer bottom */
+[data-bs-theme="dark"] .footer-bottom { background: #16110e; }
+
+/* Marquee */
+[data-bs-theme="dark"] .marquee { background: linear-gradient(90deg, #b34a33, var(--brand)); }
+
+/* Search overlay */
+[data-bs-theme="dark"] .search-overlay { background: rgba(0, 0, 0, .7); }
+
+/* Toast */
+[data-bs-theme="dark"] .neo-toast { background: var(--surface-3); }
+
+/* Modal */
+[data-bs-theme="dark"] .modal-content { background: var(--surface-3); }
+
+/* Offcanvas */
+[data-bs-theme="dark"] .offcanvas, [data-bs-theme="dark"] .mobile-nav { background: var(--surface-3); }
+
+/* Offcanvas backdrops */
+.offcanvas-backdrop, .modal-backdrop { background: rgba(20, 12, 8, .55); }
+[data-bs-theme="dark"] .offcanvas-backdrop, [data-bs-theme="dark"] .modal-backdrop { background: rgba(0, 0, 0, .6); }
+
+/* Dropdown menus */
+[data-bs-theme="dark"] .navbar-nav .dropdown-menu { background: var(--surface-3); }
+
+/* Quickview thumbnails border */
+[data-bs-theme="dark"] .qv-thumbs img { border-color: var(--surface-3); }
+[data-bs-theme="dark"] .qv-thumbs img.active { border-color: var(--brand); }
+
+/* Counter text on dark bands */
+[data-bs-theme="dark"] .stat-box .stat-num,
+[data-bs-theme="dark"] .counter-box .counter { color: var(--brand-dark); }
+
+/* Shadows on hero images */
+[data-bs-theme="dark"] .hero-img-wrap,
+[data-bs-theme="dark"] .collection-banner,
+[data-bs-theme="dark"] .offer-banner { box-shadow: var(--shadow-lg); }
+
+/* Error page gradient text readability */
+[data-bs-theme="dark"] .error-404 .error-code {
+  background: linear-gradient(135deg, #f7a183, #7fb2d6, #a293d4);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+
+/* Range slider thumb */
+[data-bs-theme="dark"] .range-slider input[type="range"]::-webkit-slider-thumb { background: var(--surface-3); }
+[data-bs-theme="dark"] .range-slider input[type="range"]::-moz-range-thumb { background: var(--surface-3); }
+
+/* Ensure images that sit on colored panels don't get washed */
+[data-bs-theme="dark"] .pc-media img,
+[data-bs-theme="dark"] .cat-img,
+[data-bs-theme="dark"] .age-card img { background: var(--cream); }

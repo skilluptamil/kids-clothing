@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Sign in to your LittleBloom account to track orders, manage your wishlist and earn Bloom Points.">
+  <meta name="keywords" content="login, sign in, my account">
+  <meta name="author" content="LittleBloom">
+  <title>Sign In — LittleBloom Kids Clothing</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo/favicon.svg">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Sign In — LittleBloom">
+  <meta property="og:description" content="Welcome back! Sign in to your account.">
+  <meta property="og:image" content="assets/images/logo/logo.svg">
+  <meta property="og:site_name" content="LittleBloom">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Nunito:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5.3 + Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" data-bs-css>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <!-- Template styles -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+
+  <!-- Restore saved theme & RTL before paint -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("lb-theme") || "light";
+        document.documentElement.setAttribute("data-bs-theme", t);
+        var r = localStorage.getItem("lb-rtl") === "1";
+        document.documentElement.setAttribute("dir", r ? "rtl" : "ltr");
+        if (r) {
+          var l = document.querySelector("link[data-bs-css]");
+          if (l) l.href = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css";
+        }
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div class="preloader" id="preloader">
+    <div class="spinner-brand"><img src="assets/images/logo/logo.svg" alt="" width="30" height="30"></div>
+    <div class="brand-name">LittleBloom</div>
+    <div class="loading-bar"><span></span></div>
+  </div>
+
+  <main>
+
+    <!-- ============ AUTH CARD ============ -->
+    <section class="section">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-8 col-lg-6 col-xl-5">
+            <div class="summary-card auth-card" style="position:static">
+              <div class="text-center mb-4">
+                <div class="auth-logo mx-auto mb-3"><img src="assets/images/logo/logo.svg" alt="LittleBloom" width="44" height="44"></div>
+                <h3 class="font-heading fw-bold">Welcome Back!</h3>
+                <p class="text-muted small mb-0">Sign in to continue shopping.</p>
+              </div>
+
+              <form id="loginForm" novalidate>
+                <div class="form-field mb-3">
+                  <label for="loginEmail" class="form-label">Email Address</label>
+                  <div class="input-group">
+                    <span class="input-group-text bg-transparent"><i class="bi bi-envelope text-muted"></i></span>
+                    <input type="email" class="form-control" id="loginEmail" placeholder="you@example.com" required>
+                  </div>
+                  <div class="error-msg"></div>
+                </div>
+                <div class="form-field mb-3">
+                  <label for="loginPassword" class="form-label">Password</label>
+                  <div class="input-group">
+                    <span class="input-group-text bg-transparent"><i class="bi bi-lock text-muted"></i></span>
+                    <input type="password" class="form-control" id="loginPassword" placeholder="Your password" minlength="6" required>
+                    <button type="button" class="btn btn-outline-brand password-toggle" data-target="loginPassword" aria-label="Show password"><i class="bi bi-eye"></i></button>
+                  </div>
+                  <div class="error-msg"></div>
+                </div>
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="loginRemember">
+                    <label class="form-check-label small" for="loginRemember">Remember me</label>
+                  </div>
+                  <a href="forgot-password.html" class="small text-brand fw-bold">Forgot password?</a>
+                </div>
+                <button type="submit" class="btn btn-brand w-100 btn-lg mb-3"><i class="bi bi-box-arrow-in-right me-1"></i>Sign In</button>
+
+                <div class="divider-or"><span>or continue with</span></div>
+                <div class="row g-2">
+                  <div class="col-6">
+                    <button type="button" class="btn btn-soft w-100"><i class="bi bi-google me-1" style="color:#ea4335"></i>Google</button>
+                  </div>
+                  <div class="col-6">
+                    <button type="button" class="btn btn-soft w-100"><i class="bi bi-facebook me-1" style="color:#1877f2"></i>Facebook</button>
+                  </div>
+                </div>
+
+                <p class="text-center small mt-4 mb-0">New to LittleBloom? <a href="register.html" class="text-brand fw-bold">Create an account</a></p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Back to top -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="bi bi-arrow-up"></i></button>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/products.js"></script>
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/rtl.js"></script>
+  <script src="assets/js/cart.js"></script>
+  <script src="assets/js/wishlist.js"></script>
+  <script src="assets/js/validation.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var form = document.getElementById("loginForm");
+      if (!form) return;
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var email = document.getElementById("loginEmail");
+        var pass = document.getElementById("loginPassword");
+        var emailField = email.closest(".form-field");
+        var passField = pass.closest(".form-field");
+        emailField.classList.remove("is-invalid");
+        passField.classList.remove("is-invalid");
+
+        if (!email.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.value.trim())) {
+          emailField.classList.add("is-invalid");
+          emailField.querySelector(".error-msg").textContent = "Please enter a valid email address.";
+          email.focus();
+          return;
+        }
+        if (!pass.value || pass.value.length < 6) {
+          passField.classList.add("is-invalid");
+          passField.querySelector(".error-msg").textContent = "Password must be at least 6 characters.";
+          pass.focus();
+          return;
+        }
+        try {
+          localStorage.setItem("lb-user", JSON.stringify({ name: "Little Bloomer", email: email.value.trim() }));
+        } catch (err) {}
+        showToast("Welcome back!", "You've signed in successfully (demo).", "ok");
+        setTimeout(function () { window.location.href = "index.html"; }, 900);
+      });
+    });
+  </script>
+</body>
+</html>

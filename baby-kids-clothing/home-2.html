@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="LittleBloom kids fashion showcase — shop by age, curated collections, matching sibling sets, gift boxes and school uniform bulk orders.">
+  <meta name="keywords" content="kids fashion, children clothing, shop by age, matching sets, newborn gifts, school uniform">
+  <meta name="author" content="LittleBloom">
+  <title>LittleBloom — Kids Fashion Showcase | Home 2</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo/favicon.svg">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="LittleBloom — Dress Their Little Moments">
+  <meta property="og:description" content="Discover adorable everyday outfits, playful styles and comfortable essentials made for growing little personalities.">
+  <meta property="og:image" content="assets/images/logo/logo.svg">
+  <meta property="og:site_name" content="LittleBloom">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Nunito:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5.3 + Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" data-bs-css>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <!-- Template styles -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+
+  <!-- Restore saved theme & RTL before paint -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("lb-theme") || "light";
+        document.documentElement.setAttribute("data-bs-theme", t);
+        var r = localStorage.getItem("lb-rtl") === "1";
+        document.documentElement.setAttribute("dir", r ? "rtl" : "ltr");
+        if (r) {
+          var l = document.querySelector("link[data-bs-css]");
+          if (l) l.href = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css";
+        }
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div class="preloader" id="preloader">
+    <div class="spinner-brand"><img src="assets/images/logo/logo.svg" alt="" width="30" height="30"></div>
+    <div class="brand-name">LittleBloom</div>
+    <div class="loading-bar"><span></span></div>
+  </div>
+
+  <!-- Navbar (injected by assets/js/navbar.js) -->
+  <div id="navbar-container"></div>
+
+  <main>
+
+    <!-- ============ HERO (SHOWCASE V2) ============ -->
+    <section class="h2-hero" id="home">
+      <span class="h2-blob a" aria-hidden="true"></span>
+      <span class="h2-blob b" aria-hidden="true"></span>
+
+      <div class="container position-relative" style="z-index:2">
+        <div class="row align-items-center g-5 py-3">
+          <div class="col-lg-6">
+            <span class="hero-badge entrance d-1"><i class="bi bi-balloon"></i> Fall / Winter '26 Lookbook</span>
+            <h1 class="hero-title mt-4 mb-3 entrance d-2">
+              Dress Their <span class="accent">Little Moments</span>
+            </h1>
+            <p class="hero-lead entrance d-2">
+              Discover adorable everyday outfits, playful styles and comfortable
+              essentials made for growing little personalities — sized by age,
+              styled with love.
+            </p>
+            <div class="d-flex flex-wrap gap-3 mt-4 entrance d-3">
+              <a href="shop.html?gender=boys" class="btn btn-brand btn-lg"><i class="bi bi-stars me-2"></i>Shop Boys</a>
+              <a href="shop.html?gender=girls" class="btn btn-soft btn-lg"><i class="bi bi-flower1 me-2"></i>Shop Girls</a>
+            </div>
+            <div class="h2-stats mt-5 entrance d-4">
+              <div class="stat-box">
+                <div class="stat-num">240+</div>
+                <div class="stat-label">Adorable Styles</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-num">0–8y</div>
+                <div class="stat-label">Sized by Age</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-num">100%</div>
+                <div class="stat-label">Skin-Safe Fabrics</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="h2-poster entrance d-3">
+              <img src="assets/images/scenes/h2-gifts.jpg" alt="Girl in stylish kids fashion outfit" onerror="this.onerror=null;this.src='assets/images/placeholder.svg'">
+              <div class="h2-float f1">
+                <span class="icon"><i class="bi bi-flower1"></i></span>
+                <div><strong>Party Collection</strong><span>Twirl-ready looks</span></div>
+              </div>
+              <div class="h2-float f2">
+                <span class="icon"><i class="bi bi-truck"></i></span>
+                <div><strong>Free Shipping</strong><span>On orders over $50</span></div>
+              </div>
+              <div class="rotating-badge" aria-hidden="true">
+                <svg viewBox="0 0 128 128" width="128" height="128">
+                  <circle cx="64" cy="64" r="63" fill="rgba(241,139,112,0.14)" stroke="rgba(241,139,112,0.6)" stroke-width="1.6" stroke-dasharray="5 5"></circle>
+                  <path id="lbBadgePath2" d="M 64,64 m -46,0 a 46,46 0 1,1 92,0 a 46,46 0 1,1 -92,0"></path>
+                  <text fill="#d9654b" font-size="9" letter-spacing="3" font-family="Nunito, sans-serif" font-weight="700">
+                    <textPath href="#lbBadgePath2">LITTLE BLOOM &bull; EST. 2020 &bull; </textPath>
+                  </text>
+                </svg>
+                <span class="center-icon"><i class="bi bi-flower1"></i></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MARQUEE ============ -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span><i class="bi bi-flower1"></i> Shop by age</span>
+        <span><i class="bi bi-flower1"></i> Matching sets for siblings</span>
+        <span><i class="bi bi-flower1"></i> Gift boxes with personal notes</span>
+        <span><i class="bi bi-flower1"></i> School uniform bulk orders</span>
+        <span><i class="bi bi-flower1"></i> Eco-friendly packaging</span>
+      </div>
+    </div>
+
+    <!-- ============ SHOP BY AGE ============ -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head center reveal">
+          <span class="eyebrow">Perfect Sizing</span>
+          <h2 class="section-title">Shop by Age</h2>
+          <p class="section-subtitle">Every stage deserves the perfect fit. Pick your little one's stage and we'll show you exactly the right sizes.</p>
+          <div class="divider-brand"></div>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-3 reveal">
+            <a href="shop.html?age=newborn" class="h2-age">
+              <img src="assets/images/scenes/h2-newborn.jpg" alt="Newborn baby 0-12 months clothing" onerror="this.onerror=null;this.src='assets/images/placeholder.svg'">
+              <span class="h2-age-num">01</span>
+              <span class="h2-age-overlay">
+                <span class="h2-age-count">24 products</span>
+                <span class="h2-age-title">Newborn</span>
+                <span class="h2-age-range">0–12 months</span>
+              </span>
+            </a>
+          </div>
+          <div class="col-md-6 col-lg-3 reveal delay-1">
+            <a href="shop.html?age=toddler" class="h2-age">
+              <img src="assets/images/scenes/h2-toddler.jpg" alt="Toddler 1-3 years clothing" onerror="this.onerror=null;this.src='assets/images/placeholder.svg'">
+              <span class="h2-age-num">02</span>
+              <span class="h2-age-overlay">
+                <span class="h2-age-count">36 products</span>
+                <span class="h2-age-title">Toddler</span>
+                <span class="h2-age-range">1–3 years</span>
+              </span>
+            </a>
+          </div>
+          <div class="col-md-6 col-lg-3 reveal delay-2">
+            <a href="shop.html?age=kids3-5" class="h2-age">
+              <img src="assets/images/scenes/h2-kids.jpg" alt="Kids 3-5 years clothing" onerror="this.onerror=null;this.src='assets/images/placeholder.svg'">
+              <span class="h2-age-num">03</span>
+              <span class="h2-age-overlay">
+                <span class="h2-age-count">42 products</span>
+                <span class="h2-age-title">Kids</span>
+                <span class="h2-age-range">3–5 years</span>
+              </span>
+            </a>
+          </div>
+          <div class="col-md-6 col-lg-3 reveal delay-3">
+            <a href="shop.html?age=kids6-8" class="h2-age">
+              <img src="assets/images/scenes/h2-kids2.jpg" alt="Kids 6-8 years clothing" onerror="this.onerror=null;this.src='assets/images/placeholder.svg'">
+              <span class="h2-age-num">04</span>
+              <span class="h2-age-overlay">
+                <span class="h2-age-count">38 products</span>
+                <span class="h2-age-title">Kids</span>
+                <span class="h2-age-range">6–8 years</span>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SHOP BY CATEGORY ============ -->
+    <section class="section bg-surface-2">
+      <div class="container">
+        <div class="section-head center reveal">
+          <span class="eyebrow">Pick a Type</span>
+          <h2 class="section-title">Shop by Category</h2>
+          <p class="section-subtitle">From everyday basics to celebration-ready pieces — find exactly what you're after.</p>
+          <div class="divider-brand"></div>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-6 col-md-4 col-lg-3 reveal">
+            <a href="shop.html?category=tops" class="h2-cat">
+              <span class="h2-cat-icon" aria-hidden="true">👕</span>
+              <h5>Tops</h5>
+              <p>Teensy tees &amp; blouses</p>
+              <span class="bi bi-arrow-right" aria-hidden="true"></span>
+            </a>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3 reveal delay-1">
+            <a href="shop.html?category=bottoms" class="h2-cat">
+              <span class="h2-cat-icon" style="background:linear-gradient(135deg,#d7eaf8,#8fc3e8)" aria-hidden="true">👖</span>
+              <h5>Bottoms</h5>
+              <p>Leggings, pants &amp; shorts</p>
+              <span class="bi bi-arrow-right" aria-hidden="true"></span>
+            </a>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3 reveal delay-2">
+            <a href="shop.html?category=dresses" class="h2-cat">
+              <span class="h2-cat-icon" style="background:linear-gradient(135deg,#fde3ec,#f2a6be)" aria-hidden="true">👗</span>
+              <h5>Dresses</h5>
+              <p>Twirl-approved frocks</p>
+              <span class="bi bi-arrow-right" aria-hidden="true"></span>
+            </a>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3 reveal delay-3">
+            <a href="shop.html?category=sets" class="h2-cat">
+              <span class="h2-cat-icon" style="background:linear-gradient(135deg,#e2f5eb,#8fd0b4)" aria-hidden="true">🧺</span>
+              <h5>Sets</h5>
+              <p>Ready-to-wear outfits</p>
+              <span class="bi bi-arrow-right" aria-hidden="true"></span>
+            </a>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3 reveal">
+            <a href="shop.html?category=sleepwear" class="h2-cat">
+              <span class="h2-cat-icon" style="background:linear-gradient(135deg,#ece8fb,#b3a6e0)" aria-hidden="true">🌙</span>
+              <h5>Sleepwear</h5>
+              <p>Cozy pjs &amp; swaddles</p>
+              <span class="bi bi-arrow-right" aria-hidden="true"></span>
+            </a>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3 reveal delay-1">
+            <a href="shop.html?category=party" class="h2-cat">
+              <span class="h2-cat-icon" style="background:linear-gradient(135deg,#fde3d8,#ffd8c4)" aria-hidden="true">🎉</span>
+              <h5>Party Wear</h5>
+              <p>For special days</p>
+              <span class="bi bi-arrow-right" aria-hidden="true"></span>
+            </a>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3 reveal delay-2">
+            <a href="shop.html?category=school" class="h2-cat">
+              <span class="h2-cat-icon" style="background:linear-gradient(135deg,#d7eaf8,#9cc9e8)" aria-hidden="true">🎒</span>
+              <h5>School Uniform</h5>
+              <p>Shirts, trousers &amp; more</p>
+              <span class="bi bi-arrow-right" aria-hidden="true"></span>
+            </a>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3 reveal delay-3">
+            <a href="shop.html?category=accessories" class="h2-cat">
+              <span class="h2-cat-icon" style="background:linear-gradient(135deg,#fdecd0,#f3d389)" aria-hidden="true">🧦</span>
+              <h5>Accessories</h5>
+              <p>Socks, caps &amp; add-ons</p>
+              <span class="bi bi-arrow-right" aria-hidden="true"></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FEATURED KIDS COLLECTIONS ============ -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head center reveal">
+          <span class="eyebrow">Curated for You</span>
+          <h2 class="section-title">Featured Collections</h2>
+          <p class="section-subtitle">Five hand-picked collections, each designed around a real moment in little life.</p>
+          <div class="divider-brand"></div>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-lg-6 reveal">
+            <a href="shop.html?collection=new-arrivals" class="h2-cb h2-cb-lg">
+              <img src="assets/images/scenes/h2-ever.jpg" alt="Everyday essentials collection" onerror="this.onerror=null;this.src='assets/images/placeholder.svg'">
+              <span class="h2-cb-overlay">
+                <span class="h2-cb-tag">Everyday</span>
+                <h3>Everyday Essentials</h3>
+                <p>Soft basics that live in the daily rotation — comfort that keeps up with curious kids.</p>
+                <span class="btn">Shop Now</span>
+              </span>
+            </a>
+          </div>
+          <div class="col-lg-6 reveal delay-1">
+            <a href="shop.html?collection=festive" class="h2-cb h2-cb-lg">
+              <img src="assets/images/scenes/h2-fairy.jpg" alt="Festive collection kids outfits" onerror="this.onerror=null;this.src='assets/images/placeholder.svg'">
+              <span class="h2-cb-overlay">
+                <span class="h2-cb-tag">Celebrate</span>
+                <h3>Festive Collection</h3>
+                <p>Shimmer, softness and celebration-ready silhouettes for every holiday on the calendar.</p>
+                <span class="btn">Shop Now</span>
+              </span>
+            </a>
+          </div>
+          <div class="col-md-4 reveal">
+            <a href="shop.html?collection=summer" class="h2-cb h2-cb-sm">
+              <img src="assets/images/scenes/h2-skirt.jpg" alt="Summer collection" onerror="this.onerror=null;this.src='assets/images/placeholder.svg'">
+              <span class="h2-cb-overlay">
+                <span class="h2-cb-tag">Sun Ready</span>
+                <h3>Summer</h3>
+                <span class="btn btn-sm">Shop Now</span>
+              </span>
+            </a>
+          </div>
+          <div class="col-md-4 reveal delay-1">
+            <a href="shop.html?collection=school" class="h2-cb h2-cb-sm">
+              <img src="assets/images/scenes/h2-sweater.jpg" alt="School collection uniforms" onerror="this.onerror=null;this.src='assets/images/placeholder.svg'">
+              <span class="h2-cb-overlay">
+                <span class="h2-cb-tag">Class Ready</span>
+                <h3>School</h3>
+                <span class="btn btn-sm">Shop Now</span>
+              </span>
+            </a>
+          </div>
+          <div class="col-md-4 reveal delay-2">
+            <a href="shop.html?collection=party" class="h2-cb h2-cb-sm">
+              <img src="assets/images/scenes/h2-pyjama.jpg" alt="Party collection kids" onerror="this.onerror=null;this.src='assets/images/placeholder.svg'">
+              <span class="h2-cb-overlay">
+                <span class="h2-cb-tag">Celebration</span>
+                <h3>Party</h3>
+                <span class="btn btn-sm">Shop Now</span>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MATCHING SETS ============ -->
+    <section class="section bg-surface-2">
+      <div class="container">
+        <div class="section-head center reveal">
+          <span class="eyebrow">Twice the Cuteness</span>
+          <h2 class="section-title">Matching Sets</h2>
+          <p class="section-subtitle">Coordinated outfits for siblings, cousins and best friends — one listing, matching styles.</p>
+          <div class="divider-brand"></div>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-3 reveal">
+            <div class="match-card neo-card">
+              <img src="assets/images/scenes/h2-blanket.jpg" alt="Brother and sister matching set" onerror="this.onerror=null;this.src='assets/images/placeholder.svg'">
+              <h5>Brother &amp; Sister Sets</h5>
+              <p class="mb-3">Coordinating looks for the dynamic duo.</p>
+              <a href="shop.html?collection=matching" class="btn btn-outline-brand btn-sm">Shop Sets</a>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3 reveal delay-1">
+            <div class="match-card neo-card">
+              <img src="assets/images/scenes/h2-fox.jpg" alt="Family matching outfits" onerror="this.onerror=null;this.src='assets/images/placeholder.svg'">
+              <h5>Family Matching</h5>
+              <p class="mb-3">One family, one unforgettable look.</p>
+              <a href="shop.html?collection=matching" class="btn btn-outline-brand btn-sm">Shop Sets</a>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3 reveal delay-2">
+            <div class="match-card neo-card">
+              <img src="assets/images/scenes/h2-birthday.jpg" alt="Birthday matching set" onerror="this.onerror=null;this.src='assets/images/placeholder.svg'">
+              <h5>Birthday Sets</h5>
+              <p class="mb-3">Cake-ready coordinated birthday fits.</p>
+              <a href="shop.html?collection=party" class="btn btn-outline-brand btn-sm">Shop Sets</a>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3 reveal delay-3">
+            <div class="match-card neo-card">
+              <img src="assets/images/scenes/h2-bag.jpg" alt="Festive matching set" onerror="this.onerror=null;this.src='assets/images/placeholder.svg'">
+              <h5>Festive Sets</h5>
+              <p class="mb-3">Celebrate in perfectly matched style.</p>
+              <a href="shop.html?collection=festive" class="btn btn-outline-brand btn-sm">Shop Sets</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SCHOOL UNIFORM SECTION ============ -->
+    <section class="section bg-surface-2" id="school">
+      <div class="container">
+        <div class="offer-banner reveal">
+          <div class="ob-inner" style="background:linear-gradient(120deg,#8fc3e8,#5f9cc4)">
+            <div>
+              <span class="ob-tag">Schools &amp; Parents</span>
+              <h2>School Uniform Made Simple</h2>
+              <p>Shirts, trousers, skirts, socks, sweaters and accessories — durable, consistent quality with easy bulk ordering for schools and families.</p>
+              <div class="d-flex flex-wrap gap-3 mt-4">
+                <a href="shop.html?category=school" class="btn btn-light btn-lg"><i class="bi bi-mortarboard me-2"></i>Shop Uniforms</a>
+                <a href="#bulk" class="btn btn-outline-light btn-lg" style="border:2px solid #fff;color:#fff"><i class="bi bi-clipboard-check me-2"></i>Request Bulk / School Order</a>
+              </div>
+            </div>
+            <div class="discount-stamp" style="background:rgba(0,0,0,.14)">
+              <strong>200+</strong>
+              <span>SCHOOLS<br>TRUST US</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BULK ORDER ENQUIRY ============ -->
+    <section class="section" id="bulk">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-10">
+            <div class="section-head center reveal">
+              <span class="eyebrow">Wholesale &amp; Schools</span>
+              <h2 class="section-title">Bulk Order Enquiry</h2>
+              <p class="section-subtitle">Tell us what you need — our bulk team replies within one business day with a tailored quote.</p>
+              <div class="divider-brand"></div>
+            </div>
+
+            <div class="neo-card reveal" style="padding:2.4rem 2rem">
+              <form id="bulkForm" data-validate data-success="Thank you! Our bulk team will contact you within 1 business day." novalidate>
+                <div class="row g-3">
+                  <div class="col-md-6 form-field">
+                    <label for="bSchool" class="form-label">School / Organisation Name</label>
+                    <input type="text" class="form-control" id="bSchool" placeholder="e.g. Sunshine Montessori" required>
+                    <div class="error-msg"></div>
+                  </div>
+                  <div class="col-md-6 form-field">
+                    <label for="bContact" class="form-label">Contact Person</label>
+                    <input type="text" class="form-control" id="bContact" placeholder="Full name" required>
+                    <div class="error-msg"></div>
+                  </div>
+                  <div class="col-md-6 form-field">
+                    <label for="bEmail" class="form-label">Email Address</label>
+                    <input type="email" class="form-control" id="bEmail" placeholder="you@school.edu" required>
+                    <div class="error-msg"></div>
+                  </div>
+                  <div class="col-md-6 form-field">
+                    <label for="bPhone" class="form-label">Phone Number</label>
+                    <input type="tel" class="form-control" id="bPhone" placeholder="+1 (555) 000-0000" required>
+                    <div class="error-msg"></div>
+                  </div>
+                  <div class="col-md-6 form-field">
+                    <label for="bStudents" class="form-label">Number of Students</label>
+                    <input type="number" class="form-control" id="bStudents" placeholder="e.g. 120" min="1" required>
+                    <div class="error-msg"></div>
+                  </div>
+                  <div class="col-md-6 form-field">
+                    <label for="bAge" class="form-label">Age Group</label>
+                    <select class="form-select" id="bAge" required>
+                      <option value="" selected disabled>Select age group</option>
+                      <option value="newborn">Newborn (0–1y)</option>
+                      <option value="toddler">Toddler (1–3y)</option>
+                      <option value="kids3-5">Kids (3–5y)</option>
+                      <option value="kids6-8">Kids (6–8y)</option>
+                      <option value="mixed">Mixed age groups</option>
+                    </select>
+                    <div class="error-msg"></div>
+                  </div>
+                  <div class="col-md-6 form-field">
+                    <label for="bProduct" class="form-label">Product Requirement</label>
+                    <select class="form-select" id="bProduct" required>
+                      <option value="" selected disabled>Select product</option>
+                      <option value="shirts">School Shirts</option>
+                      <option value="trousers">Trousers / Skirts</option>
+                      <option value="sweaters">Sweaters</option>
+                      <option value="socks">Socks</option>
+                      <option value="full-uniform">Full Uniform Set</option>
+                      <option value="other">Other / Custom</option>
+                    </select>
+                    <div class="error-msg"></div>
+                  </div>
+                  <div class="col-md-6 form-field">
+                    <label for="bQty" class="form-label">Estimated Quantity</label>
+                    <input type="number" class="form-control" id="bQty" placeholder="e.g. 480" min="1" required>
+                    <div class="error-msg"></div>
+                  </div>
+                  <div class="col-md-6 form-field">
+                    <label for="bDate" class="form-label">Preferred Delivery Date</label>
+                    <input type="date" class="form-control" id="bDate" required>
+                    <div class="error-msg"></div>
+                  </div>
+                  <div class="col-md-6 form-field">
+                    <label for="bPhone2" class="form-label">Additional Message <span class="text-muted">(optional)</span></label>
+                    <input type="text" class="form-control" id="bPhone2" placeholder="Anything else we should know?">
+                  </div>
+                  <div class="col-12 form-field">
+                    <label for="bMessage" class="form-label">Message</label>
+                    <textarea class="form-control" id="bMessage" placeholder="Sizes, colors, branding, school logo requirements…"></textarea>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-msg"></div>
+                  </div>
+                  <div class="col-12 d-flex flex-wrap gap-3 mt-3">
+                    <button type="submit" class="btn btn-brand btn-lg"><i class="bi bi-send me-2"></i>Submit Enquiry</button>
+                    <button type="button" class="btn btn-outline-brand btn-lg" id="requestCallback"><i class="bi bi-telephone me-2"></i>Request Callback</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ NEWSLETTER ============ -->
+    <section class="section bg-surface-2">
+      <div class="container">
+        <div class="newsletter-panel reveal">
+          <div class="np-inner">
+            <div class="np-emoji" aria-hidden="true">🧁</div>
+            <span class="eyebrow" style="justify-content:center">Stay in the Loop</span>
+            <h2 class="section-title mb-2">Subscribe for Little Treats</h2>
+            <p class="section-subtitle mx-auto">New drops, seasonal lookbooks and member-only offers — straight to your inbox.</p>
+            <form class="newsletter-form" data-validate novalidate>
+              <div class="input-group">
+                <input type="email" class="form-control" placeholder="Enter your email address" aria-label="Email address" required>
+                <button class="btn btn-brand px-4" type="submit">Subscribe</button>
+              </div>
+              <div class="form-text newsletter-msg"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer (injected by assets/js/footer.js) -->
+  <div id="footer-container"></div>
+
+  <!-- Back to top -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="bi bi-arrow-up"></i></button>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/navbar.js"></script>
+  <script src="assets/js/footer.js"></script>
+  <script src="assets/js/products.js"></script>
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/rtl.js"></script>
+  <script src="assets/js/cart.js"></script>
+  <script src="assets/js/wishlist.js"></script>
+  <script src="assets/js/validation.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var callbackBtn = document.getElementById("requestCallback");
+      if (callbackBtn) {
+        callbackBtn.addEventListener("click", function () {
+          showToast("Callback Requested", "Our team will call you back shortly (demo).", "ok");
+        });
+      }
+    });
+  </script>
+</body>
+</html>
