@@ -84,7 +84,10 @@
   .pc-actions .pc-action { opacity: 1; transform: none; width: 34px; height: 34px; }
   .pc-foot .btn { font-size: .8rem; padding: .55rem .8rem; }
   .pc-name { font-size: .94rem; }
+  .pc-price { gap: .4rem; row-gap: .15rem; }
   .pc-price .price { font-size: 1.02rem; }
+  .pc-price .old-price { font-size: .8rem; }
+  .pc-price .discount-badge { font-size: .66rem; padding: .12rem .45rem; }
   .hero-title { font-size: clamp(2rem, 9vw, 2.6rem); }
   .hero-lead { font-size: .96rem; }
   .hero-float-card { display: none; }
@@ -97,6 +100,9 @@
   .countdown .cd-box { min-width: 64px; }
   .countdown .cd-box .cd-num { font-size: 1.3rem; }
   .summary-card { position: static; }
+  .featured-post { grid-template-columns: 1fr; }
+  .featured-post .fp-media img { min-height: 220px; max-height: 260px; }
+  .featured-post .fp-body { padding: 1.4rem; }
   .mobile-nav { width: 300px !important; }
   .checkout-steps { gap: .8rem; flex-wrap: wrap; }
   .footer-main { padding: 3.2rem 0 1.6rem; }
@@ -112,6 +118,10 @@
 @media (max-width: 359.98px) {
   .product-grid, .product-grid.grid-5, .product-grid.grid-3 { grid-template-columns: 1fr 1fr; gap: .6rem; }
   .pc-body { padding: .9rem; }
+  .pc-price { gap: .3rem; row-gap: .1rem; }
+  .pc-price .price { font-size: .94rem; }
+  .pc-price .old-price { font-size: .74rem; }
+  .pc-price .discount-badge { font-size: .62rem; padding: .1rem .4rem; }
   .pc-foot .btn { font-size: .74rem; padding: .5rem .5rem; }
   .pc-foot .btn-quickview { width: 38px; height: 38px; }
   .navbar-brand { font-size: 1.25rem; }

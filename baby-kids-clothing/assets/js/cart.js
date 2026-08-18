@@ -373,7 +373,7 @@
         return;
       }
 
-      /* buy now */
+      /* buy now (quick-view modal) */
       var buy = e.target.closest("[data-qv-buy]");
       if (buy) {
         var bid = buy.getAttribute("data-id");
@@ -387,7 +387,41 @@
         window.location.href = "checkout.html";
         return;
       }
+
+      /* product-details page: add to cart */
+      var pdAdd = e.target.closest(".js-pd-addcart");
+      if (pdAdd) {
+        var pdAddId = pdAdd.getAttribute("data-id");
+        var pdAddInfo = getPdSelection(pdAddId);
+        Cart.add(pdAddId, pdAddInfo);
+        showToast("Added to Cart", "Your item is safely in the bag.", "ok");
+        return;
+      }
+
+      /* product-details page: buy now */
+      var pdBuy = e.target.closest(".js-pd-buynow");
+      if (pdBuy) {
+        var pdBuyId = pdBuy.getAttribute("data-id");
+        var pdBuyInfo = getPdSelection(pdBuyId);
+        Cart.add(pdBuyId, pdBuyInfo);
+        window.location.href = "checkout.html";
+        return;
+      }
     });
+
+    /* -------- helper: read qty/size/color chosen on the product-details page -------- */
+    function getPdSelection(id) {
+      var host = document.getElementById("productDetails") || document;
+      var sizeChip = host.querySelector("#pdSizes .size-chip.active");
+      var colorChip = host.querySelector("#pdColors .color-chip.active");
+      var qtyEl = host.querySelector(".qty-val");
+      var qty = qtyEl ? parseInt(qtyEl.textContent, 10) || 1 : 1;
+      return {
+        qty: qty,
+        size: sizeChip ? sizeChip.getAttribute("data-size") : null,
+        color: colorChip ? colorChip.getAttribute("data-color") : null
+      };
+    }
 
     /* storage sync across tabs */
     window.addEventListener("storage", function (e) {

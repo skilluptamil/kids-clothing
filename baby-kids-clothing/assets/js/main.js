@@ -222,9 +222,10 @@
             '<div class="mb-4">' +
               '<label class="form-label">Color</label>' +
               '<div class="d-flex gap-2" id="pdColors">' +
-                p.colors.map(function (c, i) {
-                  return '<button type="button" class="color-chip' + (i === 0 ? " active" : "") + '" style="--cc:' + c.h + '" data-color="' + c.n + '" title="' + c.n + '" aria-label="' + c.n + '"></button>';
-                }).join("") +
+                (function () {
+                  var c = p.colors[0];
+                  return '<button type="button" class="color-chip active" style="--cc:' + c.h + '" data-color="' + c.n + '" title="' + c.n + '" aria-label="' + c.n + '"></button>';
+                })() +
               "</div>" +
             "</div>" +
             /* qty + actions */
