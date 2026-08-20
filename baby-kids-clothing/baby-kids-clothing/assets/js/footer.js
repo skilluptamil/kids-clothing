@@ -19,11 +19,11 @@
   };
 
   var SOCIALS = [
-    { icon: "bi-facebook", href: "#", label: "Facebook" },
-    { icon: "bi-instagram", href: "#", label: "Instagram" },
-    { icon: "bi-tiktok", href: "#", label: "TikTok" },
-    { icon: "bi-pinterest", href: "#", label: "Pinterest" },
-    { icon: "bi-youtube", href: "#", label: "YouTube" }
+    { icon: "bi-facebook", href: "https://www.facebook.com/", label: "Facebook" },
+    { icon: "bi-instagram", href: "https://www.instagram.com/", label: "Instagram" },
+    { icon: "bi-tiktok", href: "https://www.tiktok.com/", label: "TikTok" },
+    { icon: "bi-pinterest", href: "https://www.pinterest.com/", label: "Pinterest" },
+    { icon: "bi-youtube", href: "https://www.youtube.com/", label: "YouTube" }
   ];
 
   var QUICK_LINKS = [

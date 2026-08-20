@@ -153,23 +153,14 @@
         </div>
 
         <!-- Share -->
-        <div class="d-flex align-items-center gap-2 mb-5">
+        <div class="d-flex align-items-center gap-2 mb-5" id="blogShareGroup">
           <span class="fw-bold me-2">Share:</span>
-          <a href="#" class="icon-btn" aria-label="Share on Facebook"><i class="bi bi-facebook"></i></a>
-          <a href="#" class="icon-btn" aria-label="Share on X"><i class="bi bi-twitter-x"></i></a>
-          <a href="#" class="icon-btn" aria-label="Share on Pinterest"><i class="bi bi-pinterest"></i></a>
-          <a href="#" class="icon-btn" aria-label="Share on WhatsApp"><i class="bi bi-whatsapp"></i></a>
+          <a href="https://www.facebook.com/sharer/sharer.php" target="_blank" rel="noopener noreferrer" class="icon-btn" id="shareFb" aria-label="Share on Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="https://twitter.com/intent/tweet" target="_blank" rel="noopener noreferrer" class="icon-btn" id="shareX" aria-label="Share on X"><i class="bi bi-twitter-x"></i></a>
+          <a href="https://pinterest.com/pin/create/button/" target="_blank" rel="noopener noreferrer" class="icon-btn" id="sharePin" aria-label="Share on Pinterest"><i class="bi bi-pinterest"></i></a>
+          <a href="https://api.whatsapp.com/send" target="_blank" rel="noopener noreferrer" class="icon-btn" id="shareWa" aria-label="Share on WhatsApp"><i class="bi bi-whatsapp"></i></a>
         </div>
 
-        <!-- Author -->
-        <div class="summary-card d-flex gap-3 align-items-start" style="position:static">
-          <img src="assets/images/people/a-1.jpg" alt="Maya Blooms" class="rounded-circle" width="64" height="64" style="object-fit:cover">
-          <div>
-            <h6 class="fw-bold mb-1">Maya Blooms</h6>
-            <p class="text-muted small mb-2">Mum of two, co-founder of LittleBloom and a professional finder of missing socks.</p>
-            <a href="blog.html" class="btn-link">All articles by Maya <i class="bi bi-arrow-right ms-1"></i></a>
-          </div>
-        </div>
 
         <!-- Comments -->
         <div class="summary-card mt-4" style="position:static">
@@ -290,5 +281,280 @@
   <script src="assets/js/wishlist.js"></script>
   <script src="assets/js/validation.js"></script>
   <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var POSTS = {
+        "outfits": {
+          title: "10 Everyday Outfits That Make Mornings Easier",
+          pill: "Style · Featured", date: "Aug 08, 2026", read: "6 min read"
+        },
+        "quiet-time": {
+          title: "15 Screen-Free Quiet Time Ideas for Toddlers",
+          pill: "Parenting · Featured", date: "Aug 01, 2026", read: "4 min read",
+          img: "assets/images/scenes/blog-1.jpg", alt: "Toddler playing with blocks",
+          tags: ["quiet-time", "toddlers", "parenting"],
+          body: [
+            ["p", "Quiet time doesn't have to mean screen time. A calm, screen-free reset helps toddlers recharge their batteries without a single glowing screen in sight."],
+            ["h", "1. The Book Basket"],
+            ["p", "Keep a small rotation of picture books in a low basket. Kids love choosing their own 'quiet reads' when the books are easy to reach."],
+            ["h", "2. Playdough & Fine Motor Trays"],
+            ["p", "A tray with playdough, cookie cutters and safe tools keeps little hands busy for ages — and quietly builds fine motor skills too."],
+            ["h", "3. A Listening Corner"],
+            ["p", "A cushion, a soft toy and some calm music create a cozy corner that toddlers can choose for themselves. It's not a timeout, it's a reset."],
+            ["h", "4. Puzzles with a Twist"],
+            ["p", "Pick puzzles slightly below their level so they feel capable. Independent success is the whole point of quiet time."],
+            ["h", "5. Wind-Down Music"],
+            ["p", "Swap upbeat songs for something slower and turn it into a signal: when the music starts, bodies start to settle."],
+            ["p", "Start with ten minutes and build up slowly. Quiet time is a skill — and it gets easier with practice."]
+          ]
+        },
+        "layering": {
+          title: "The Art of Layering: Comfy Looks for Every Season",
+          pill: "Style · Featured", date: "Jul 25, 2026", read: "5 min read",
+          img: "assets/images/scenes/blog-2.jpg", alt: "Father and child dressed for fall",
+          tags: ["layering", "style", "all-seasons"],
+          body: [
+            ["p", "Layering keeps little ones comfy as the temperature swings through the day — no more 'too hot, take it off' dance."],
+            ["h", "The Base Layer"],
+            ["p", "Start with a soft, breathable long-sleeve tee or bodysuit. Cotton or bamboo blends work best against sensitive skin."],
+            ["h", "The Mid Layer"],
+            ["p", "Add a lightweight cardigan, sweater or fleece. It should be easy to remove in seconds when the sun comes out."],
+            ["h", "The Topper"],
+            ["p", "Finish with a jacket or coat that's water-repellent. A fuzzy hood and cozy pockets make it genuinely wearable."],
+            ["h", "Extras That Save the Day"],
+            ["p", "A thin beanie, spare socks and a packable layer in the backpack mean you're ready for any forecast."],
+            ["p", "Three simple layers are enough for almost any weather — and they look properly pulled together."]
+          ]
+        },
+        "gift-guide": {
+          title: "The Ultimate Baby Shower Gift Guide (2026)",
+          pill: "Gifting · Featured", date: "Jul 18, 2026", read: "6 min read",
+          img: "assets/images/scenes/blog-3.jpg", alt: "Baby feet holding hands",
+          tags: ["gifting", "baby-shower", "newborn"],
+          body: [
+            ["p", "The best baby-shower gifts are the ones that get used every single day — plus a little something to keep forever."],
+            ["h", "Practical Picks"],
+            ["p", "Rompers, swaddles, muslin cloths and non-slip socks top the list. New parents can never have too many of the basics."],
+            ["h", "The Keepsake That Lasts"],
+            ["p", "A personalized blanket or a beautiful keepsake box turns a practical gift into a memory they'll treasure."],
+            ["h", "Gifts to Skip"],
+            ["p", "Skip newborn-only sizes that fit for a fortnight, and skip anything requiring batteries and tears. Size 3–6m is the sweet spot."],
+            ["p", "Pair one practical gift with one sentimental one, wrap it beautifully with a personal note, and you've nailed it."]
+          ]
+        },
+        "size-chart": {
+          title: "How to Read a Kids Size Chart Like a Pro",
+          pill: "Tips · Featured", date: "Jul 10, 2026", read: "3 min read",
+          img: "assets/images/scenes/blog-4.jpg", alt: "Child drawing with crayons",
+          tags: ["sizing", "tips", "fit"],
+          body: [
+            ["p", "Kids' sizes can feel like a secret code. Here's how to crack it so every order fits the first time."],
+            ["h", "Measure, Don't Guess"],
+            ["p", "Grab a soft tape measure and check height, chest and waist. Those three numbers are worth more than any age label."],
+            ["h", "Age Is a Starting Point, Not the Answer"],
+            ["p", "Age is only a rough guide — kids grow at their own pace. Always check the chart for the actual measurements."],
+            ["h", "The 'Room to Grow' Rule"],
+            ["p", "For growing kids, sizing up one step is usually safe, especially for pants and pajamas where a little extra length is fine."],
+            ["p", "A few minutes with a tape measure saves returns, refunds and meltdowns."]
+          ]
+        },
+        "chores": {
+          title: "Raising Little Helpers: Chores by Age",
+          pill: "Family · Featured", date: "Jul 02, 2026", read: "5 min read",
+          img: "assets/images/scenes/blog-5.jpg", alt: "Happy family together",
+          tags: ["family", "chores", "kids"],
+          body: [
+            ["p", "Chores build confidence, independence and family connection — and they can genuinely be fun."],
+            ["h", "Ages 2–3: Helper Mode"],
+            ["p", "Sorting socks, putting toys in a basket and 'wiping' low surfaces. The goal is participation, not perfection."],
+            ["h", "Ages 4–5: Real Jobs"],
+            ["p", "Setting the table, watering plants and making a bed with help. Kids this age love being genuinely useful."],
+            ["h", "Ages 6–8: Independent Tasks"],
+            ["p", "Loading the dishwasher, folding simple laundry and packing their school bag build real ownership."],
+            ["h", "Make It Stick"],
+            ["p", "Make it visual with a simple chart, celebrate effort over outcome, and keep tasks age-appropriate."],
+            ["p", "Start small, praise effort, and be consistent — the habit is the win."]
+          ]
+        },
+        "schoolwear": {
+          title: "School Uniforms That Keep Kids Comfy All Day",
+          pill: "Style · Featured", date: "Jun 24, 2026", read: "4 min read",
+          img: "assets/images/scenes/blog-6.jpg", alt: "Child with backpack ready for school",
+          tags: ["school", "uniforms", "comfort"],
+          body: [
+            ["p", "Comfort is the real school uniform requirement. Here's what to look for so they survive recess and story time."],
+            ["h", "Fabric First"],
+            ["p", "Look for breathable cotton or cotton-rich blends. Sweat-wicking, stretchy fabrics handle playground sprints and nap time alike."],
+            ["h", "Fit That Moves"],
+            ["p", "Elastic waistbands, roomy shoulders and reinforced knees let kids move, climb and sit cross-legged without a fight."],
+            ["h", "Easy-Care Details"],
+            ["p", "Crease-resistant fabric, double-stitched seams and durable buttons mean less ironing for you and more wear for them."],
+            ["h", "The Flex-Fit Combo"],
+            ["p", "A stretch polo and soft chino-style pants cover everything from photo day to muddy puddles."],
+            ["p", "Choose breathable, stretchy and durable — the uniform will last the year and stay comfy all day."]
+          ]
+        },
+        "travel-tips": {
+          title: "Smart Packing Tips for Toddler Travel Days",
+          pill: "Tips · Featured", date: "Jun 15, 2026", read: "4 min read",
+          img: "assets/images/scenes/post-2.jpg", alt: "Packing for toddler travel",
+          tags: ["travel", "toddler", "tips"],
+          body: [
+            ["p", "Traveling with a toddler doesn't have to feel like moving house. A little strategic packing keeps everyone calm from takeoff to arrival."],
+            ["h", "Pack Outfits in Zipper Bags"],
+            ["p", "Pack complete outfits (shirt, pants, underwear, socks) into individual zip bags. Grabbing a fresh change in an airport bathroom becomes instant and stress-free."],
+            ["h", "Snack Stations"],
+            ["p", "Pack twice as many snacks as you think you need. Bento-style boxes with compartments keep snack time engaging and mess-free."],
+            ["h", "The Comfort Layer"],
+            ["p", "Planes and cars get chilly. A favorite lightweight blanket and a backup hoodie ensure nap time goes smoothly anywhere."]
+          ]
+        },
+        "reading-nook": {
+          title: "Creating a Cozy Nursery Reading Nook",
+          pill: "Parenting · Featured", date: "Jun 08, 2026", read: "5 min read",
+          img: "assets/images/scenes/post-3.jpg", alt: "Cozy reading corner in kids room",
+          tags: ["reading", "nursery", "parenting"],
+          body: [
+            ["p", "Creating a dedicated reading corner turns daily story time into a cherished ritual that fosters early literacy and calm."],
+            ["h", "Low, Accessible Book Display"],
+            ["p", "Face-out bookshelves at child height encourage toddlers to browse covers and pick their own stories independently."],
+            ["h", "Soft Floor Pillows & Rugs"],
+            ["p", "Layer soft plush rugs and washable floor cushions so you both have a comfortable spot to snuggle up for stories."],
+            ["h", "Warm, Calming Lighting"],
+            ["p", "A soft warm lamp or fairy lights signal winding down and help ease the transition into bedtime."]
+          ]
+        },
+        "organic-cotton": {
+          title: "Why Organic Cotton Matters for Sensitive Skin",
+          pill: "Style · Featured", date: "May 28, 2026", read: "3 min read",
+          img: "assets/images/scenes/post-4.jpg", alt: "Soft organic cotton fabric clothes",
+          tags: ["cotton", "organic", "sensitive-skin"],
+          body: [
+            ["p", "Baby and toddler skin is up to 30% thinner than adult skin, making fabric choice essential for comfort and wellness."],
+            ["h", "No Harsh Chemical Residues"],
+            ["p", "Certified organic cotton is grown and processed without synthetic pesticides or harsh dyes, protecting delicate skin barriers."],
+            ["h", "Superior Breathability"],
+            ["p", "Natural cotton fibers regulate body temperature effortlessly, preventing sweat buildup and common heat rashes."],
+            ["h", "Gets Softer With Every Wash"],
+            ["p", "Unlike synthetic blends that pill over time, pure organic cotton becomes softer and cozier the more it's loved and washed."]
+          ]
+        },
+        "birthday-prep": {
+          title: "Stress-Free Toddler Birthday Party Planning",
+          pill: "Family · Featured", date: "May 14, 2026", read: "5 min read",
+          img: "assets/images/scenes/post-5.jpg", alt: "Toddler birthday party celebration",
+          tags: ["birthday", "party", "family"],
+          body: [
+            ["p", "Celebrate big milestones without the overwhelm. Here is how to throw a joyful, memorable toddler birthday party."],
+            ["h", "Keep the Timing Short"],
+            ["p", "Ninety minutes to two hours is the golden window for toddlers. Schedule right after nap time when energy is high and happy."],
+            ["h", "Simple, Toddler-Friendly Foods"],
+            ["p", "Fruit skewers, mini sandwiches, and cupcakes are much easier for little hands than sit-down meals."],
+            ["h", "Comfortable Festive Outfits"],
+            ["p", "Choose celebratory outfits made from soft stretchy cottons so the birthday child can play, eat cake, and run around comfortably."]
+          ]
+        },
+        "gifting-milestones": {
+          title: "Milestone Gifting: First Steps to School",
+          pill: "Gifting · Featured", date: "Apr 30, 2026", read: "4 min read",
+          img: "assets/images/scenes/h2-birthday.jpg", alt: "Baby milestone celebration gift",
+          tags: ["gifting", "milestones", "kids"],
+          body: [
+            ["p", "Find thoughtful, memorable gifts tailored to every major developmental stage from babyhood to the first school bell."],
+            ["h", "First Steps & Cruising"],
+            ["p", "Non-slip grip booties and soft pull-on playwear support mobility and active exploration."],
+            ["h", "The Talking & Curiosity Stage (Age 2–3)"],
+            ["p", "Interactive storybooks, pretend play sets, and personalized memory boxes turn learning into joy."],
+            ["h", "Starting School (Age 4–5)"],
+            ["p", "Durable backpacks, labeled accessory cases, and super-soft uniform basics make the big first day exciting."]
+          ]
+        },
+        "summer-play": {
+          title: "Outdoor Sun Safety & Cool Playwear for Summer",
+          pill: "Style · Featured", date: "Apr 18, 2026", read: "4 min read",
+          img: "assets/images/scenes/Seasonal.jpg", alt: "Kids playing in summer outfits",
+          tags: ["summer", "sun-safety", "playwear"],
+          body: [
+            ["p", "Keep little explorers sun-protected, cool, and comfortable all summer long with the right gear and playwear."],
+            ["h", "UPF 50+ Sun Protection"],
+            ["p", "Choose quick-dry rash guards and swimwear that block harmful UV rays during sunny park and beach days."],
+            ["h", "Wide-Brim Sun Hats & Sunglasses"],
+            ["p", "Breathable chin-strap sun hats stay on during active play while shielding delicate faces and necks."],
+            ["h", "Lightweight Gauze & Linen Cottons"],
+            ["p", "Airy cotton rompers and sun dresses let breezes through, keeping kids happy from morning picnics to sunset strolls."]
+          ]
+        }
+      };
+
+      var post = new URLSearchParams(window.location.search).get("post");
+      var data = POSTS[post];
+      if (data) {
+        var titleEl = document.getElementById("postTitle");
+        var pillEl = document.getElementById("postPill");
+        var dateEl = document.getElementById("postDate");
+        var readEl = document.getElementById("postRead");
+        var crumbEl = document.getElementById("postCrumb");
+        var imgEl = document.getElementById("articleMainImg");
+        var bodyEl = document.getElementById("articleBody");
+        var tagsEl = document.getElementById("postTags");
+
+        if (titleEl) titleEl.textContent = data.title;
+        document.title = data.title + " — LittleBloom Kids Clothing";
+        if (pillEl) pillEl.innerHTML = '<i class="bi bi-bookmark-heart me-1"></i>' + data.pill;
+        if (dateEl) dateEl.innerHTML = '<i class="bi bi-calendar3 me-1"></i>' + data.date;
+        if (readEl) readEl.innerHTML = '<i class="bi bi-clock me-1"></i>' + data.read;
+        if (crumbEl) crumbEl.textContent = data.title;
+
+        if (data.img && imgEl) {
+          imgEl.src = data.img;
+          imgEl.alt = data.alt || data.title;
+        }
+        if (data.body && bodyEl) {
+          var html = "";
+          data.body.forEach(function (block) {
+            if (block[0] === "h") html += '<h3 class="font-heading">' + block[1] + "</h3>";
+            else html += "<p>" + block[1] + "</p>";
+          });
+          bodyEl.innerHTML = html;
+        }
+        if (data.tags && tagsEl) {
+          tagsEl.innerHTML = data.tags.map(function (t) {
+            return '<span class="tag-pill"><i class="bi bi-tag"></i>' + t + "</span>";
+          }).join("");
+        }
+      }
+
+      function updateShareUrls(title, img) {
+        var pageUrl = window.location.href;
+        var encodedUrl = encodeURIComponent(pageUrl);
+        var encodedTitle = encodeURIComponent((title || document.title || "LittleBloom Article").trim());
+        var encodedImg = encodeURIComponent(img ? (window.location.origin + "/" + img) : "");
+
+        var fb = document.getElementById("shareFb");
+        if (fb) fb.href = "https://www.facebook.com/sharer/sharer.php?u=" + encodedUrl;
+
+        var tw = document.getElementById("shareX");
+        if (tw) tw.href = "https://twitter.com/intent/tweet?url=" + encodedUrl + "&text=" + encodedTitle;
+
+        var pin = document.getElementById("sharePin");
+        if (pin) pin.href = "https://pinterest.com/pin/create/button/?url=" + encodedUrl + "&description=" + encodedTitle + (encodedImg ? "&media=" + encodedImg : "");
+
+        var wa = document.getElementById("shareWa");
+        if (wa) wa.href = "https://api.whatsapp.com/send?text=" + encodedTitle + "%20" + encodedUrl;
+      }
+
+      updateShareUrls(data ? data.title : "10 Everyday Outfits That Make Mornings Easier", data ? data.img : null);
+
+      document.querySelectorAll(".blog-card").forEach(function (card) {
+        var t = ((card.querySelector("h4 a") || {}).textContent || "").trim();
+        var slug = null;
+        Object.keys(POSTS).forEach(function (k) { if (POSTS[k].title === t) slug = k; });
+        if (!slug) slug = "outfits";
+        card.querySelectorAll("a[href='blog-details.html']").forEach(function (a) {
+          a.setAttribute("href", "blog-details.html?post=" + slug);
+        });
+      });
+    });
+  </script>
 </body>
 </html>

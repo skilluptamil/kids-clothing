@@ -153,23 +153,14 @@
         </div>
 
         <!-- Share -->
-        <div class="d-flex align-items-center gap-2 mb-5">
+        <div class="d-flex align-items-center gap-2 mb-5" id="blogShareGroup">
           <span class="fw-bold me-2">Share:</span>
-          <a href="#" class="icon-btn" aria-label="Share on Facebook"><i class="bi bi-facebook"></i></a>
-          <a href="#" class="icon-btn" aria-label="Share on X"><i class="bi bi-twitter-x"></i></a>
-          <a href="#" class="icon-btn" aria-label="Share on Pinterest"><i class="bi bi-pinterest"></i></a>
-          <a href="#" class="icon-btn" aria-label="Share on WhatsApp"><i class="bi bi-whatsapp"></i></a>
+          <a href="https://www.facebook.com/sharer/sharer.php" target="_blank" rel="noopener noreferrer" class="icon-btn" id="shareFb" aria-label="Share on Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="https://twitter.com/intent/tweet" target="_blank" rel="noopener noreferrer" class="icon-btn" id="shareX" aria-label="Share on X"><i class="bi bi-twitter-x"></i></a>
+          <a href="https://pinterest.com/pin/create/button/" target="_blank" rel="noopener noreferrer" class="icon-btn" id="sharePin" aria-label="Share on Pinterest"><i class="bi bi-pinterest"></i></a>
+          <a href="https://api.whatsapp.com/send" target="_blank" rel="noopener noreferrer" class="icon-btn" id="shareWa" aria-label="Share on WhatsApp"><i class="bi bi-whatsapp"></i></a>
         </div>
 
-        <!-- Author -->
-        <div class="summary-card d-flex gap-3 align-items-start" style="position:static">
-          <img src="assets/images/people/a-1.jpg" alt="Maya Blooms" class="rounded-circle" width="64" height="64" style="object-fit:cover">
-          <div>
-            <h6 class="fw-bold mb-1">Maya Blooms</h6>
-            <p class="text-muted small mb-2">Mum of two, co-founder of LittleBloom and a professional finder of missing socks.</p>
-            <a href="blog.html" class="btn-link">All articles by Maya <i class="bi bi-arrow-right ms-1"></i></a>
-          </div>
-        </div>
 
         <!-- Comments -->
         <div class="summary-card mt-4" style="position:static">
@@ -402,6 +393,96 @@
             ["p", "A stretch polo and soft chino-style pants cover everything from photo day to muddy puddles."],
             ["p", "Choose breathable, stretchy and durable — the uniform will last the year and stay comfy all day."]
           ]
+        },
+        "travel-tips": {
+          title: "Smart Packing Tips for Toddler Travel Days",
+          pill: "Tips · Featured", date: "Jun 15, 2026", read: "4 min read",
+          img: "assets/images/scenes/post-2.jpg", alt: "Packing for toddler travel",
+          tags: ["travel", "toddler", "tips"],
+          body: [
+            ["p", "Traveling with a toddler doesn't have to feel like moving house. A little strategic packing keeps everyone calm from takeoff to arrival."],
+            ["h", "Pack Outfits in Zipper Bags"],
+            ["p", "Pack complete outfits (shirt, pants, underwear, socks) into individual zip bags. Grabbing a fresh change in an airport bathroom becomes instant and stress-free."],
+            ["h", "Snack Stations"],
+            ["p", "Pack twice as many snacks as you think you need. Bento-style boxes with compartments keep snack time engaging and mess-free."],
+            ["h", "The Comfort Layer"],
+            ["p", "Planes and cars get chilly. A favorite lightweight blanket and a backup hoodie ensure nap time goes smoothly anywhere."]
+          ]
+        },
+        "reading-nook": {
+          title: "Creating a Cozy Nursery Reading Nook",
+          pill: "Parenting · Featured", date: "Jun 08, 2026", read: "5 min read",
+          img: "assets/images/scenes/post-3.jpg", alt: "Cozy reading corner in kids room",
+          tags: ["reading", "nursery", "parenting"],
+          body: [
+            ["p", "Creating a dedicated reading corner turns daily story time into a cherished ritual that fosters early literacy and calm."],
+            ["h", "Low, Accessible Book Display"],
+            ["p", "Face-out bookshelves at child height encourage toddlers to browse covers and pick their own stories independently."],
+            ["h", "Soft Floor Pillows & Rugs"],
+            ["p", "Layer soft plush rugs and washable floor cushions so you both have a comfortable spot to snuggle up for stories."],
+            ["h", "Warm, Calming Lighting"],
+            ["p", "A soft warm lamp or fairy lights signal winding down and help ease the transition into bedtime."]
+          ]
+        },
+        "organic-cotton": {
+          title: "Why Organic Cotton Matters for Sensitive Skin",
+          pill: "Style · Featured", date: "May 28, 2026", read: "3 min read",
+          img: "assets/images/scenes/post-4.jpg", alt: "Soft organic cotton fabric clothes",
+          tags: ["cotton", "organic", "sensitive-skin"],
+          body: [
+            ["p", "Baby and toddler skin is up to 30% thinner than adult skin, making fabric choice essential for comfort and wellness."],
+            ["h", "No Harsh Chemical Residues"],
+            ["p", "Certified organic cotton is grown and processed without synthetic pesticides or harsh dyes, protecting delicate skin barriers."],
+            ["h", "Superior Breathability"],
+            ["p", "Natural cotton fibers regulate body temperature effortlessly, preventing sweat buildup and common heat rashes."],
+            ["h", "Gets Softer With Every Wash"],
+            ["p", "Unlike synthetic blends that pill over time, pure organic cotton becomes softer and cozier the more it's loved and washed."]
+          ]
+        },
+        "birthday-prep": {
+          title: "Stress-Free Toddler Birthday Party Planning",
+          pill: "Family · Featured", date: "May 14, 2026", read: "5 min read",
+          img: "assets/images/scenes/post-5.jpg", alt: "Toddler birthday party celebration",
+          tags: ["birthday", "party", "family"],
+          body: [
+            ["p", "Celebrate big milestones without the overwhelm. Here is how to throw a joyful, memorable toddler birthday party."],
+            ["h", "Keep the Timing Short"],
+            ["p", "Ninety minutes to two hours is the golden window for toddlers. Schedule right after nap time when energy is high and happy."],
+            ["h", "Simple, Toddler-Friendly Foods"],
+            ["p", "Fruit skewers, mini sandwiches, and cupcakes are much easier for little hands than sit-down meals."],
+            ["h", "Comfortable Festive Outfits"],
+            ["p", "Choose celebratory outfits made from soft stretchy cottons so the birthday child can play, eat cake, and run around comfortably."]
+          ]
+        },
+        "gifting-milestones": {
+          title: "Milestone Gifting: First Steps to School",
+          pill: "Gifting · Featured", date: "Apr 30, 2026", read: "4 min read",
+          img: "assets/images/scenes/h2-birthday.jpg", alt: "Baby milestone celebration gift",
+          tags: ["gifting", "milestones", "kids"],
+          body: [
+            ["p", "Find thoughtful, memorable gifts tailored to every major developmental stage from babyhood to the first school bell."],
+            ["h", "First Steps & Cruising"],
+            ["p", "Non-slip grip booties and soft pull-on playwear support mobility and active exploration."],
+            ["h", "The Talking & Curiosity Stage (Age 2–3)"],
+            ["p", "Interactive storybooks, pretend play sets, and personalized memory boxes turn learning into joy."],
+            ["h", "Starting School (Age 4–5)"],
+            ["p", "Durable backpacks, labeled accessory cases, and super-soft uniform basics make the big first day exciting."]
+          ]
+        },
+        "summer-play": {
+          title: "Outdoor Sun Safety & Cool Playwear for Summer",
+          pill: "Style · Featured", date: "Apr 18, 2026", read: "4 min read",
+          img: "assets/images/scenes/Seasonal.jpg", alt: "Kids playing in summer outfits",
+          tags: ["summer", "sun-safety", "playwear"],
+          body: [
+            ["p", "Keep little explorers sun-protected, cool, and comfortable all summer long with the right gear and playwear."],
+            ["h", "UPF 50+ Sun Protection"],
+            ["p", "Choose quick-dry rash guards and swimwear that block harmful UV rays during sunny park and beach days."],
+            ["h", "Wide-Brim Sun Hats & Sunglasses"],
+            ["p", "Breathable chin-strap sun hats stay on during active play while shielding delicate faces and necks."],
+            ["h", "Lightweight Gauze & Linen Cottons"],
+            ["p", "Airy cotton rompers and sun dresses let breezes through, keeping kids happy from morning picnics to sunset strolls."]
+          ]
         }
       };
 
@@ -442,6 +523,27 @@
           }).join("");
         }
       }
+
+      function updateShareUrls(title, img) {
+        var pageUrl = window.location.href;
+        var encodedUrl = encodeURIComponent(pageUrl);
+        var encodedTitle = encodeURIComponent((title || document.title || "LittleBloom Article").trim());
+        var encodedImg = encodeURIComponent(img ? (window.location.origin + "/" + img) : "");
+
+        var fb = document.getElementById("shareFb");
+        if (fb) fb.href = "https://www.facebook.com/sharer/sharer.php?u=" + encodedUrl;
+
+        var tw = document.getElementById("shareX");
+        if (tw) tw.href = "https://twitter.com/intent/tweet?url=" + encodedUrl + "&text=" + encodedTitle;
+
+        var pin = document.getElementById("sharePin");
+        if (pin) pin.href = "https://pinterest.com/pin/create/button/?url=" + encodedUrl + "&description=" + encodedTitle + (encodedImg ? "&media=" + encodedImg : "");
+
+        var wa = document.getElementById("shareWa");
+        if (wa) wa.href = "https://api.whatsapp.com/send?text=" + encodedTitle + "%20" + encodedUrl;
+      }
+
+      updateShareUrls(data ? data.title : "10 Everyday Outfits That Make Mornings Easier", data ? data.img : null);
 
       document.querySelectorAll(".blog-card").forEach(function (card) {
         var t = ((card.querySelector("h4 a") || {}).textContent || "").trim();

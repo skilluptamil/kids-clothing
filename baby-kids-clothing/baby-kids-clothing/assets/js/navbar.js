@@ -19,11 +19,11 @@
   };
 
   var SOCIALS = [
-    { icon: "bi-facebook", href: "#" },
-    { icon: "bi-instagram", href: "#" },
-    { icon: "bi-tiktok", href: "#" },
-    { icon: "bi-pinterest", href: "#" },
-    { icon: "bi-youtube", href: "#" }
+    { icon: "bi-facebook", href: "https://www.facebook.com/", label: "Facebook" },
+    { icon: "bi-instagram", href: "https://www.instagram.com/", label: "Instagram" },
+    { icon: "bi-tiktok", href: "https://www.tiktok.com/", label: "TikTok" },
+    { icon: "bi-pinterest", href: "https://www.pinterest.com/", label: "Pinterest" },
+    { icon: "bi-youtube", href: "https://www.youtube.com/", label: "YouTube" }
   ];
 
   /* ------------------------------------------------------------
@@ -35,8 +35,8 @@
       label: "Home",
       href: "index.html",
       dropdown: [
-        { label: "Home 1 – Modern Store", href: "index.html", icon: "bi-house-heart", desc: "Classic boutique storefront" },
-        { label: "Home 2 – Kids Fashion Showcase", href: "home-2.html", icon: "bi-stars", desc: "Playful fashion landing" }
+        { label: "Home 1", href: "index.html", icon: "bi-house-heart" },
+        { label: "Home 2", href: "home-2.html", icon: "bi-stars" }
       ]
     },
     { label: "About", href: "about.html" },

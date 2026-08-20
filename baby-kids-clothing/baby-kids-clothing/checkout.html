@@ -198,7 +198,9 @@
                       <label class="form-check-label" for="payCOD"><i class="bi bi-cash me-1"></i>Cash on Delivery</label>
                     </div>
                   </div>
-                  <div id="cardFields" class="row g-3">
+
+                  <!-- Card Details -->
+                  <div id="cardFields" class="payment-panel row g-3">
                     <div class="col-12 form-field">
                       <label for="coCardName" class="form-label">Name on Card</label>
                       <input type="text" class="form-control" id="coCardName" placeholder="JANE DOE">
@@ -220,7 +222,44 @@
                       <div class="error-msg"></div>
                     </div>
                   </div>
-                  <small class="text-muted"><i class="bi bi-shield-lock me-1"></i>This is a demo — no real payment is processed.</small>
+
+                  <!-- PayPal Details -->
+                  <div id="paypalFields" class="payment-panel row g-3 d-none">
+                    <div class="col-12">
+                      <div class="p-3 rounded-4" style="background:var(--surface-2);border:1.5px dashed rgba(var(--brand-rgb),.35)">
+                        <div class="d-flex align-items-center gap-2 mb-2">
+                          <i class="bi bi-paypal text-primary fs-5"></i>
+                          <strong class="text-ink">PayPal Express Checkout</strong>
+                        </div>
+                        <p class="small text-muted mb-3">You will be securely redirected to PayPal to complete your payment with your PayPal balance, linked bank account, or cards.</p>
+                        <div class="form-field">
+                          <label for="coPaypalEmail" class="form-label">PayPal Email Address</label>
+                          <input type="email" class="form-control" id="coPaypalEmail" placeholder="your-email@example.com" disabled>
+                          <div class="error-msg"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Cash on Delivery Details -->
+                  <div id="codFields" class="payment-panel row g-3 d-none">
+                    <div class="col-12">
+                      <div class="p-3 rounded-4" style="background:var(--surface-2);border:1.5px dashed rgba(63,150,120,.4)">
+                        <div class="d-flex align-items-center gap-2 mb-2">
+                          <i class="bi bi-cash-stack text-success fs-5"></i>
+                          <strong class="text-ink">Cash on Delivery (COD)</strong>
+                        </div>
+                        <p class="small text-muted mb-3">Pay with cash upon delivery at your doorstep. Please have exact change ready for smooth handover.</p>
+                        <div class="form-field">
+                          <label for="coCodNotes" class="form-label">Delivery Instructions (Optional)</label>
+                          <input type="text" class="form-control" id="coCodNotes" placeholder="e.g. Please ring doorbell or call upon arrival" disabled>
+                          <div class="error-msg"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <small class="text-muted d-block mt-3"><i class="bi bi-shield-lock me-1"></i>This is a demo — no real payment is processed.</small>
                 </div>
 
                 <!-- Place order -->

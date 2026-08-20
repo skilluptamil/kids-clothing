@@ -403,6 +403,75 @@
     }
 
     /* ------------------------------------------------------------
+       11b. PAYMENT METHOD CONDITIONAL FIELDS (checkout.html)
+       ------------------------------------------------------------ */
+    var paymentRadios = document.querySelectorAll('input[name="paymentMethod"]');
+    var cardFields = document.getElementById("cardFields");
+    var paypalFields = document.getElementById("paypalFields");
+    var codFields = document.getElementById("codFields");
+
+    function updatePaymentMethod(val) {
+      if (!val) {
+        var checked = document.querySelector('input[name="paymentMethod"]:checked');
+        val = checked ? checked.value : "card";
+      }
+
+      if (cardFields) {
+        var isCard = val === "card";
+        cardFields.classList.toggle("d-none", !isCard);
+        cardFields.querySelectorAll("input").forEach(function (inp) {
+          inp.disabled = !isCard;
+        });
+      }
+
+      if (paypalFields) {
+        var isPaypal = val === "paypal";
+        paypalFields.classList.toggle("d-none", !isPaypal);
+        paypalFields.querySelectorAll("input").forEach(function (inp) {
+          inp.disabled = !isPaypal;
+        });
+      }
+
+      if (codFields) {
+        var isCod = val === "cod";
+        codFields.classList.toggle("d-none", !isCod);
+        codFields.querySelectorAll("input").forEach(function (inp) {
+          inp.disabled = !isCod;
+        });
+      }
+    }
+
+    if (paymentRadios.length) {
+      paymentRadios.forEach(function (radio) {
+        radio.addEventListener("change", function () {
+          updatePaymentMethod(this.value);
+        });
+      });
+      updatePaymentMethod();
+    }
+
+    var cardNumInput = document.getElementById("coCardNumber");
+    if (cardNumInput) {
+      cardNumInput.addEventListener("input", function () {
+        var val = this.value.replace(/\D/g, "").substring(0, 16);
+        var formatted = val.match(/.{1,4}/g);
+        this.value = formatted ? formatted.join(" ") : "";
+      });
+    }
+
+    var cardExpInput = document.getElementById("coCardExp");
+    if (cardExpInput) {
+      cardExpInput.addEventListener("input", function () {
+        var val = this.value.replace(/\D/g, "").substring(0, 4);
+        if (val.length >= 2) {
+          this.value = val.substring(0, 2) + "/" + val.substring(2);
+        } else {
+          this.value = val;
+        }
+      });
+    }
+
+    /* ------------------------------------------------------------
        12. PLACE ORDER → order-success
        ------------------------------------------------------------ */
     var placeOrderBtn = document.getElementById("placeOrderBtn");
@@ -418,12 +487,15 @@
           showToast("Empty cart", "Add something adorable first!", "error");
           return;
         }
+        var activePay = (document.querySelector('input[name="paymentMethod"]:checked') || {}).value || "card";
+        var payLabels = { card: "Credit / Debit Card", paypal: "PayPal", cod: "Cash on Delivery" };
         var order = {
           number: "LB" + Date.now().toString().slice(-6),
           date: new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" }),
           total: s.total,
           items: Cart.items(),
           ship: Cart.shipMethod() === "express" ? "Express Delivery (1–2 days)" : "Standard Delivery (3–5 days)",
+          payment: payLabels[activePay] || "Credit / Debit Card",
           name: document.getElementById("cName") ? document.getElementById("cName").value : "",
           email: document.getElementById("cEmail") ? document.getElementById("cEmail").value : "",
           address: document.getElementById("cAddress") ? document.getElementById("cAddress").value : "",
@@ -492,18 +564,20 @@
     if (blogGrid) {
       var searchInput = document.getElementById("blogSearch");
       var catSelect = document.getElementById("blogCategory");
-      var cards = blogGrid.querySelectorAll(".blog-card");
       function applyBlogFilter() {
         var q = searchInput ? searchInput.value.trim().toLowerCase() : "";
         var cat = catSelect ? catSelect.value : "all";
+        var cards = blogGrid.querySelectorAll(".blog-card");
         cards.forEach(function (card) {
           var text = ((card.getAttribute("data-title") || "") + " " + (card.getAttribute("data-text") || "")).toLowerCase();
           var c = card.getAttribute("data-cat") || "all";
           var okQ = text.indexOf(q) > -1;
           var okC = cat === "all" || c === cat;
-          card.closest(".col").style.display = okQ && okC ? "" : "none";
+          var wrap = card.parentElement;
+          if (wrap) wrap.style.display = okQ && okC ? "" : "none";
         });
       }
+      window.applyBlogFilter = applyBlogFilter;
       if (searchInput) searchInput.addEventListener("input", applyBlogFilter);
       if (catSelect) catSelect.addEventListener("change", applyBlogFilter);
     }

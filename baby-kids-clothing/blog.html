@@ -91,9 +91,9 @@
             <h2 class="font-heading mt-3">10 Everyday Outfits That Make Mornings Easier</h2>
             <p class="text-muted">Getting dressed doesn't have to be a battle. These ten mix-and-match combos take the meltdown out of morning — and the laundry pile down.</p>
             <div class="meta d-flex gap-3 small text-muted mt-3">
-              <span><i class="bi bi-person me-1"></i>Maya Blooms</span>
-              <span><i class="bi bi-calendar3 me-1"></i>Aug 08, 2026</span>
-              <span><i class="bi bi-clock me-1"></i>6 min read</span>
+              <span>Maya Blooms</span>
+              <span>Aug 08, 2026</span>
+              <span>6 min read</span>
             </div>
           </div>
         </a>
@@ -236,7 +236,7 @@
         </div>
 
         <div class="text-center mt-5">
-          <button type="button" class="btn btn-outline-brand"><i class="bi bi-plus-lg me-1"></i>Load More Stories</button>
+          <button type="button" class="btn btn-outline-brand" id="loadMoreBtn"><i class="bi bi-plus-lg me-1"></i>Load More Stories</button>
         </div>
       </div>
     </section>
@@ -290,16 +290,152 @@
         "The Ultimate Baby Shower Gift Guide (2026)": "gift-guide",
         "How to Read a Kids Size Chart Like a Pro": "size-chart",
         "Raising Little Helpers: Chores by Age": "chores",
-        "School Uniforms That Keep Kids Comfy All Day": "schoolwear"
+        "School Uniforms That Keep Kids Comfy All Day": "schoolwear",
+        "Smart Packing Tips for Toddler Travel Days": "travel-tips",
+        "Creating a Cozy Nursery Reading Nook": "reading-nook",
+        "Why Organic Cotton Matters for Sensitive Skin": "organic-cotton",
+        "Stress-Free Toddler Birthday Party Planning": "birthday-prep",
+        "Milestone Gifting: First Steps to School": "gifting-milestones",
+        "Outdoor Sun Safety & Cool Playwear for Summer": "summer-play"
       };
-      var grid = document.getElementById("blogGrid");
-      if (grid) {
-        grid.querySelectorAll(".blog-card").forEach(function (card) {
+
+      function updateCardLinks(container) {
+        (container || document).querySelectorAll(".blog-card").forEach(function (card) {
           var t = ((card.querySelector("h4 a") || {}).textContent || "").trim();
           var slug = slugs[t] || "outfits";
           card.querySelectorAll("a[href='blog-details.html']").forEach(function (a) {
             a.setAttribute("href", "blog-details.html?post=" + slug);
           });
+        });
+      }
+
+      var grid = document.getElementById("blogGrid");
+      if (grid) {
+        updateCardLinks(grid);
+      }
+
+      var extraBatches = [
+        [
+          {
+            cat: "tips",
+            catLabel: "Tips",
+            img: "assets/images/scenes/post-2.jpg",
+            alt: "Packing for toddler travel",
+            date: "Jun 15, 2026",
+            read: "4 min",
+            title: "Smart Packing Tips for Toddler Travel Days",
+            text: "Keep snacks, extra layers and comfort toys organized for stress-free family adventures."
+          },
+          {
+            cat: "parenting",
+            catLabel: "Parenting",
+            img: "assets/images/scenes/post-3.jpg",
+            alt: "Cozy reading corner in kids room",
+            date: "Jun 08, 2026",
+            read: "5 min",
+            title: "Creating a Cozy Nursery Reading Nook",
+            text: "Build a warm, inviting space that sparks a love for bedtime stories from day one."
+          },
+          {
+            cat: "style",
+            catLabel: "Style",
+            img: "assets/images/scenes/post-4.jpg",
+            alt: "Soft organic cotton fabric clothes",
+            date: "May 28, 2026",
+            read: "3 min",
+            title: "Why Organic Cotton Matters for Sensitive Skin",
+            text: "Natural breathable weaves that prevent irritation and get softer with every single wash."
+          }
+        ],
+        [
+          {
+            cat: "family",
+            catLabel: "Family",
+            img: "assets/images/scenes/post-5.jpg",
+            alt: "Toddler birthday party celebration",
+            date: "May 14, 2026",
+            read: "5 min",
+            title: "Stress-Free Toddler Birthday Party Planning",
+            text: "Simple games, snack ideas and matching outfits that keep the focus on fun."
+          },
+          {
+            cat: "gifting",
+            catLabel: "Gifting",
+            img: "assets/images/scenes/h2-birthday.jpg",
+            alt: "Baby milestone celebration gift",
+            date: "Apr 30, 2026",
+            read: "4 min",
+            title: "Milestone Gifting: First Steps to School",
+            text: "Thoughtful gift ideas tailored to every big developmental milestone."
+          },
+          {
+            cat: "style",
+            catLabel: "Style",
+            img: "assets/images/scenes/Seasonal.jpg",
+            alt: "Kids playing in summer outfits",
+            date: "Apr 18, 2026",
+            read: "4 min",
+            title: "Outdoor Sun Safety & Cool Playwear for Summer",
+            text: "UPF rash guards, wide sun hats and breathable cottons for all-day beach adventures."
+          }
+        ]
+      ];
+
+      var currentBatchIndex = 0;
+      var loadBtn = document.getElementById("loadMoreBtn");
+
+      if (loadBtn && grid) {
+        loadBtn.addEventListener("click", function () {
+          if (currentBatchIndex >= extraBatches.length) return;
+
+          loadBtn.disabled = true;
+          loadBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Loading Stories…';
+
+          setTimeout(function () {
+            var batch = extraBatches[currentBatchIndex];
+            batch.forEach(function (story) {
+              var col = document.createElement("div");
+              col.className = "col-md-6 col-lg-4";
+              col.innerHTML =
+                '<article class="blog-card" data-cat="' + story.cat + '" data-title="' + story.title + '" data-text="' + story.text + '">' +
+                  '<div class="thumb">' +
+                    '<span class="cat">' + story.catLabel + '</span>' +
+                    '<img src="' + story.img + '" alt="' + story.alt + '" onerror="this.onerror=null;this.src=\'assets/images/placeholder.svg\'">' +
+                  '</div>' +
+                  '<div class="body">' +
+                    '<div class="meta">' +
+                      '<span><i class="bi bi-calendar3"></i> ' + story.date + '</span>' +
+                      '<span><i class="bi bi-clock"></i> ' + story.read + '</span>' +
+                    '</div>' +
+                    '<h4><a href="blog-details.html">' + story.title + '</a></h4>' +
+                    '<p>' + story.text + '</p>' +
+                    '<a href="blog-details.html" class="btn-link">Read More <i class="bi bi-arrow-right ms-1"></i></a>' +
+                  '</div>' +
+                '</article>';
+              grid.appendChild(col);
+            });
+
+            updateCardLinks(grid);
+
+            if (typeof window.applyBlogFilter === "function") {
+              window.applyBlogFilter();
+            }
+
+            currentBatchIndex++;
+
+            if (currentBatchIndex >= extraBatches.length) {
+              loadBtn.disabled = true;
+              loadBtn.className = "btn btn-secondary opacity-75";
+              loadBtn.innerHTML = '<i class="bi bi-check2-circle me-1"></i>All Stories Loaded';
+            } else {
+              loadBtn.disabled = false;
+              loadBtn.innerHTML = '<i class="bi bi-plus-lg me-1"></i>Load More Stories';
+            }
+
+            if (typeof window.showToast === "function") {
+              window.showToast("Stories Loaded", "Added " + batch.length + " new articles.", "ok");
+            }
+          }, 350);
         });
       }
     });
