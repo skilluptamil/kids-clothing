@@ -151,9 +151,9 @@
         '<div class="pc-body">' +
           '<span class="pc-cat">' + p.catLabel + "</span>" +
           '<h3 class="pc-name"><a href="product-details.html?id=' + p.id + '">' + p.name + "</a></h3>" +
-          '<div class="d-flex align-items-center"><span class="stars">' + starsHTML(p.rating) + "</span><span class=\"review-count\">(" + p.reviews + ")</span></div>" +
+          '<div class="pc-rating d-flex align-items-center"><span class="stars">' + starsHTML(p.rating) + "</span><span class=\"review-count\">(" + p.reviews + ")</span></div>" +
           discountHTML +
-          '<div class="d-flex align-items-center gap-1 mb-1">' + colorDots(p) + "</div>" +
+          '<div class="pc-colors d-flex align-items-center gap-1 mb-1">' + colorDots(p) + "</div>" +
           '<div class="pc-foot">' +
             '<button type="button" class="btn btn-brand js-addtocart" data-id="' + p.id + '"><i class="bi bi-bag-plus me-1"></i>Add to Cart</button>' +
             '<button type="button" class="btn-quickview js-quickview" data-id="' + p.id + '" aria-label="Quick view"><i class="bi bi-eye"></i></button>' +
