@@ -8,9 +8,6 @@
 (function () {
   "use strict";
 
-  /* ------------------------------------------------------------------
-     IMAGE POOL  (local JPG product photography — every image unique)
-     ------------------------------------------------------------------ */
   var PLACEHOLDER = "assets/images/placeholder.svg";
 
   var P = "assets/images/products/";
@@ -42,9 +39,6 @@
   ];
   function img(i) { return POOL[i % POOL.length]; }
 
-  /* ------------------------------------------------------------------
-     CATALOG
-     ------------------------------------------------------------------ */
   var PRODUCTS = [
     { id: 1,  name: "Cotton Baby Romper",       category: "sets",      catLabel: "Rompers",       age: "newborn", ageLabel: "Newborn",     gender: "unisex", price: 24,  discount: 15, rating: 4.8, reviews: 214, badge: "new",       collection: "new-arrivals", sizes: ["0-3m","3-6m","6-9m","9-12m"], colors: [{n:"Peach",h:"#ffd8c4"},{n:"Mint",h:"#d7f0e4"},{n:"Lavender",h:"#e6e0f8"}], desc: "Ultra-soft organic cotton romper with easy snap buttons and a playful cloud print. Gentle on delicate newborn skin, day and night." },
     { id: 2,  name: "Floral Baby Dress",         category: "dresses",   catLabel: "Dresses",       age: "baby",      ageLabel: "Baby",        gender: "girls",   price: 32,  discount: 0,  rating: 4.9, reviews: 168, badge: "bestseller", collection: "party",       sizes: ["3-6m","6-9m","9-12m","12-18m"], colors: [{n:"Pink",h:"#f2a6be"},{n:"Peach",h:"#ffd8c4"}], desc: "A sweet floral dress in breathable cotton with a soft tulle skirt and bow back detail. Perfect for birthdays and garden parties." },
@@ -72,18 +66,12 @@
     { id: 24, name: "Swim Trunks & Rashie Set",  category: "sets",      catLabel: "Swimwear",      age: "kids3-5",   ageLabel: "Kids 3-5",    gender: "boys",    price: 27,  discount: 5,  rating: 4.5, reviews: 76,  badge: "",         collection: "summer",       sizes: ["3Y","4Y","5Y","6Y"], colors: [{n:"Blue",h:"#8fc3e8"},{n:"Yellow",h:"#f3d389"}], desc: "UPF 50+ rash guard and quick-dry swim trunks. Sand-resistant, chlorine-friendly and fun to wear." }
   ];
 
-  /* ------------------------------------------------------------------
-     PRODUCT IMAGES  (each product gets two unique local JPGs)
-     ------------------------------------------------------------------ */
   PRODUCTS.forEach(function (p, i) {
     p.image = img(i * 2);
     p.image2 = img(i * 2 + 1);
   });
 
-  /* ------------------------------------------------------------------
-     HELPERS
-     ------------------------------------------------------------------ */
-  function money(n) { return "$" + n.toFixed(2); }
+  function money(n) { return "$" + Number(n).toFixed(2); }
 
   function salePrice(p) {
     return p.discount ? +(p.price * (1 - p.discount / 100)).toFixed(2) : p.price;
@@ -94,16 +82,19 @@
     var out = "";
     for (var i = 1; i <= 5; i++) {
       out += i <= full
-        ? '<i class="bi bi-star-fill"></i>'
-        : '<i class="bi bi-star"></i>';
+        ? '<i class="bi bi-star-fill text-warning"></i>'
+        : '<i class="bi bi-star text-muted opacity-50"></i>';
     }
     return out;
   }
 
-  function badgeHTML(b) {
+  function badgeHTML(b, discount) {
+    if (discount) {
+      return '<span class="pc-badge badge-sale">-' + discount + '% OFF</span>';
+    }
     if (!b) return "";
     var cls = b === "new" ? "badge-new" : b === "sale" ? "badge-sale" : b === "limited" ? "badge-limited" : "badge-hot";
-    var label = b === "new" ? "New" : b === "sale" ? "Sale" : b === "limited" ? "Limited" : "Bestseller";
+    var label = b === "new" ? "New" : b === "sale" ? "Sale" : b === "limited" ? "Organic" : "Bestseller";
     return '<span class="pc-badge ' + cls + '">' + label + "</span>";
   }
 
@@ -111,7 +102,7 @@
     var html = "";
     var shown = 0;
     for (var i = 0; i < p.colors.length; i++) {
-      if (shown >= 3) break;
+      if (shown >= 4) break;
       html += '<span class="color-dot" style="background:' + p.colors[i].h + '" title="' + p.colors[i].n + '" aria-hidden="true"></span>';
       shown++;
     }
@@ -125,14 +116,11 @@
     } catch (e) { return false; }
   }
 
-  /* ------------------------------------------------------------------
-     RENDER: single product card  →  HTML string
-     ------------------------------------------------------------------ */
   function renderCard(p) {
     var sp = salePrice(p);
     var discountHTML = p.discount
-      ? '<span class="pc-price"><span class="price">' + money(sp) + '</span><span class="old-price">' + money(p.price) + '</span><span class="discount-badge">-' + p.discount + '%</span></span>'
-      : '<span class="pc-price"><span class="price">' + money(p.price) + "</span></span>";
+      ? '<div class="pc-price-wrap"><span class="price-current">' + money(sp) + '</span><span class="price-old">' + money(p.price) + '</span><span class="discount-pill">Save ' + p.discount + '%</span></div>'
+      : '<div class="pc-price-wrap"><span class="price-current">' + money(p.price) + '</span></div>';
 
     var wishCls = inWishlist(p.id) ? " is-wish active" : "";
     var wishIcon = inWishlist(p.id) ? "bi-heart-fill" : "bi-heart";
@@ -140,50 +128,51 @@
     return (
       '<article class="product-card" data-id="' + p.id + '">' +
         '<div class="pc-media">' +
-          badgeHTML(p.badge) +
+          badgeHTML(p.badge, p.discount) +
           '<div class="pc-actions">' +
-            '<button type="button" class="pc-action js-wish' + wishCls + '" aria-label="Add to wishlist" data-id="' + p.id + '"><i class="bi ' + wishIcon + '"></i></button>' +
-            '<button type="button" class="pc-action js-quickview" aria-label="Quick view" data-id="' + p.id + '"><i class="bi bi-eye"></i></button>' +
-          "</div>" +
-          '<a href="product-details.html?id=' + p.id + '">' +
-            '<img src="' + p.image2 + '" alt="' + p.name + '" class="pc-img-1" loading="lazy" onerror="this.onerror=null;this.src=\'' + PLACEHOLDER + '\'">' +
-          "</a>" +
-        "</div>" +
+            '<button type="button" class="pc-action js-wish' + wishCls + '" aria-label="Add to wishlist" data-id="' + p.id + '" title="Wishlist"><i class="bi ' + wishIcon + '"></i></button>' +
+            '<button type="button" class="pc-action js-quickview" aria-label="Quick view" data-id="' + p.id + '" title="Quick View"><i class="bi bi-eye"></i></button>' +
+          '</div>' +
+          '<a href="product-details.html?id=' + p.id + '" class="pc-img-link">' +
+            '<img src="' + p.image + '" alt="' + p.name + '" class="pc-img pc-img-main" loading="lazy" onerror="this.onerror=null;this.src=\'' + PLACEHOLDER + '\'">' +
+            '<img src="' + p.image2 + '" alt="' + p.name + '" class="pc-img pc-img-hover" loading="lazy" onerror="this.onerror=null;this.src=\'' + PLACEHOLDER + '\'">' +
+          '</a>' +
+        '</div>' +
         '<div class="pc-body">' +
-          '<span class="pc-cat">' + p.catLabel + "</span>" +
-          '<h3 class="pc-name"><a href="product-details.html?id=' + p.id + '">' + p.name + "</a></h3>" +
-          '<div class="pc-rating d-flex align-items-center"><span class="stars">' + starsHTML(p.rating) + "</span><span class=\"review-count\">(" + p.reviews + ")</span></div>" +
+          '<div class="d-flex justify-content-between align-items-center mb-1">' +
+            '<span class="pc-cat">' + p.catLabel + '</span>' +
+            '<div class="pc-colors d-flex align-items-center gap-1">' + colorDots(p) + '</div>' +
+          '</div>' +
+          '<h3 class="pc-name"><a href="product-details.html?id=' + p.id + '">' + p.name + '</a></h3>' +
+          '<div class="pc-rating d-flex align-items-center mb-2">' +
+            '<span class="stars me-1">' + starsHTML(p.rating) + '</span>' +
+            '<span class="review-count">(' + p.reviews + ')</span>' +
+          '</div>' +
           discountHTML +
-          '<div class="pc-colors d-flex align-items-center gap-1 mb-1">' + colorDots(p) + "</div>" +
-          '<div class="pc-foot">' +
-            '<button type="button" class="btn btn-brand js-addtocart" data-id="' + p.id + '"><i class="bi bi-bag-plus me-1"></i>Add to Cart</button>' +
-            '<button type="button" class="btn-quickview js-quickview" data-id="' + p.id + '" aria-label="Quick view"><i class="bi bi-eye"></i></button>' +
-          "</div>" +
-        "</div>" +
-      "</article>"
+          '<div class="pc-foot mt-3">' +
+            '<button type="button" class="btn btn-brand w-100 js-addtocart" data-id="' + p.id + '">' +
+              '<i class="bi bi-bag-plus me-1"></i>Add to Cart' +
+            '</button>' +
+          '</div>' +
+        '</div>' +
+      '</article>'
     );
   }
 
-  /* ------------------------------------------------------------------
-     RENDER: grid from a list
-     ------------------------------------------------------------------ */
   function renderGrid(container, list) {
     if (!container) return;
     if (!list.length) {
       container.innerHTML =
-        '<div class="empty-state col-12">' +
-          '<div class="empty-emoji">🧸</div>' +
-          '<h3>No products found</h3>' +
-          '<p>We could not find anything matching your selection. Try adjusting your filters.</p>' +
-        "</div>";
+        '<div class="empty-state col-12 text-center py-5">' +
+          '<div class="empty-emoji fs-1 mb-2">🧸</div>' +
+          '<h3 class="font-heading">No products found</h3>' +
+          '<p class="text-muted">We could not find anything matching your selection. Try adjusting your filters.</p>' +
+        '</div>';
       return;
     }
     container.innerHTML = list.map(renderCard).join("");
   }
 
-  /* ------------------------------------------------------------------
-     PRODUCT SCROLLER (best sellers carousel-like scroller)
-     ------------------------------------------------------------------ */
   function initScrollers() {
     document.querySelectorAll("[data-scroller]").forEach(function (wrap) {
       var track = wrap.querySelector(".product-scroller-track");
@@ -198,22 +187,21 @@
     });
   }
 
-  /* ------------------------------------------------------------------
-     QUICK VIEW MODAL
-     ------------------------------------------------------------------ */
   function injectModal() {
     if (document.getElementById("quickViewModal")) return;
     var div = document.createElement("div");
     div.innerHTML =
       '<div class="modal fade" id="quickViewModal" tabindex="-1" aria-hidden="true" aria-labelledby="quickViewModalLabel">' +
-        '<div class="modal-dialog modal-dialog-centered modal-xl">' +
-          '<div class="modal-content">' +
-            '<div class="modal-header"><h5 class="modal-title font-heading" id="quickViewModalLabel">Quick View</h5>' +
-            '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>' +
-            '<div class="modal-body" id="quickViewBody"></div>' +
-          "</div>" +
-        "</div>" +
-      "</div>";
+        '<div class="modal-dialog modal-dialog-centered modal-lg">' +
+          '<div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">' +
+            '<div class="modal-header border-0 pb-0">' +
+              '<h5 class="modal-title font-heading fw-bold" id="quickViewModalLabel">Product Details</h5>' +
+              '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>' +
+            '</div>' +
+            '<div class="modal-body p-4" id="quickViewBody"></div>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
     document.body.appendChild(div.firstElementChild);
   }
 
@@ -233,45 +221,52 @@
     var img2 = p.image2;
 
     body.innerHTML =
-      '<div class="quickview-grid">' +
-        '<div class="qv-media">' +
-          '<div class="qv-img" id="qvMain"><img src="' + img + '" alt="' + p.name + '" onerror="this.onerror=null;this.src=\'' + PLACEHOLDER + '\'"></div>' +
-          '<div class="qv-thumbs">' +
-            '<img src="' + img + '" alt="view 1" class="active" onclick="Kids.qvSwap(this)" onerror="this.onerror=null;this.src=\'' + PLACEHOLDER + '\'">' +
-            '<img src="' + img2 + '" alt="view 2" onclick="Kids.qvSwap(this)" onerror="this.onerror=null;this.src=\'' + PLACEHOLDER + '\'">' +
-          "</div>" +
-        "</div>" +
-        '<div class="qv-info">' +
-          '<span class="pc-cat">' + p.catLabel + "</span>" +
-          '<h2 class="font-heading mt-1" style="font-size:1.5rem">' + p.name + "</h2>" +
-          '<div class="mb-2"><span class="stars">' + starsHTML(p.rating) + '</span><span class="review-count text-muted"> ' + p.reviews + " reviews</span></div>" +
-          '<div class="pc-price mb-3"><span class="price font-heading" style="color:var(--brand-dark);font-size:1.5rem;font-weight:700">' + money(sp) + "</span>" +
-            (p.discount ? '<span class="old-price text-muted" style="text-decoration:line-through">' + money(p.price) + '</span><span class="discount-badge">-' + p.discount + "% off</span>" : "") + "</div>" +
-          '<p class="text-muted">' + p.desc + "</p>" +
-          '<div class="mb-3"><label class="form-label">Size</label><div class="size-chip-wrap">' + sizes + "</div></div>" +
-          '<div class="mb-4"><label class="form-label">Color</label><div class="d-flex gap-2">' + colors + "</div></div>" +
-          '<div class="d-flex flex-wrap gap-2 align-items-center">' +
-            '<div class="qty-control me-1"><button type="button" class="js-qty-minus" aria-label="Decrease quantity"><i class="bi bi-dash"></i></button><span class="qty-val">1</span><button type="button" class="js-qty-plus" aria-label="Increase quantity"><i class="bi bi-plus"></i></button></div>' +
-            '<button type="button" class="btn btn-brand" data-qv-add id="qvAdd"><i class="bi bi-bag-plus me-1"></i>Add to Cart</button>' +
-            '<button type="button" class="btn btn-outline-brand" data-qv-buy>Buy Now</button>' +
-          "</div>" +
-          '<div class="d-flex gap-3 mt-4 pt-3 border-top">' +
-            '<a href="product-details.html?id=' + p.id + '" class="arrow-link">View Full Details <i class="bi bi-arrow-right"></i></a>' +
-          "</div>" +
-        "</div>" +
-      "</div>";
+      '<div class="row g-4 align-items-center">' +
+        '<div class="col-md-6">' +
+          '<div class="qv-img rounded-4 overflow-hidden shadow-sm mb-2" id="qvMain" style="aspect-ratio:1;background:#f8fafc"><img src="' + img + '" alt="' + p.name + '" class="w-100 h-100 object-fit-cover" onerror="this.onerror=null;this.src=\'' + PLACEHOLDER + '\'"></div>' +
+          '<div class="qv-thumbs d-flex gap-2">' +
+            '<img src="' + img + '" alt="view 1" class="active rounded-3 border" style="width:60px;height:60px;object-fit:cover;cursor:pointer" onclick="Kids.qvSwap(this)" onerror="this.onerror=null;this.src=\'' + PLACEHOLDER + '\'">' +
+            '<img src="' + img2 + '" alt="view 2" class="rounded-3 border" style="width:60px;height:60px;object-fit:cover;cursor:pointer" onclick="Kids.qvSwap(this)" onerror="this.onerror=null;this.src=\'' + PLACEHOLDER + '\'">' +
+          '</div>' +
+        '</div>' +
+        '<div class="col-md-6">' +
+          '<span class="badge bg-light text-brand fw-bold mb-2">' + p.catLabel + ' · ' + p.ageLabel + '</span>' +
+          '<h2 class="font-heading fw-bold fs-3 mb-2">' + p.name + '</h2>' +
+          '<div class="mb-3 d-flex align-items-center"><span class="stars me-2">' + starsHTML(p.rating) + '</span><span class="review-count text-muted small">(' + p.reviews + ' reviews)</span></div>' +
+          '<div class="pc-price mb-3 d-flex align-items-baseline gap-2">' +
+            '<span class="price font-heading text-brand fs-2 fw-bold">' + money(sp) + '</span>' +
+            (p.discount ? '<span class="old-price text-muted text-decoration-line-through">' + money(p.price) + '</span><span class="badge bg-danger-subtle text-danger">-' + p.discount + '% OFF</span>' : '') +
+          '</div>' +
+          '<p class="text-muted small mb-3">' + p.desc + '</p>' +
+          '<div class="mb-3"><label class="form-label small fw-bold">Select Size</label><div class="size-chip-wrap d-flex flex-wrap gap-2">' + sizes + '</div></div>' +
+          '<div class="mb-4"><label class="form-label small fw-bold">Select Color</label><div class="d-flex gap-2">' + colors + '</div></div>' +
+          '<div class="d-flex gap-2 align-items-center">' +
+            '<button type="button" class="btn btn-brand flex-grow-1" data-qv-add id="qvAdd"><i class="bi bi-bag-plus me-1"></i>Add to Cart</button>' +
+            '<a href="product-details.html?id=' + p.id + '" class="btn btn-outline-secondary"><i class="bi bi-arrow-right"></i></a>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
 
     body.querySelector("#qvAdd").setAttribute("data-id", p.id);
-    body.querySelector("[data-qv-buy]").setAttribute("data-id", p.id);
-    body.querySelector(".qty-control").setAttribute("data-id", p.id);
+
+    body.querySelectorAll(".size-chip").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        body.querySelectorAll(".size-chip").forEach(function (b) { b.classList.remove("active"); });
+        btn.classList.add("active");
+      });
+    });
+
+    body.querySelectorAll(".color-chip").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        body.querySelectorAll(".color-chip").forEach(function (b) { b.classList.remove("active"); });
+        btn.classList.add("active");
+      });
+    });
 
     var modal = new bootstrap.Modal(document.getElementById("quickViewModal"));
     modal.show();
   }
 
-  /* ------------------------------------------------------------------
-     API
-     ------------------------------------------------------------------ */
   function byId(id) {
     var needle = String(id);
     for (var i = 0; i < PRODUCTS.length; i++) if (String(PRODUCTS[i].id) === needle) return PRODUCTS[i];
@@ -298,8 +293,8 @@
     openQuickView: openQuickView,
     qvSwap: function (el) {
       var main = document.getElementById("qvMain").querySelector("img");
-      main.src = el.src;
-      document.querySelectorAll("#qvMain + .qv-thumbs img").forEach(function (t) { t.classList.remove("active"); });
+      if (main) main.src = el.src;
+      document.querySelectorAll(".qv-thumbs img").forEach(function (t) { t.classList.remove("active"); });
       el.classList.add("active");
     },
     starsHTML: starsHTML

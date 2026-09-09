@@ -4,7 +4,6 @@
    File   : assets/js/footer.js
    Usage  : Include <div id="footer-container"></div> in the page body, then
             load this script at the end of the body.
-   Notes  : Edit the data below to customize links & business details.
    ========================================================================== */
 (function () {
   "use strict";
@@ -28,95 +27,148 @@
 
   var QUICK_LINKS = [
     { label: "Home", href: "index.html" },
-    { label: "About Us", href: "about.html" },
-    { label: "Shop All", href: "shop.html" },
-    { label: "Blog", href: "blog.html" },
-    { label: "Contact", href: "contact.html" }
+    { label: "About LittleBloom", href: "about.html" },
+    { label: "Shop All Collections", href: "shop.html" },
+    { label: "New Arrivals", href: "shop.html?collection=new-arrivals" },
+    { label: "Sale & Offers", href: "sale.html" },
+    { label: "Parenting Blog", href: "blog.html" }
   ];
 
   var SERVICE_LINKS = [
-    { label: "FAQ", href: "faq.html" },
+    { label: "Help & FAQ", href: "faq.html" },
     { label: "Shipping & Delivery", href: "shipping-policy.html" },
-    { label: "Returns & Exchange", href: "return-policy.html" },
-    { label: "Size Guide", href: "size-guide.html" },
+    { label: "30-Day Easy Returns", href: "return-policy.html" },
+    { label: "Kids Size Guide", href: "size-guide.html" },
     { label: "Privacy Policy", href: "privacy-policy.html" },
-    { label: "Terms & Conditions", href: "terms.html" }
+    { label: "Terms of Service", href: "terms.html" }
   ];
 
   var footerHTML =
     '<footer class="site-footer">' +
+      /* -------- Trust Perks Bar -------- */
+      '<div class="footer-perks-bar py-4 border-top border-bottom">' +
+        '<div class="container">' +
+          '<div class="row g-3 text-center text-md-start">' +
+            '<div class="col-6 col-lg-3 d-flex align-items-center justify-content-center justify-content-lg-start gap-3">' +
+              '<span class="perk-icon"><i class="bi bi-truck"></i></span>' +
+              '<div><strong>Free Fast Shipping</strong><span class="d-block text-muted small">On all orders over $50</span></div>' +
+            '</div>' +
+            '<div class="col-6 col-lg-3 d-flex align-items-center justify-content-center justify-content-lg-start gap-3">' +
+              '<span class="perk-icon"><i class="bi bi-patch-check"></i></span>' +
+              '<div><strong>100% Organic Fabric</strong><span class="d-block text-muted small">Gentle on delicate skin</span></div>' +
+            '</div>' +
+            '<div class="col-6 col-lg-3 d-flex align-items-center justify-content-center justify-content-lg-start gap-3">' +
+              '<span class="perk-icon"><i class="bi bi-arrow-repeat"></i></span>' +
+              '<div><strong>30 Days Return</strong><span class="d-block text-muted small">Hassle-free exchanges</span></div>' +
+            '</div>' +
+            '<div class="col-6 col-lg-3 d-flex align-items-center justify-content-center justify-content-lg-start gap-3">' +
+              '<span class="perk-icon"><i class="bi bi-shield-check"></i></span>' +
+              '<div><strong>100% Secure Checkout</strong><span class="d-block text-muted small">256-Bit SSL protection</span></div>' +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+      '</div>' +
+
+      /* -------- Main Footer Columns -------- */
       '<div class="footer-main">' +
         '<div class="container">' +
           '<div class="row g-4">' +
-            /* -------- Brand -------- */
-            '<div class="col-lg-3 col-md-6" style="padding-inline-end:1.75rem">' +
+            /* Brand */
+            '<div class="col-lg-4 col-md-6 pe-lg-4">' +
               '<div class="d-flex align-items-center gap-2 mb-3">' +
-                '<span class="brand-mark"><img src="assets/images/logo/logo.svg" alt="" width="24" height="24" style="filter:brightness(0) invert(1)"></span>' +
-                '<span class="font-heading fs-4 fw-bold" style="color:var(--ink)">Little<span style="color:var(--brand-dark)">Bloom</span></span>' +
-              "</div>" +
-              '<p class="about-text">Little styles, big smiles. Thoughtfully designed, super-soft clothing for newborn to kids 8 years — made with love and built for everyday adventures.</p>' +
-              '<div class="footer-social mt-4">' +
+                '<span class="brand-logo-wrap"><img src="assets/images/logo/logo.svg" alt="LittleBloom Logo" width="34" height="34" class="brand-logo-img"></span>' +
+                '<span class="font-heading fs-4 fw-bold"><span class="brand-name-dark">Little</span><span class="brand-name-coral">Bloom</span></span>' +
+              '</div>' +
+              '<p class="about-text text-muted mb-4">Thoughtfully designed, ultra-soft clothing for newborn to kids 8 years. Made with love, tested by real parents, and built for all everyday adventures.</p>' +
+              '<div class="footer-social">' +
                 SOCIALS.map(function (s) {
                   return '<a href="' + s.href + '" target="_blank" rel="noopener" aria-label="' + s.label + '"><i class="bi ' + s.icon + '"></i></a>';
                 }).join("") +
-              "</div>" +
-            "</div>" +
-            /* -------- Quick links -------- */
-            '<div class="col-lg-3 col-md-6 col-6" style="padding-inline-start:1.5rem">' +
-              "<h5>Quick Links</h5>" +
+              '</div>' +
+            '</div>' +
+
+            /* Quick links */
+            '<div class="col-lg-2 col-md-6 col-6">' +
+              '<h5 class="footer-col-title">Shop & Explore</h5>' +
               '<ul class="footer-links">' +
                 QUICK_LINKS.map(function (l) {
-                  return '<li><a href="' + l.href + '"><i class="bi bi-chevron-right"></i>' + l.label + "</a></li>";
+                  return '<li><a href="' + l.href + '"><i class="bi bi-chevron-right"></i>' + l.label + '</a></li>';
                 }).join("") +
-              "</ul>" +
-            "</div>" +
-            /* -------- Customer service -------- */
-            '<div class="col-lg-3 col-md-6 col-6">' +
-              "<h5>Customer Service</h5>" +
+              '</ul>' +
+            '</div>' +
+
+            /* Customer service */
+            '<div class="col-lg-2 col-md-6 col-6">' +
+              '<h5 class="footer-col-title">Customer Care</h5>' +
               '<ul class="footer-links">' +
                 SERVICE_LINKS.map(function (l) {
-                  return '<li><a href="' + l.href + '"><i class="bi bi-chevron-right"></i>' + l.label + "</a></li>";
+                  return '<li><a href="' + l.href + '"><i class="bi bi-chevron-right"></i>' + l.label + '</a></li>';
                 }).join("") +
-              "</ul>" +
-            "</div>" +
-            /* -------- Newsletter + contact -------- */
-            '<div class="col-lg-3 col-md-6">' +
-              "<h5>Get In Touch</h5>" +
-              '<div class="contact-line"><i class="bi bi-geo-alt"></i><span>' + CONTACT.address + "</span></div>" +
-              '<div class="contact-line"><i class="bi bi-telephone"></i><a href="' + CONTACT.phoneHref + '">' + CONTACT.phone + "</a></div>" +
-              '<div class="contact-line"><i class="bi bi-envelope"></i><a href="' + CONTACT.emailHref + '">' + CONTACT.email + "</a></div>" +
-              '<div class="contact-line"><i class="bi bi-clock"></i><span>' + CONTACT.hours + "</span></div>" +
-              '<form class="footer-newsletter mt-3" id="newsletterForm" novalidate>' +
-                '<label class="form-label d-block" style="font-size:.82rem">Newsletter</label>' +
+              '</ul>' +
+            '</div>' +
+
+            /* Contact & Newsletter */
+            '<div class="col-lg-4 col-md-6">' +
+              '<h5 class="footer-col-title">Stay in Touch</h5>' +
+              '<p class="small text-muted mb-2">Subscribe to get <strong>15% OFF</strong> your first order + early access to new collections.</p>' +
+              '<form class="footer-newsletter mb-3" id="newsletterForm" novalidate>' +
                 '<div class="input-group">' +
-                  '<input type="email" class="form-control" id="nlEmail" placeholder="Your email" aria-label="Email address" required>' +
-                  '<button class="btn btn-brand px-3" type="submit" aria-label="Subscribe"><i class="bi bi-send"></i></button>' +
-                "</div>" +
-                '<div class="form-text newsletter-msg" id="newsletterMsg"></div>' +
-              "</form>" +
-            "</div>" +
-          "</div>" +
-        "</div>" +
-      "</div>" +
+                  '<input type="email" class="form-control" id="nlEmail" placeholder="Enter your email address..." aria-label="Email address" required>' +
+                  '<button class="btn btn-brand px-3" type="submit" aria-label="Subscribe"><i class="bi bi-send me-1"></i>Join</button>' +
+                '</div>' +
+                '<div class="form-text newsletter-msg small mt-1" id="newsletterMsg"></div>' +
+              '</form>' +
+              '<div class="contact-info-list small">' +
+                '<div class="contact-line mb-1"><i class="bi bi-telephone text-brand me-2"></i><a href="' + CONTACT.phoneHref + '" class="text-muted">' + CONTACT.phone + '</a></div>' +
+                '<div class="contact-line mb-1"><i class="bi bi-envelope text-brand me-2"></i><a href="' + CONTACT.emailHref + '" class="text-muted">' + CONTACT.email + '</a></div>' +
+                '<div class="contact-line"><i class="bi bi-clock text-brand me-2"></i><span class="text-muted">' + CONTACT.hours + '</span></div>' +
+              '</div>' +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+      '</div>' +
+
       /* -------- Bottom bar -------- */
-      '<div class="footer-bottom">' +
+      '<div class="footer-bottom py-3">' +
         '<div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">' +
-          '<span>&copy; <span class="year">2026</span> LittleBloom. All rights reserved.</span>' +
-          '<div class="payment-icons" aria-label="Accepted payment methods">' +
-            '<i class="bi bi-credit-card" title="Credit Card"></i>' +
-            '<i class="bi bi-paypal" title="PayPal"></i>' +
-            '<i class="bi bi-bank" title="Bank Transfer"></i>' +
-            '<i class="bi bi-phone" title="UPI / Mobile Payments"></i>' +
-          "</div>" +
-          '<div class="d-flex gap-3">' +
-            '<a href="privacy-policy.html">Privacy</a>' +
-            '<a href="terms.html">Terms</a>' +
-            '<a href="cookie-policy.html">Cookies</a>' +
-          "</div>" +
-        "</div>" +
-      "</div>" +
-    "</footer>";
+          '<div class="copyright-text text-muted small">&copy; <span class="year">2026</span> LittleBloom Clothing Store. All rights reserved.</div>' +
+          '<div class="payment-badges d-flex align-items-center gap-2" aria-label="Accepted payment methods">' +
+            '<span class="pay-badge"><i class="bi bi-credit-card-2-front"></i> Visa</span>' +
+            '<span class="pay-badge"><i class="bi bi-credit-card"></i> Mastercard</span>' +
+            '<span class="pay-badge"><i class="bi bi-paypal"></i> PayPal</span>' +
+            '<span class="pay-badge"><i class="bi bi-apple"></i> Apple Pay</span>' +
+          '</div>' +
+          '<div class="d-flex gap-3 small text-muted">' +
+            '<a href="privacy-policy.html" class="text-muted">Privacy</a>' +
+            '<a href="terms.html" class="text-muted">Terms</a>' +
+            '<a href="cookie-policy.html" class="text-muted">Cookies</a>' +
+          '</div>' +
+        '</div>' +
+      '</div>' +
+    '</footer>';
 
   var host = document.getElementById("footer-container");
-  if (host) host.innerHTML = footerHTML;
+  if (host) {
+    host.innerHTML = footerHTML;
+
+    // Newsletter submit handling
+    var nlForm = host.querySelector("#newsletterForm");
+    if (nlForm) {
+      nlForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var emailInput = document.getElementById("nlEmail");
+        var msg = document.getElementById("newsletterMsg");
+        if (!emailInput || !msg) return;
+        var val = emailInput.value.trim();
+        if (!val || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) {
+          msg.textContent = "Please enter a valid email address.";
+          msg.className = "form-text newsletter-msg small mt-1 text-danger";
+          return;
+        }
+        msg.textContent = "🎉 Thank you for subscribing! Your 15% discount code is BLOOM15.";
+        msg.className = "form-text newsletter-msg small mt-1 text-success fw-bold";
+        emailInput.value = "";
+      });
+    }
+  }
 })();

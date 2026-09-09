@@ -101,7 +101,7 @@
     }
 
     /* ------------------------------------------------------------
-       6. MARQUEE — duplicate track for seamless loop
+       6. MARQUEE
        ------------------------------------------------------------ */
     var marqueeTrack = document.querySelector(".marquee-track");
     if (marqueeTrack) marqueeTrack.innerHTML += marqueeTrack.innerHTML;
@@ -193,38 +193,38 @@
         '<div class="row g-4 g-lg-5">' +
           /* -------- gallery -------- */
           '<div class="col-lg-6">' +
-            '<div class="rounded-2xl overflow-hidden mb-3 shadow-sm">' +
-              '<img id="pdMainImage" src="' + p.image + '" alt="' + p.name + '" class="w-100" style="height:480px;object-fit:cover" onerror="this.onerror=null;this.src=\'assets/images/placeholder.svg\'">' +
+            '<div class="rounded-4 overflow-hidden mb-3 shadow-sm" style="aspect-ratio:1;background:#f8fafc">' +
+              '<img id="pdMainImage" src="' + p.image + '" alt="' + p.name + '" class="w-100 h-100 object-fit-cover" onerror="this.onerror=null;this.src=\'assets/images/placeholder.svg\'">' +
             "</div>" +
             '<div class="d-flex gap-2" id="pdThumbs">' +
-              '<img src="' + p.image + '" alt="' + p.name + ' view 1" class="rounded-3 thumb-active" style="width:88px;height:88px;object-fit:cover;cursor:pointer;border:3px solid var(--brand)" data-pdimg="' + p.image + '" onerror="this.onerror=null;this.src=\'assets/images/placeholder.svg\'">' +
-              '<img src="' + p.image2 + '" alt="' + p.name + ' view 2" class="rounded-3" style="width:88px;height:88px;object-fit:cover;cursor:pointer" data-pdimg="' + p.image2 + '" onerror="this.onerror=null;this.src=\'assets/images/placeholder.svg\'">' +
+              '<img src="' + p.image + '" alt="' + p.name + ' 1" class="active rounded-3 border" style="width:72px;height:72px;object-fit:cover;cursor:pointer" onerror="this.onerror=null;this.src=\'assets/images/placeholder.svg\'">' +
+              '<img src="' + p.image2 + '" alt="' + p.name + ' 2" class="rounded-3 border" style="width:72px;height:72px;object-fit:cover;cursor:pointer" onerror="this.onerror=null;this.src=\'assets/images/placeholder.svg\'">' +
             "</div>" +
           "</div>" +
           /* -------- info -------- */
           '<div class="col-lg-6">' +
-            '<span class="pill mb-2"><i class="bi bi-tag"></i>' + p.catLabel + "</span>" +
-            '<h1 class="font-heading" style="font-size:clamp(1.6rem,3vw,2.2rem)">' + p.name + "</h1>" +
+            '<span class="badge bg-light text-brand fw-bold mb-2">' + p.catLabel + " · " + p.ageLabel + "</span>" +
+            '<h1 class="font-heading fw-bold" style="font-size:clamp(1.8rem,3vw,2.4rem)">' + p.name + "</h1>" +
             '<div class="d-flex align-items-center flex-wrap gap-2 mb-3">' +
-              '<span class="stars">' + Kids.starsHTML(p.rating) + "</span>" +
-              '<span class="review-count text-muted">' + p.rating + " · " + p.reviews + " reviews</span>" +
-              '<a href="#reviewsPane" class="ms-2 text-brand fw-bold" style="font-size:.85rem" data-bs-toggle="tab" data-bs-target="#reviewsPane">Write a review</a>' +
+              '<span class="stars me-1">' + Kids.starsHTML(p.rating) + "</span>" +
+              '<span class="review-count text-muted small">(' + p.reviews + " reviews)</span>" +
+              '<a href="#reviewsPane" class="ms-2 text-brand fw-bold small" data-bs-toggle="tab" data-bs-target="#reviewsPane">Write a review</a>' +
             "</div>" +
-            '<div class="d-flex align-items-center gap-3 mb-3">' +
-              '<span class="font-heading fw-bold" style="font-size:2rem;color:var(--brand-dark)">' + Kids.money(sp) + "</span>" +
-              (p.discount ? '<span class="text-muted" style="text-decoration:line-through;font-size:1.1rem">' + Kids.money(p.price) + '</span><span class="pill pink">-' + p.discount + "%</span>" : "") +
+            '<div class="d-flex align-items-baseline gap-3 mb-3">' +
+              '<span class="font-heading fw-bold text-brand" style="font-size:2rem">' + Kids.money(sp) + "</span>" +
+              (p.discount ? '<span class="text-muted text-decoration-line-through fs-5">' + Kids.money(p.price) + '</span><span class="badge bg-danger-subtle text-danger fw-bold">-' + p.discount + "% OFF</span>" : "") +
             "</div>" +
             '<p class="text-muted">' + p.desc + "</p>" +
             /* size */
             '<div class="mb-3">' +
-              '<label class="form-label d-flex justify-content-between">Size <a href="size-guide.html" class="text-brand" style="font-size:.8rem"><i class="bi bi-rulers me-1"></i>Size Guide</a></label>' +
+              '<label class="form-label d-flex justify-content-between small fw-bold">Select Size <a href="size-guide.html" class="text-brand"><i class="bi bi-rulers me-1"></i>Size Guide</a></label>' +
               '<div class="d-flex flex-wrap gap-2" id="pdSizes">' +
                 p.sizes.map(function (s, i) { return '<button type="button" class="size-chip' + (i === 0 ? " active" : "") + '" data-size="' + s + '">' + s + "</button>"; }).join("") +
               "</div>" +
             "</div>" +
             /* color */
             '<div class="mb-4">' +
-              '<label class="form-label">Color</label>' +
+              '<label class="form-label small fw-bold">Select Color</label>' +
               '<div class="d-flex gap-2" id="pdColors">' +
                 p.colors.map(function (c, i) {
                   return '<button type="button" class="color-chip' + (i === 0 ? " active" : "") + '" style="--cc:' + c.h + '" data-color="' + c.n + '" title="' + c.n + '" aria-label="' + c.n + '"></button>';
@@ -234,28 +234,25 @@
             /* qty + actions */
             '<div class="d-flex flex-wrap align-items-center gap-3 mb-4">' +
               '<div class="qty-control"><button type="button" class="js-qty-minus" aria-label="Decrease"><i class="bi bi-dash"></i></button><span class="qty-val">1</span><button type="button" class="js-qty-plus" aria-label="Increase"><i class="bi bi-plus"></i></button></div>' +
-              '<button type="button" class="btn btn-brand btn-lg js-pd-addcart" data-id="' + p.id + '"><i class="bi bi-bag-plus me-1"></i>Add to Cart</button>' +
+              '<button type="button" class="btn btn-brand btn-lg js-pd-addcart flex-grow-1" data-id="' + p.id + '"><i class="bi bi-bag-plus me-1"></i>Add to Cart</button>' +
               '<button type="button" class="btn btn-outline-brand btn-lg js-pd-buynow" data-id="' + p.id + '">Buy Now</button>' +
               '<button type="button" class="icon-btn js-wish" data-id="' + p.id + '" aria-label="Toggle wishlist"><i class="bi bi-heart"></i></button>' +
             "</div>" +
-            '<ul class="check-list mb-0">' +
-              '<li><i class="bi bi-check-circle-fill"></i>Free standard shipping on orders over $50</li>' +
-              '<li><i class="bi bi-check-circle-fill"></i>30-day hassle-free returns &amp; exchanges</li>' +
-              '<li><i class="bi bi-check-circle-fill"></i>Secure checkout — all major payment methods</li>' +
+            '<ul class="check-list mb-0 small text-muted list-unstyled">' +
+              '<li class="mb-1"><i class="bi bi-check-circle-fill text-success me-2"></i>Free standard shipping on orders over $50</li>' +
+              '<li class="mb-1"><i class="bi bi-check-circle-fill text-success me-2"></i>30-day hassle-free returns &amp; exchanges</li>' +
+              '<li><i class="bi bi-check-circle-fill text-success me-2"></i>Secure checkout — all major payment methods</li>' +
             "</ul>" +
           "</div>" +
         "</div>";
 
-      /* thumbnails */
-      host.querySelectorAll("[data-pdimg]").forEach(function (thumb) {
+      /* gallery thumbs */
+      host.querySelectorAll("#pdThumbs img").forEach(function (thumb) {
         thumb.addEventListener("click", function () {
-          document.getElementById("pdMainImage").src = thumb.getAttribute("data-pdimg");
-          host.querySelectorAll("[data-pdimg]").forEach(function (t) {
-            t.classList.remove("thumb-active");
-            t.style.border = "3px solid transparent";
-          });
-          thumb.classList.add("thumb-active");
-          thumb.style.border = "3px solid var(--brand)";
+          var mainImg = document.getElementById("pdMainImage");
+          if (mainImg) mainImg.src = thumb.src;
+          host.querySelectorAll("#pdThumbs img").forEach(function (t) { t.classList.remove("active"); });
+          thumb.classList.add("active");
         });
       });
 
@@ -344,7 +341,6 @@
     };
 
     if (window.Cart && document.getElementById("checkoutWrap")) {
-      /* shipping method selection */
       var stdRadio = document.getElementById("shipStandard");
       var expRadio = document.getElementById("shipExpress");
       function setShip(mode) {
@@ -372,7 +368,6 @@
       }
     }
 
-    /* coupon apply button */
     var couponBtn = document.getElementById("couponBtn");
     if (couponBtn && window.Cart) {
       couponBtn.addEventListener("click", function () {
@@ -389,7 +384,6 @@
       });
     }
 
-    /* cart page buttons */
     var clearAllBtn = document.getElementById("cartClearAll");
     if (clearAllBtn && window.Cart) {
       clearAllBtn.addEventListener("click", function () {
@@ -402,9 +396,6 @@
       toCheckoutBtn.addEventListener("click", function () { window.location.href = "checkout.html"; });
     }
 
-    /* ------------------------------------------------------------
-       11b. PAYMENT METHOD CONDITIONAL FIELDS (checkout.html)
-       ------------------------------------------------------------ */
     var paymentRadios = document.querySelectorAll('input[name="paymentMethod"]');
     var cardFields = document.getElementById("cardFields");
     var paypalFields = document.getElementById("paypalFields");
@@ -471,9 +462,6 @@
       });
     }
 
-    /* ------------------------------------------------------------
-       12. PLACE ORDER → order-success
-       ------------------------------------------------------------ */
     var placeOrderBtn = document.getElementById("placeOrderBtn");
     if (placeOrderBtn && window.Cart) {
       placeOrderBtn.addEventListener("click", function () {
@@ -507,9 +495,6 @@
       });
     }
 
-    /* ------------------------------------------------------------
-       13. ORDER SUCCESS PAGE
-       ------------------------------------------------------------ */
     if (document.getElementById("orderSuccess")) {
       renderOrderSuccess();
     }
@@ -557,9 +542,6 @@
         "</div>";
     }
 
-    /* ------------------------------------------------------------
-       14. BLOG FILTER & SEARCH (blog.html)
-       ------------------------------------------------------------ */
     var blogGrid = document.getElementById("blogGrid");
     if (blogGrid) {
       var searchInput = document.getElementById("blogSearch");

@@ -27,20 +27,30 @@
   ];
 
   /* ------------------------------------------------------------
-     NAV DATA — only "Home" keeps a dropdown; the rest are plain
-     links for a clean, uncluttered navigation bar.
+     NAV DATA
      ------------------------------------------------------------ */
   var NAV = [
     {
       label: "Home",
       href: "index.html",
       dropdown: [
-        { label: "Home 1", href: "index.html", icon: "bi-house-heart" },
-        { label: "Home 2", href: "home-2.html", icon: "bi-stars" }
+        { label: "Home 1 (Modern Store)", href: "index.html", icon: "bi-house-heart", desc: "Hero, categories & trending" },
+        { label: "Home 2 (Story & Boutique)", href: "home-2.html", icon: "bi-stars", desc: "Curated collections & nursery" }
       ]
     },
     { label: "About", href: "about.html" },
-    { label: "Shop", href: "shop.html" },
+    {
+      label: "Shop",
+      href: "shop.html",
+      dropdown: [
+        { label: "All Products", href: "shop.html", icon: "bi-grid", desc: "Explore full catalog" },
+        { label: "New Arrivals", href: "shop.html?collection=new-arrivals", icon: "bi-sparkles", desc: "Fresh styles just in" },
+        { label: "Baby & Newborn", href: "shop.html?age=newborn", icon: "bi-emoji-smile", desc: "0-12 months essentials" },
+        { label: "Toddlers (1-3Y)", href: "shop.html?age=toddler", icon: "bi-balloon", desc: "Everyday play outfits" },
+        { label: "Kids (3-8Y)", href: "shop.html?age=kids3-5", icon: "bi-backpack", desc: "Dresses, sets & school" },
+        { label: "Special Offers", href: "sale.html", icon: "bi-tag", desc: "Up to 40% OFF" }
+      ]
+    },
     { label: "Size Guide", href: "size-guide.html" },
     { label: "Blog", href: "blog.html" },
     { label: "Contact", href: "contact.html" }
@@ -79,32 +89,13 @@
   function navItems() {
     return NAV.map(function (item) {
       var hot = item.hot ? '<span class="badge-hot">SALE</span>' : "";
-      if (item.mega) {
-        var colsHTML = item.mega.cols.map(function (col) {
-          return (
-            '<div class="mega-col">' +
-              "<h6>" + col.title + "</h6>" +
-              col.links.map(function (l) {
-                return '<a href="' + l.href + '"' + (active(l.href) ? ' class="text-brand"' : "") + ">" +
-                  '<i class="bi bi-chevron-right"></i>' + l.label + "</a>";
-              }).join("") +
-            "</div>"
-          );
-        }).join("");
-        return (
-          '<li class="nav-item dropdown dropdown-mega">' +
-            '<a class="nav-link dropdown-toggle' + (active(item.href) || childActive(item) ? " active" : "") + '" href="' + item.href + '" data-bs-toggle="dropdown" aria-expanded="false">' + item.label + hot + "</a>" +
-            '<ul class="dropdown-menu dropdown-menu-lg"><div class="mega-grid">' + colsHTML + "</div></ul>" +
-          "</li>"
-        );
-      }
       if (item.dropdown) {
         return (
           '<li class="nav-item dropdown">' +
-            '<a class="nav-link dropdown-toggle' + (active(item.href) || childActive(item) ? " active" : "") + '" href="' + item.href + '" data-bs-toggle="dropdown" aria-expanded="false">' + item.label + hot + "</a>" +
-            '<ul class="dropdown-menu">' +
+            '<a class="nav-link dropdown-toggle' + (active(item.href) || childActive(item) ? " active" : "") + '" href="' + item.href + '" data-bs-toggle="dropdown" aria-expanded="false">' + item.label + hot + '</a>' +
+            '<ul class="dropdown-menu shadow-lg border-0">' +
               item.dropdown.map(function (c) {
-                return '<li><a class="dropdown-item' + (active(c.href) ? " active" : "") + '" href="' + c.href + '">' + iconTag(c) + '<span>' + c.label + descTag(c) + "</span></a></li>";
+                return '<li><a class="dropdown-item' + (active(c.href) ? " active" : "") + '" href="' + c.href + '">' + iconTag(c) + '<div><div class="item-title">' + c.label + '</div>' + descTag(c) + '</div></a></li>';
               }).join("") +
             "</ul>" +
           "</li>"
@@ -112,8 +103,8 @@
       }
       return (
         '<li class="nav-item">' +
-          '<a class="nav-link' + (active(item.href) ? " active" : "") + '" href="' + item.href + '">' + item.label + hot + "</a>" +
-        "</li>"
+          '<a class="nav-link' + (active(item.href) ? " active" : "") + '" href="' + item.href + '">' + item.label + hot + '</a>' +
+        '</li>'
       );
     }).join("");
   }
@@ -129,14 +120,9 @@
       var isActive = target === currentFile() || childActive(item);
       var act = isActive ? " active" : "";
       var link = '<a class="nav-link' + act + '" href="' + href + '">' + item.label + hot + "</a>";
-      var hasSub = item.dropdown || item.mega;
+      var hasSub = item.dropdown;
 
       if (hasSub) {
-        var links = item.dropdown
-          ? item.dropdown
-          : item.mega.cols.map(function (col) {
-              return { label: col.title, href: col.links[0].href, icon: "bi-folder2" };
-            });
         return (
           '<li class="nav-item">' +
             link.replace("</a>", '<i class="bi bi-chevron-down caret" data-mobile-caret></i></a>') +
@@ -157,66 +143,135 @@
      ------------------------------------------------------------ */
   var headerHTML =
     '<header class="site-header" id="siteHeader">' +
+      /* -------- Top Announcement Bar -------- */
+      '<div class="top-announcement-bar">' +
+        '<div class="container d-flex justify-content-between align-items-center">' +
+          '<div class="announcement-left d-flex align-items-center gap-2">' +
+            '<span class="announcement-pill"><i class="bi bi-stars"></i> SPECIAL OFFER</span>' +
+            '<span class="announcement-text">Spring Super Sale: Up to <strong>40% OFF</strong> + Free Shipping on Orders $50+</span>' +
+          '</div>' +
+          '<div class="announcement-right d-none d-lg-flex align-items-center gap-3">' +
+            '<a href="contact.html" class="topbar-link"><i class="bi bi-headset me-1"></i>Support</a>' +
+            '<a href="faq.html" class="topbar-link"><i class="bi bi-truck me-1"></i>Track Order</a>' +
+            '<span class="topbar-divider"></span>' +
+            '<span class="topbar-currency"><i class="bi bi-globe2 me-1"></i>USD ($)</span>' +
+          '</div>' +
+        '</div>' +
+      '</div>' +
+
       /* -------- Main navbar -------- */
       '<nav class="navbar navbar-expand-lg main-nav sticky-top" id="mainNav" aria-label="Main navigation">' +
         '<div class="container">' +
-          '<a class="navbar-brand" href="index.html" aria-label="Little Bloom home">' +
-            '<span class="brand-mark"><img src="assets/images/logo/logo.svg" alt="" width="26" height="26" style="filter:brightness(0) invert(1)"></span>' +
-            "<span>Little<span style='color:var(--brand-dark)'>Bloom</span></span>" +
-          "</a>" +
+          /* Brand logo */
+          '<a class="navbar-brand d-flex align-items-center gap-2" href="index.html" aria-label="LittleBloom Home">' +
+            '<span class="brand-logo-wrap"><img src="assets/images/logo/logo.svg" alt="LittleBloom Logo" width="36" height="36" class="brand-logo-img"></span>' +
+            '<span class="brand-name"><span class="brand-name-dark">Little</span><span class="brand-name-coral">Bloom</span></span>' +
+          '</a>' +
+
+          /* Right actions */
           '<div class="d-flex align-items-center gap-2 order-lg-3">' +
-            '<button type="button" class="rtl-toggle icon-btn" id="rtlToggle" title="Toggle RTL / LTR" aria-label="Toggle RTL layout"><i class="bi bi-text-right"></i></button>' +
-            '<button type="button" class="theme-toggle" id="themeToggle" title="Toggle dark / light mode" aria-label="Toggle dark mode"><i class="bi bi-moon-stars"></i><i class="bi bi-sun"></i></button>' +
-            '<a href="cart.html" class="icon-btn" aria-label="Shopping cart">' +
+            '<a href="search.html" class="icon-btn d-none d-sm-inline-flex" title="Search products" aria-label="Search">' +
+              '<i class="bi bi-search"></i>' +
+            '</a>' +
+            '<a href="wishlist.html" class="icon-btn position-relative" title="My Wishlist" aria-label="Wishlist">' +
+              '<i class="bi bi-heart"></i><span class="count-badge" id="wishCount">0</span>' +
+            '</a>' +
+            '<a href="cart.html" class="icon-btn position-relative" title="Shopping Cart" aria-label="Shopping cart">' +
               '<i class="bi bi-bag"></i><span class="count-badge" id="cartCount">0</span>' +
-            "</a>" +
-            '<a href="login.html" class="icon-btn d-none d-md-inline-flex" aria-label="Account / login"><i class="bi bi-person"></i></a>' +
-            '<button class="navbar-toggler border-0 d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileNav" aria-controls="mobileNav" aria-label="Toggle navigation">' +
-              '<i class="bi bi-list fs-2 lh-1" style="color:var(--ink)"></i>' +
-            "</button>" +
-          "</div>" +
-          '<div class="collapse navbar-collapse order-lg-2 d-none d-lg-flex">' +
-            '<ul class="navbar-nav mx-auto">' + navItems() + "</ul>" +
-          "</div>" +
-        "</div>" +
-      "</nav>" +
+            '</a>' +
+            '<a href="login.html" class="icon-btn d-none d-md-inline-flex" title="Account" aria-label="Account / login">' +
+              '<i class="bi bi-person"></i>' +
+            '</a>' +
+            '<button type="button" class="theme-toggle icon-btn" id="themeToggle" title="Toggle dark / light mode" aria-label="Toggle dark mode">' +
+              '<i class="bi bi-moon-stars"></i><i class="bi bi-sun"></i>' +
+            '</button>' +
+            '<button type="button" class="rtl-toggle icon-btn d-none d-sm-inline-flex" id="rtlToggle" title="Toggle RTL / LTR" aria-label="Toggle RTL layout">' +
+              '<i class="bi bi-text-right"></i>' +
+            '</button>' +
+            '<button class="navbar-toggler border-0 d-lg-none icon-btn ms-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileNav" aria-controls="mobileNav" aria-label="Toggle navigation">' +
+              '<i class="bi bi-list fs-4"></i>' +
+            '</button>' +
+          '</div>' +
+
+          /* Centered nav links */
+          '<div class="collapse navbar-collapse order-lg-2 d-none d-lg-flex justify-content-center">' +
+            '<ul class="navbar-nav">' + navItems() + '</ul>' +
+          '</div>' +
+        '</div>' +
+      '</nav>' +
+
       /* -------- Mobile offcanvas -------- */
       '<div class="offcanvas offcanvas-end mobile-nav" tabindex="-1" id="mobileNav" aria-labelledby="mobileNavLabel">' +
-        '<div class="offcanvas-header">' +
+        '<div class="offcanvas-header border-bottom">' +
           '<h5 class="offcanvas-title mb-0" id="mobileNavLabel">' +
-            '<a class="navbar-brand" href="index.html"><span class="brand-mark"><img src="assets/images/logo/logo.svg" alt="" width="22" height="22" style="filter:brightness(0) invert(1)"></span>LittleBloom</a>' +
-          "</h5>" +
+            '<a class="navbar-brand d-flex align-items-center gap-2" href="index.html">' +
+              '<img src="assets/images/logo/logo.svg" alt="" width="30" height="30">' +
+              '<span class="brand-name"><span class="brand-name-dark">Little</span><span class="brand-name-coral">Bloom</span></span>' +
+            '</a>' +
+          '</h5>' +
           '<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>' +
-        "</div>" +
+        '</div>' +
         '<div class="offcanvas-body pt-3">' +
-          '<ul class="navbar-nav flex-column">' + mobileNavItems() + "</ul>" +
+          '<div class="mb-3">' +
+            '<form action="search.html" method="get" class="search-form-mobile">' +
+              '<div class="input-group">' +
+                '<input type="text" name="q" class="form-control" placeholder="Search baby & kids clothes...">' +
+                '<button class="btn btn-brand" type="submit"><i class="bi bi-search"></i></button>' +
+              '</div>' +
+            '</form>' +
+          '</div>' +
+          '<ul class="navbar-nav flex-column">' + mobileNavItems() + '</ul>' +
           '<div class="d-grid gap-2 mt-4 pt-3 border-top">' +
             '<a href="login.html" class="btn btn-brand"><i class="bi bi-person me-1"></i>Login / Register</a>' +
-            '<div class="d-flex align-items-center justify-content-between mt-2">' +
+            '<div class="d-flex align-items-center justify-content-between mt-3">' +
               '<div class="socials d-flex">' +
                 SOCIALS.map(function (s) {
                   return '<a href="' + s.href + '" aria-label="' + s.icon.replace("bi-", "") + '"><i class="bi ' + s.icon + '"></i></a>';
                 }).join("") +
-              "</div>" +
+              '</div>' +
               '<button type="button" class="btn btn-soft btn-sm rtl-toggle" id="rtlToggleMobile"><i class="bi bi-text-right me-1"></i>RTL / LTR</button>' +
-            "</div>" +
-          "</div>" +
-        "</div>" +
-      "</div>" +
-    "</header>";
+            '</div>' +
+          '</div>' +
+        '</div>' +
+      '</div>' +
+    '</header>';
 
   var host = document.getElementById("navbar-container");
-  if (host) host.innerHTML = headerHTML;
+  if (host) {
+    host.innerHTML = headerHTML;
+    var headerEl = host.querySelector(".site-header");
+    function syncNavHeight() {
+      if (headerEl) host.style.height = headerEl.offsetHeight + "px";
+    }
+    syncNavHeight();
+    window.addEventListener("resize", syncNavHeight);
 
-  /* Mobile submenu toggling (works with Bootstrap offcanvas) */
-  host.querySelectorAll("[data-mobile-caret]").forEach(function (caret) {
-    var link = caret.closest(".nav-link");
-    var sub = link.nextElementSibling;
-    link.addEventListener("click", function (e) {
-      e.preventDefault();
-      var shown = link.classList.toggle("show");
-      link.setAttribute("aria-expanded", shown ? "true" : "false");
-      if (sub) sub.style.display = shown ? "block" : "none";
+    try {
+      if (window.Cart) {
+        var cc = document.getElementById("cartCount");
+        if (cc) {
+          var n = window.Cart.count();
+          cc.textContent = n;
+          cc.classList.toggle("show", n > 0);
+        }
+      }
+      if (window.Wishlist) {
+        window.Wishlist.badge();
+      }
+    } catch (e) {}
+  }
+
+  /* Mobile submenu toggling */
+  if (host) {
+    host.querySelectorAll("[data-mobile-caret]").forEach(function (caret) {
+      var link = caret.closest(".nav-link");
+      var sub = link.nextElementSibling;
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+        var shown = link.classList.toggle("show");
+        link.setAttribute("aria-expanded", shown ? "true" : "false");
+        if (sub) sub.style.display = shown ? "block" : "none";
+      });
     });
-  });
+  }
 })();
