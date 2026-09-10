@@ -33,42 +33,13 @@
       label: "Home",
       href: "index.html",
       dropdown: [
-        { label: "Home 1 (Modern Store)", href: "index.html", icon: "bi-house-heart", desc: "Hero, Age Categories & Trending" },
-        { label: "Home 2 (Story & Boutique)", href: "home-2.html", icon: "bi-stars", desc: "Curated Collections & Nursery" }
+        { label: "Home 1", href: "index.html", icon: "bi-house-heart", desc: "Modern Store & Hero Showcase" },
+        { label: "Home 2", href: "home-2.html", icon: "bi-stars", desc: "Story & Curated Collections" }
       ]
     },
-    {
-      label: "Shop by Age",
-      href: "shop.html",
-      dropdown: [
-        { label: "👶 Newborn (0–3m)", href: "shop.html?age=newborn", icon: "bi-heart-pulse", desc: "Hospital bags, swaddles & first rompers" },
-        { label: "🍼 0–2 Years", href: "shop.html?age=0-2y", icon: "bi-balloon", desc: "Crawling sets, onesies & soft basics" },
-        { label: "🎈 3–5 Years", href: "shop.html?age=3-5y", icon: "bi-puzzle", desc: "Preschool play sets, twirl dresses & denim" },
-        { label: "🎒 6–9 Years", href: "shop.html?age=6-9y", icon: "bi-backpack", desc: "School wear, sporty jackets & active sets" },
-        { label: "🌟 10+ Years", href: "shop.html?age=10plus", icon: "bi-stars", desc: "Pre-teens & teens hoodies, cargo & chic styles" }
-      ]
-    },
-    {
-      label: "Categories",
-      href: "shop.html",
-      dropdown: [
-        { label: "All Products", href: "shop.html", icon: "bi-grid", desc: "Explore the full store catalog" },
-        { label: "New Arrivals", href: "shop.html?collection=new-arrivals", icon: "bi-sparkles", desc: "Fresh styles just landed" },
-        { label: "Dresses & Skirts", href: "shop.html?category=dresses", icon: "bi-flower1", desc: "Party, casual & twirl dresses" },
-        { label: "Tops & T-Shirts", href: "shop.html?category=tops", icon: "bi-tag", desc: "Graphic tees, shirts & hoodies" },
-        { label: "Matching Sets", href: "shop.html?category=sets", icon: "bi-collection", desc: "Coordinated sets & dungarees" },
-        { label: "School Uniforms", href: "shop.html?category=school", icon: "bi-award", desc: "Durable school shirts, pants & sweaters" },
-        { label: "Sleepwear & Pajamas", href: "shop.html?category=sleepwear", icon: "bi-moon-stars", desc: "Organic bamboo & fleece sleepwear" },
-        { label: "Gift Hampers & Boxes", href: "gifting.html", icon: "bi-gift", desc: "Pre-packaged baby shower gifts" }
-      ]
-    },
-    {
-      label: "Offers",
-      href: "sale.html",
-      hot: true
-    },
+    { label: "Shop", href: "shop.html" },
+    { label: "About Us", href: "about.html" },
     { label: "Size Guide", href: "size-guide.html" },
-    { label: "About", href: "about.html" },
     { label: "Blog", href: "blog.html" },
     { label: "Contact", href: "contact.html" }
   ];
@@ -82,7 +53,11 @@
   }
   function active(href) {
     var target = href.split("?")[0];
-    return target === currentFile();
+    var cur = currentFile();
+    if (target === cur) return true;
+    if (target === "blog.html" && cur === "blog-details.html") return true;
+    if (target === "shop.html" && (cur === "product-details.html" || cur === "sale.html" || cur === "gifting.html")) return true;
+    return false;
   }
   function childActive(item) {
     if (item.dropdown) return item.dropdown.some(function (c) { return active(c.href); });
@@ -101,10 +76,13 @@
   function navItems() {
     return NAV.map(function (item) {
       var hot = item.hot ? '<span class="badge-hot">SALE</span>' : "";
+      var isCurActive = active(item.href) || childActive(item);
       if (item.dropdown) {
         return (
-          '<li class="nav-item dropdown">' +
-            '<a class="nav-link dropdown-toggle' + (active(item.href) || childActive(item) ? " active" : "") + '" href="' + item.href + '" data-bs-toggle="dropdown" aria-expanded="false">' + item.label + hot + '</a>' +
+          '<li class="nav-item dropdown custom-nav-dropdown' + (isCurActive ? " active" : "") + '">' +
+            '<a class="nav-link dropdown-toggle' + (isCurActive ? " active" : "") + '" href="#" role="button" data-nav-dropdown aria-expanded="false" aria-haspopup="true" title="' + item.label + '">' +
+              item.label + hot + '<i class="bi bi-chevron-down ms-1 dropdown-chevron"></i>' +
+            '</a>' +
             '<ul class="dropdown-menu shadow-lg border-0">' +
               item.dropdown.map(function (c) {
                 return '<li><a class="dropdown-item' + (active(c.href) ? " active" : "") + '" href="' + c.href + '">' + iconTag(c) + '<div><div class="item-title">' + c.label + '</div>' + descTag(c) + '</div></a></li>';
@@ -131,22 +109,28 @@
       var target = href.split("?")[0];
       var isActive = target === currentFile() || childActive(item);
       var act = isActive ? " active" : "";
-      var link = '<a class="nav-link' + act + '" href="' + href + '">' + item.label + hot + "</a>";
       var hasSub = item.dropdown;
 
       if (hasSub) {
         return (
-          '<li class="nav-item">' +
-            link.replace("</a>", '<i class="bi bi-chevron-down caret" data-mobile-caret></i></a>') +
-            '<ul class="dropdown-menu">' +
+          '<li class="nav-item mobile-dropdown-item">' +
+            '<div class="d-flex align-items-center justify-content-between w-100">' +
+              '<a class="nav-link flex-grow-1' + act + '" href="#" data-mobile-toggle role="button">' +
+                item.label + hot +
+              '</a>' +
+              '<button type="button" class="btn-mobile-toggle icon-btn border-0" data-mobile-toggle aria-label="Toggle ' + item.label + ' menu" style="width:36px;height:36px;font-size:0.85rem">' +
+                '<i class="bi bi-chevron-down"></i>' +
+              '</button>' +
+            '</div>' +
+            '<ul class="dropdown-menu mobile-sub-menu shadow-sm" style="display:none;padding:0.4rem 0.5rem;border-radius:1rem;margin:0.25rem 0 0.5rem 0.75rem">' +
               item.dropdown.map(function (c) {
-                return '<li><a class="dropdown-item" href="' + c.href + '">' + iconTag(c) + "<span>" + c.label + "</span></a></li>";
+                return '<li><a class="dropdown-item' + (active(c.href) ? " active" : "") + '" href="' + c.href + '">' + iconTag(c) + '<div style="margin-left:0.5rem"><div class="item-title" style="font-size:0.88rem">' + c.label + '</div>' + descTag(c) + '</div></a></li>';
               }).join("") +
             "</ul>" +
-          "</li>"
+          '</li>'
         );
       }
-      return '<li class="nav-item">' + link + "</li>";
+      return '<li class="nav-item"><a class="nav-link' + act + '" href="' + href + '">' + item.label + hot + '</a></li>';
     }).join("");
   }
 
@@ -185,10 +169,7 @@
           '</a>' +
 
           /* Right actions */
-          '<div class="d-flex align-items-center gap-2 order-lg-3">' +
-            '<a href="search.html" class="icon-btn d-none d-sm-inline-flex" title="Search products" aria-label="Search">' +
-              '<i class="bi bi-search"></i>' +
-            '</a>' +
+          '<div class="d-flex align-items-center gap-2 order-lg-3 header-actions">' +
             '<a href="wishlist.html" class="icon-btn position-relative" title="My Wishlist" aria-label="Wishlist">' +
               '<i class="bi bi-heart"></i><span class="count-badge" id="wishCount">0</span>' +
             '</a>' +
@@ -284,16 +265,83 @@
     } catch (e) {}
   }
 
-  /* Mobile submenu toggling (works with Bootstrap offcanvas) */
+  /* Dropdown event handling (Desktop & Mobile) */
   if (host) {
-    host.querySelectorAll("[data-mobile-caret]").forEach(function (caret) {
-      var link = caret.closest(".nav-link");
-      var sub = link.nextElementSibling;
-      link.addEventListener("click", function (e) {
+    // Desktop Dropdown click handling
+    host.querySelectorAll("[data-nav-dropdown]").forEach(function (toggle) {
+      var parent = toggle.closest(".dropdown");
+      var menu = parent ? parent.querySelector(".dropdown-menu") : null;
+
+      toggle.addEventListener("click", function (e) {
         e.preventDefault();
-        var shown = link.classList.toggle("show");
-        link.setAttribute("aria-expanded", shown ? "true" : "false");
-        if (sub) sub.style.display = shown ? "block" : "none";
+        e.stopPropagation();
+
+        var isOpen = menu && menu.classList.contains("show");
+
+        // Close all dropdowns in nav
+        host.querySelectorAll(".dropdown-menu.show").forEach(function (m) {
+          m.classList.remove("show");
+        });
+        host.querySelectorAll("[data-nav-dropdown]").forEach(function (t) {
+          t.setAttribute("aria-expanded", "false");
+          t.classList.remove("show");
+          if (t.closest(".dropdown")) t.closest(".dropdown").classList.remove("show");
+        });
+
+        // Toggle clicked dropdown
+        if (!isOpen && menu) {
+          menu.classList.add("show");
+          toggle.classList.add("show");
+          toggle.setAttribute("aria-expanded", "true");
+          if (parent) parent.classList.add("show");
+        }
+      });
+    });
+
+    // Close desktop dropdown when clicking anywhere outside
+    document.addEventListener("click", function (e) {
+      if (!e.target.closest("#navbar-container .navbar-nav .dropdown")) {
+        host.querySelectorAll(".dropdown-menu.show").forEach(function (m) {
+          m.classList.remove("show");
+        });
+        host.querySelectorAll("[data-nav-dropdown]").forEach(function (t) {
+          t.setAttribute("aria-expanded", "false");
+          t.classList.remove("show");
+          if (t.closest(".dropdown")) t.closest(".dropdown").classList.remove("show");
+        });
+      }
+    });
+
+    // Close desktop dropdown on Escape key
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") {
+        host.querySelectorAll(".dropdown-menu.show").forEach(function (m) {
+          m.classList.remove("show");
+        });
+        host.querySelectorAll("[data-nav-dropdown]").forEach(function (t) {
+          t.setAttribute("aria-expanded", "false");
+          t.classList.remove("show");
+          if (t.closest(".dropdown")) t.closest(".dropdown").classList.remove("show");
+        });
+      }
+    });
+
+    // Mobile submenu toggling
+    host.querySelectorAll("[data-mobile-toggle]").forEach(function (btn) {
+      var itemWrap = btn.closest(".mobile-dropdown-item") || btn.closest(".mobile-split-nav");
+      var sub = itemWrap ? itemWrap.querySelector(".mobile-sub-menu") : null;
+      var icon = itemWrap ? itemWrap.querySelector("i.bi-chevron-down") : null;
+      btn.addEventListener("click", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (sub) {
+          var isShown = sub.style.display === "block";
+          sub.style.display = isShown ? "none" : "block";
+          if (icon) {
+            icon.style.transform = isShown ? "rotate(0deg)" : "rotate(180deg)";
+            icon.style.transition = "transform 0.2s ease";
+          }
+        }
       });
     });
   }

@@ -77,35 +77,65 @@
     <section class="section">
       <div class="container">
 
-        <!-- How to measure -->
-        <div class="row g-4 mb-5">
-          <div class="col-lg-4">
-            <div class="summary-card h-100" style="position:static">
-              <div class="text-center mb-3"><i class="bi bi-rulers fs-1" style="color:var(--brand)"></i></div>
-              <h5 class="text-center">1. Height</h5>
-              <p class="text-muted mb-0 text-center">Stand your little one against a wall, mark the top of the head and measure from floor to mark.</p>
+        <!-- How to measure steps -->
+        <div class="section-head center reveal">
+          <span class="eyebrow">Measurement Guide</span>
+          <h2 class="section-title">How to Measure Your Child</h2>
+          <p class="section-subtitle">Take accurate measurements in 3 quick steps before choosing a size.</p>
+          <div class="divider-brand"></div>
+        </div>
+
+        <div class="row g-4 mb-5 align-items-stretch">
+          <div class="col-md-4 d-flex reveal">
+            <div class="measure-step-card w-100">
+              <div class="step-icon-wrap">
+                <i class="bi bi-rulers"></i>
+                <span class="step-num">1</span>
+              </div>
+              <h5>Height</h5>
+              <p>Stand your little one against a flat wall, mark the top of their head, and measure barefoot from floor to mark.</p>
             </div>
           </div>
-          <div class="col-lg-4">
-            <div class="summary-card h-100" style="position:static">
-              <div class="text-center mb-3"><i class="bi bi-graph-up-arrow fs-1" style="color:var(--brand)"></i></div>
-              <h5 class="text-center">2. Chest</h5>
-              <p class="text-muted mb-0 text-center">Measure around the fullest part of the chest, keeping the tape comfortably loose.</p>
+          <div class="col-md-4 d-flex reveal delay-1">
+            <div class="measure-step-card w-100">
+              <div class="step-icon-wrap">
+                <i class="bi bi-person-bounding-box"></i>
+                <span class="step-num">2</span>
+              </div>
+              <h5>Chest &amp; Waist</h5>
+              <p>Measure around the fullest part of the chest and natural waistline, keeping tape level and comfortably relaxed.</p>
             </div>
           </div>
-          <div class="col-lg-4">
-            <div class="summary-card h-100" style="position:static">
-              <div class="text-center mb-3"><i class="bi bi-bounding-box fs-1" style="color:var(--brand)"></i></div>
-              <h5 class="text-center">3. Weight</h5>
-              <p class="text-muted mb-0 text-center">Weigh without nappies or shoes. When between sizes, we recommend sizing up.</p>
+          <div class="col-md-4 d-flex reveal delay-2">
+            <div class="measure-step-card w-100">
+              <div class="step-icon-wrap">
+                <i class="bi bi-speedometer"></i>
+                <span class="step-num">3</span>
+              </div>
+              <h5>Weight</h5>
+              <p>Weigh without nappies or shoes. When in between sizes, we always recommend sizing up for longer wear.</p>
             </div>
           </div>
         </div>
 
+        <!-- Fast Stage Navigation -->
+        <div class="size-guide-nav reveal">
+          <a href="#newborn" class="size-nav-chip"><span>👶</span> Newborn (0–3m)</a>
+          <a href="#toddler" class="size-nav-chip"><span>🍼</span> 0–2 Years</a>
+          <a href="#preschool" class="size-nav-chip"><span>🎈</span> 3–5 Years</a>
+          <a href="#kids" class="size-nav-chip"><span>🎒</span> 6–9 Years</a>
+          <a href="#teens" class="size-nav-chip"><span>🌟</span> 10+ Years</a>
+        </div>
+
         <!-- 1. Newborn chart -->
-        <div class="summary-card mb-4" style="position:static">
-          <h4 class="font-heading mb-1"><span class="me-2">👶</span>Newborn (0–3 Months)</h4>
-          <p class="text-muted">Designed with delicate snaps and extra stretch for newborn comfort.</p>
+        <div class="size-chart-card reveal" id="newborn">
+          <div class="size-chart-head">
+            <div>
+              <h4><span>👶</span> Newborn (0–3 Months)</h4>
+              <p>Designed with delicate snaps, fold-over cuffs and extra stretch for gentle newborn comfort.</p>
+            </div>
+            <span class="badge-age"><i class="bi bi-shield-check"></i> Hospital Ready</span>
+          </div>
           <div class="table-responsive">
             <table class="table table-neo align-middle mb-0">
               <thead>
@@ -120,9 +150,14 @@
         </div>
 
         <!-- 2. 0-2 Years chart -->
-        <div class="summary-card mb-4" style="position:static">
-          <h4 class="font-heading mb-1"><span class="me-2">🍼</span>0–2 Years (Baby &amp; Toddler)</h4>
-          <p class="text-muted">Flexible sizing with room for diapers and active crawling.</p>
+        <div class="size-chart-card reveal" id="toddler">
+          <div class="size-chart-head">
+            <div>
+              <h4><span>🍼</span> 0–2 Years (Baby &amp; Toddler)</h4>
+              <p>Flexible sizing with roomy diaper gussets and soft elastic hems for active crawling &amp; walking.</p>
+            </div>
+            <span class="badge-age"><i class="bi bi-stars"></i> Play Friendly</span>
+          </div>
           <div class="table-responsive">
             <table class="table table-neo align-middle mb-0">
               <thead>
@@ -140,9 +175,14 @@
         </div>
 
         <!-- 3. 3-5 Years chart -->
-        <div class="summary-card mb-4" style="position:static">
-          <h4 class="font-heading mb-1"><span class="me-2">🎈</span>3–5 Years (Preschool)</h4>
-          <p class="text-muted">Reinforced seams and easy elastic waists for independent dressing.</p>
+        <div class="size-chart-card reveal" id="preschool">
+          <div class="size-chart-head">
+            <div>
+              <h4><span>🎈</span> 3–5 Years (Preschool)</h4>
+              <p>Reinforced knees, tagless seams and easy elastic waists for independent daily dressing.</p>
+            </div>
+            <span class="badge-age"><i class="bi bi-emoji-smile"></i> Self Dressing</span>
+          </div>
           <div class="table-responsive">
             <table class="table table-neo align-middle mb-0">
               <thead>
@@ -158,9 +198,14 @@
         </div>
 
         <!-- 4. 6-9 Years chart -->
-        <div class="summary-card mb-4" style="position:static">
-          <h4 class="font-heading mb-1"><span class="me-2">🎒</span>6–9 Years (Kids &amp; Primary School)</h4>
-          <p class="text-muted">Durable fabrics tailored for school, sports and outdoor adventures.</p>
+        <div class="size-chart-card reveal" id="kids">
+          <div class="size-chart-head">
+            <div>
+              <h4><span>🎒</span> 6–9 Years (Kids &amp; Primary School)</h4>
+              <p>Durable, colorfast fabrics tailored for school schedules, sports and daily outdoor playground action.</p>
+            </div>
+            <span class="badge-age"><i class="bi bi-mortarboard"></i> School Uniform</span>
+          </div>
           <div class="table-responsive">
             <table class="table table-neo align-middle mb-0">
               <thead>
@@ -177,9 +222,14 @@
         </div>
 
         <!-- 5. 10+ Years chart -->
-        <div class="summary-card mb-5" style="position:static">
-          <h4 class="font-heading mb-1"><span class="me-2">🌟</span>10+ Years (Pre-Teens &amp; Teens)</h4>
-          <p class="text-muted">Modern streetwear and relaxed fits designed for growing teens (10–16 Years).</p>
+        <div class="size-chart-card mb-5 reveal" id="teens">
+          <div class="size-chart-head">
+            <div>
+              <h4><span>🌟</span> 10+ Years (Pre-Teens &amp; Teens)</h4>
+              <p>Modern streetwear silhouettes and relaxed proportions designed for rapidly growing pre-teens and teens (10–16 Years).</p>
+            </div>
+            <span class="badge-age"><i class="bi bi-fire"></i> Streetwear</span>
+          </div>
           <div class="table-responsive">
             <table class="table table-neo align-middle mb-0">
               <thead>
@@ -197,24 +247,26 @@
         </div>
 
         <!-- Tips + CTA -->
-        <div class="row g-4 align-items-center">
-          <div class="col-lg-6">
-            <div class="summary-card h-100" style="position:static">
-              <h5 class="font-heading mb-3">Pro Tips for a Perfect Fit</h5>
-              <ul class="check-list">
-                <li><i class="bi bi-check-circle-fill"></i>Measure a freshly washed, worn item your child already fits to compare sizes.</li>
-                <li><i class="bi bi-check-circle-fill"></i>Kids grow fast — plan for a little extra room in outerwear.</li>
-                <li><i class="bi bi-check-circle-fill"></i>Pyjamas and sleepwear should fit snugly for safety.</li>
-                <li><i class="bi bi-check-circle-fill"></i>Not sure? Chat with us — we love helping with fits.</li>
+        <div class="row g-4 align-items-stretch">
+          <div class="col-lg-6 d-flex reveal">
+            <div class="summary-card w-100 p-4" style="position:static">
+              <h5 class="font-heading mb-3"><i class="bi bi-lightbulb text-warning me-2"></i>Pro Tips for a Perfect Fit</h5>
+              <ul class="check-list mb-0">
+                <li><i class="bi bi-check-circle-fill"></i>Measure a freshly washed, worn item your child already fits to compare dimensions accurately.</li>
+                <li><i class="bi bi-check-circle-fill"></i>Kids grow quickly — choose a little extra room for seasonal coats &amp; jackets.</li>
+                <li><i class="bi bi-check-circle-fill"></i>Pyjamas and sleepwear should fit snugly and securely for safety.</li>
+                <li><i class="bi bi-check-circle-fill"></i>Still in doubt? Drop us a line anytime via live chat or email.</li>
               </ul>
             </div>
           </div>
-          <div class="col-lg-6">
-            <div class="summary-card h-100 text-center" style="position:static">
-              <div class="empty-emoji mb-3" aria-hidden="true">👕</div>
-              <h5 class="font-heading">Still between sizes?</h5>
-              <p class="text-muted">Exchange it for free within 30 days, no questions asked.</p>
-              <a href="return-policy.html" class="btn btn-outline-brand">View Returns Policy</a>
+          <div class="col-lg-6 d-flex reveal delay-1">
+            <div class="summary-card w-100 text-center p-4 d-flex flex-column justify-content-center" style="position:static">
+              <div class="empty-emoji mb-2" aria-hidden="true">👕</div>
+              <h5 class="font-heading mb-2">Still between sizes?</h5>
+              <p class="text-muted mb-3">Exchange any unworn item for free within 30 days — no hassle, no questions asked.</p>
+              <div class="mt-auto">
+                <a href="return-policy.html" class="btn btn-outline-brand">View Returns Policy</a>
+              </div>
             </div>
           </div>
         </div>

@@ -798,17 +798,17 @@
           '</a>' +
         '</div>' +
         '<div class="pc-body">' +
-          '<div class="d-flex justify-content-between align-items-center mb-1 flex-wrap gap-1">' +
-            '<span class="pc-cat">' + p.catLabel + ' · <strong class="text-brand">' + p.ageLabel + '</strong></span>' +
-            '<div class="pc-colors d-flex align-items-center gap-1">' + colorDots(p) + '</div>' +
+          '<div class="pc-cat-row">' +
+            '<span class="pc-cat" title="' + p.catLabel + ' · ' + p.ageLabel + '">' + p.catLabel + ' · <strong class="text-brand">' + p.ageLabel + '</strong></span>' +
+            '<div class="pc-colors">' + colorDots(p) + '</div>' +
           '</div>' +
           '<h3 class="pc-name"><a href="product-details.html?id=' + p.id + '">' + p.name + '</a></h3>' +
-          '<div class="pc-rating d-flex align-items-center mb-2">' +
-            '<span class="stars me-1">' + starsHTML(p.rating) + '</span>' +
+          '<div class="pc-rating">' +
+            '<span class="stars">' + starsHTML(p.rating) + '</span>' +
             '<span class="review-count">(' + p.reviews + ')</span>' +
           '</div>' +
           discountHTML +
-          '<div class="pc-foot mt-3">' +
+          '<div class="pc-foot">' +
             '<button type="button" class="btn btn-brand w-100 js-addtocart" data-id="' + p.id + '">' +
               '<i class="bi bi-bag-plus me-1"></i>Add to Cart' +
             '</button>' +
