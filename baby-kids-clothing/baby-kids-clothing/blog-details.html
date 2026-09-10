@@ -67,19 +67,19 @@
           <ol class="breadcrumb justify-content-start mb-3">
             <li class="breadcrumb-item"><a href="index.html">Home</a></li>
             <li class="breadcrumb-item"><a href="blog.html">Journal</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Article</li>
+            <li class="breadcrumb-item active" aria-current="page" id="postCrumb">Article</li>
           </ol>
         </nav>
-        <span class="pill mint"><i class="bi bi-bookmark-heart me-1"></i>Style · Featured</span>
-        <h1 class="display-5 font-heading fw-bold mt-3 mb-3">10 Everyday Outfits That Make Mornings Easier</h1>
+        <span class="pill mint" id="postPill"><i class="bi bi-bookmark-heart me-1"></i>Style · Featured</span>
+        <h1 class="display-5 font-heading fw-bold mt-3 mb-3" id="postTitle">10 Everyday Outfits That Make Mornings Easier</h1>
         <div class="meta d-flex gap-4 small text-muted mb-4">
           <span><i class="bi bi-person me-1"></i>Maya Blooms</span>
-          <span><i class="bi bi-calendar3 me-1"></i>Aug 08, 2026</span>
-          <span><i class="bi bi-clock me-1"></i>6 min read</span>
+          <span id="postDate"><i class="bi bi-calendar3 me-1"></i>Aug 08, 2026</span>
+          <span id="postRead"><i class="bi bi-clock me-1"></i>6 min read</span>
           <span><i class="bi bi-chat-dots me-1"></i>12 comments</span>
         </div>
         <div class="img-frame">
-          <img src="assets/images/scenes/post-main.jpg" alt="Parent and child enjoying a sunny day">
+          <img src="assets/images/scenes/post-main.jpg" id="articleMainImg" alt="Parent and child enjoying a sunny day">
         </div>
       </div>
     </section>
@@ -87,7 +87,7 @@
     <!-- ============ ARTICLE BODY ============ -->
     <section class="section-sm">
       <div class="container" style="max-width:860px">
-        <div class="article-content">
+        <div class="article-content" id="articleBody">
           <p>If mornings in your house feel like a relay race, you're in good company. The good news? A little planning turns "what should I wear?" into a five-second decision. Here are ten combos our own little ones reach for on repeat — soft, practical and almost impossible to get wrong.</p>
 
           <h3 class="font-heading">1. The Classic Romper</h3>
@@ -145,7 +145,7 @@
         </div>
 
         <!-- Tags -->
-        <div class="my-4">
+        <div class="my-4" id="postTags">
           <span class="tag-pill"><i class="bi bi-tag"></i>styling</span>
           <span class="tag-pill">everyday</span>
           <span class="tag-pill">kids-fashion</span>

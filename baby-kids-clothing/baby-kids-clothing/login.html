@@ -48,6 +48,12 @@
 </head>
 <body>
 
+  <!-- Theme + RTL / LTR toggles -->
+  <div style="position:fixed;top:1rem;right:1rem;z-index:1050;display:flex;gap:.5rem;direction:ltr">
+    <button type="button" class="theme-toggle icon-btn" aria-label="Toggle dark / light mode" title="Toggle dark / light mode"><i class="bi bi-moon-stars"></i><i class="bi bi-sun"></i></button>
+    <button type="button" class="rtl-toggle icon-btn" aria-label="Toggle RTL / LTR layout" title="Toggle RTL / LTR"><i class="bi bi-text-right"></i></button>
+  </div>
+
   <!-- Preloader -->
   <div class="preloader" id="preloader">
     <div class="spinner-brand"><img src="assets/images/logo/logo.svg" alt="" width="30" height="30"></div>
@@ -64,8 +70,25 @@
           <div class="col-md-8 col-lg-6 col-xl-5">
             <div class="summary-card auth-card" style="position:static">
               <div class="text-center mb-4">
-                <div class="auth-logo mx-auto mb-3"><img src="assets/images/logo/logo.svg" alt="LittleBloom" width="44" height="44"></div>
-                <h3 class="font-heading fw-bold">Welcome Back!</h3>
+                <a href="index.html" class="auth-brand-link d-inline-flex align-items-center gap-2 mb-3 text-decoration-none" aria-label="LittleBloom Home" title="Back to LittleBloom Home">
+                  <span class="brand-logo-wrap">
+                    <svg class="brand-logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="38" height="38" aria-hidden="true">
+                      <defs>
+                        <linearGradient id="lbLoginLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                          <stop offset="0%" stop-color="#FF8A65"/>
+                          <stop offset="100%" stop-color="#F4511E"/>
+                        </linearGradient>
+                        <filter id="lbLoginLogoGlow" x="-10%" y="-10%" width="120%" height="120%">
+                          <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#F4511E" flood-opacity="0.25"/>
+                        </filter>
+                      </defs>
+                      <rect x="3" y="3" width="58" height="58" rx="18" ry="18" fill="url(#lbLoginLogoGrad)" filter="url(#lbLoginLogoGlow)"/>
+                      <rect x="18" y="18" width="28" height="28" rx="9" ry="9" fill="#FFFFFF"/>
+                    </svg>
+                  </span>
+                  <span class="brand-name"><span class="brand-name-dark">Little</span><span class="brand-name-coral">Bloom</span></span>
+                </a>
+                <h3 class="font-heading fw-bold mb-1">Welcome Back!</h3>
                 <p class="text-muted small mb-0">Sign in to continue shopping.</p>
               </div>
 

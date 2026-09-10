@@ -2,13 +2,27 @@
    LITTLE BLOOM — Shop / Sale / Search Filters Engine
    --------------------------------------------------------------------------
    File   : assets/js/filters.js
-   Notes  : Powers shop.html (sidebar filters + sort + pagination),
+   Notes  : Powers shop.html (sidebar filters + age chips + sort + pagination),
             sale.html (sale-only mode) and search.html (?q= query).
+            Organized by 5 clear Age Categories:
+            Newborn (0-3m), 0-2 Years, 3-5 Years, 6-9 Years, 10+ Years.
    ========================================================================== */
 (function () {
   "use strict";
 
   var PAGE_SIZE = 9;
+
+  /* Legacy parameter normalizer */
+  function normalizeAge(val) {
+    if (!val) return "";
+    var v = val.toLowerCase();
+    if (v === "newborn" || v === "0-3m") return "newborn";
+    if (v === "baby" || v === "toddler" || v === "0-2y" || v === "0-2years" || v === "0-24m") return "0-2y";
+    if (v === "kids3-5" || v === "3-5y" || v === "3-5years" || v === "preschool") return "3-5y";
+    if (v === "kids6-8" || v === "kids6-9" || v === "6-9y" || v === "6-9years" || v === "school") return "6-9y";
+    if (v === "10plus" || v === "10-14y" || v === "10-16y" || v === "teens" || v === "kids10+" || v === "10+") return "10plus";
+    return v;
+  }
 
   /* ------------------------------------------------------------
      State
@@ -41,7 +55,16 @@
       }
       if (state.onSaleOnly && !p.discount) return false;
       if (state.category.length && state.category.indexOf(p.category) === -1) return false;
-      if (state.age.length && state.age.indexOf(p.age) === -1) return false;
+      
+      // Age filtering with normalization
+      if (state.age.length) {
+        var pAgeNorm = normalizeAge(p.age);
+        var matchAge = state.age.some(function (a) {
+          return normalizeAge(a) === pAgeNorm;
+        });
+        if (!matchAge) return false;
+      }
+
       if (state.gender.length && state.gender.indexOf(p.gender) === -1) return false;
       if (state.size.length && !p.sizes.some(function (s) { return state.size.indexOf(s) > -1; })) return false;
       if (state.color.length && !p.colors.some(function (c) { return state.color.indexOf(c.n.toLowerCase()) > -1; })) return false;
@@ -95,6 +118,19 @@
     wrap.innerHTML = html;
   }
 
+  function syncAgeChips() {
+    var chips = document.querySelectorAll(".shop-age-chip");
+    if (!chips.length) return;
+    chips.forEach(function (chip) {
+      var val = chip.getAttribute("data-age-filter");
+      if (!val || val === "all") {
+        chip.classList.toggle("active", state.age.length === 0);
+      } else {
+        chip.classList.toggle("active", state.age.indexOf(val) > -1);
+      }
+    });
+  }
+
   function apply() {
     var filtered = sortList(filterList());
     var total = filtered.length;
@@ -106,7 +142,7 @@
     var grid = document.getElementById("shopGrid");
     if (grid) {
       if (!slice.length) {
-        grid.innerHTML = '<div class="empty-state col-12"><div class="empty-emoji">🧸</div><h3>No products found</h3><p>We couldn\'t find anything matching your filters. Try adjusting them.</p><button type="button" class="btn btn-brand js-reset-filters"><i class="bi bi-arrow-counterclockwise me-1"></i>Reset Filters</button></div>';
+        grid.innerHTML = '<div class="empty-state col-12"><div class="empty-emoji">🧸</div><h3>No products found</h3><p>We couldn\'t find anything matching your filters. Try adjusting your age or category filters.</p><button type="button" class="btn btn-brand js-reset-filters"><i class="bi bi-arrow-counterclockwise me-1"></i>Reset Filters</button></div>';
       } else {
         grid.innerHTML = slice.map(function (p) { return Kids.renderCard(p); }).join("");
       }
@@ -116,8 +152,16 @@
     if (count) count.textContent = total;
 
     var countNote = document.getElementById("resultNote");
-    if (countNote) countNote.textContent = "Showing " + (total ? start + 1 : 0) + "–" + Math.min(start + PAGE_SIZE, total) + " of " + total + " products";
+    if (countNote) {
+      var ageFilterLabel = "";
+      if (state.age.length === 1) {
+        var ag = Kids.AGE_GROUPS.filter(function (x) { return x.id === state.age[0]; })[0];
+        if (ag) ageFilterLabel = " in " + ag.label + " (" + ag.range + ")";
+      }
+      countNote.textContent = "Showing " + (total ? start + 1 : 0) + "–" + Math.min(start + PAGE_SIZE, total) + " of " + total + " products" + ageFilterLabel;
+    }
 
+    syncAgeChips();
     renderPagination(total);
   }
 
@@ -190,6 +234,7 @@
         });
       });
     }
+
     /* fallback sort select (if present) */
     var sortSel = document.getElementById("sortSelect");
     if (sortSel) {
@@ -197,6 +242,29 @@
         state.sort = this.value;
         state.page = 1;
         apply();
+      });
+    }
+
+    /* Top Age Filter Chips */
+    var ageChips = document.querySelectorAll(".shop-age-chip");
+    if (ageChips.length) {
+      ageChips.forEach(function (chip) {
+        chip.addEventListener("click", function () {
+          var val = chip.getAttribute("data-age-filter");
+          if (!val || val === "all") {
+            state.age = [];
+          } else {
+            state.age = [normalizeAge(val)];
+          }
+          // Sync sidebar checkboxes
+          if (panel) {
+            panel.querySelectorAll('.f-check[data-filter="age"]').forEach(function (c) {
+              c.checked = state.age.indexOf(c.value) > -1;
+            });
+          }
+          state.page = 1;
+          apply();
+        });
       });
     }
 
@@ -227,7 +295,7 @@
     }
 
     /* reset */
-    panel.querySelectorAll(".js-reset-filters").forEach(function (btn) {
+    document.querySelectorAll(".js-reset-filters").forEach(function (btn) {
       btn.addEventListener("click", resetFilters);
     });
     var resetBtn = document.getElementById("resetFiltersBtn");
@@ -262,29 +330,34 @@
     var params = new URLSearchParams(window.location.search);
     var panel = document.getElementById("filterPanel");
 
-    function checkParam(name, filterKey, values) {
+    function checkParam(name, filterKey) {
       var val = params.get(name);
       if (!val) return;
       var list = val.split(",");
       list.forEach(function (v) {
+        var normVal = filterKey === "age" ? normalizeAge(v) : v;
         if (filterKey === "category" || filterKey === "age" || filterKey === "gender" ||
             filterKey === "size" || filterKey === "color" || filterKey === "collection") {
-          state[filterKey].push(v);
+          if (state[filterKey].indexOf(normVal) === -1) {
+            state[filterKey].push(normVal);
+          }
         }
         if (panel) {
-          panel.querySelectorAll('.f-check[data-filter="' + filterKey + '"][value="' + v + '"]').forEach(function (c) {
-            c.checked = true;
+          panel.querySelectorAll('.f-check[data-filter="' + filterKey + '"]').forEach(function (c) {
+            if (c.value === normVal || (filterKey === "age" && normalizeAge(c.value) === normVal)) {
+              c.checked = true;
+            }
           });
         }
       });
     }
 
-    checkParam("category", "category", null);
-    checkParam("age", "age", null);
-    checkParam("gender", "gender", null);
-    checkParam("collection", "collection", null);
-    checkParam("size", "size", null);
-    checkParam("color", "color", null);
+    checkParam("category", "category");
+    checkParam("age", "age");
+    checkParam("gender", "gender");
+    checkParam("collection", "collection");
+    checkParam("size", "size");
+    checkParam("color", "color");
 
     var q = params.get("q");
     if (q) {

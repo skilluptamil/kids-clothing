@@ -141,6 +141,39 @@
       });
 
       Kids.initScrollers();
+
+      /* ------------------------------------------------------------
+         8b. HOME LIVE AGE TAB EXPLORER (#homeAgeGrid)
+         ------------------------------------------------------------ */
+      var homeAgeGrid = document.getElementById("homeAgeGrid");
+      var homeAgeTabs = document.getElementById("homeAgeTabs");
+      var homeExploreBtn = document.getElementById("homeExploreAgeBtn");
+
+      if (homeAgeGrid) {
+        var renderHomeAge = function (age) {
+          var list;
+          if (!age || age === "all") {
+            list = Kids.PRODUCTS.slice(0, 8);
+            if (homeExploreBtn) homeExploreBtn.href = "shop.html";
+          } else {
+            list = Kids.PRODUCTS.filter(function (p) { return p.age === age; }).slice(0, 8);
+            if (homeExploreBtn) homeExploreBtn.href = "shop.html?age=" + age;
+          }
+          Kids.renderGrid(homeAgeGrid, list);
+        };
+        renderHomeAge("all");
+
+        if (homeAgeTabs) {
+          homeAgeTabs.querySelectorAll("[data-home-age]").forEach(function (btn) {
+            btn.addEventListener("click", function () {
+              var selectedAge = btn.getAttribute("data-home-age");
+              homeAgeTabs.querySelectorAll("[data-home-age]").forEach(function (b) { b.classList.remove("active"); });
+              btn.classList.add("active");
+              renderHomeAge(selectedAge);
+            });
+          });
+        }
+      }
     }
 
     /* ------------------------------------------------------------
@@ -246,6 +279,11 @@
           "</div>" +
         "</div>";
 
+      /* update breadcrumb & title */
+      var crumb = document.getElementById("pdCrumb");
+      if (crumb) crumb.textContent = p.name;
+      document.title = p.name + " — LittleBloom Kids Clothing";
+
       /* gallery thumbs */
       host.querySelectorAll("#pdThumbs img").forEach(function (thumb) {
         thumb.addEventListener("click", function () {
@@ -299,12 +337,13 @@
           "</ul>";
       }
 
-      /* related products */
+      /* related products (prioritize matching age group) */
       var related = document.getElementById("relatedGrid");
       if (related) {
-        var sameCat = Kids.PRODUCTS.filter(function (x) { return x.category === p.category && x.id !== p.id; });
-        var others = Kids.PRODUCTS.filter(function (x) { return x.category !== p.category && x.id !== p.id; });
-        var rel = sameCat.concat(others).slice(0, 4);
+        var sameAge = Kids.PRODUCTS.filter(function (x) { return x.age === p.age && x.id !== p.id; });
+        var sameCat = Kids.PRODUCTS.filter(function (x) { return x.category === p.category && x.age !== p.age && x.id !== p.id; });
+        var others = Kids.PRODUCTS.filter(function (x) { return x.category !== p.category && x.age !== p.age && x.id !== p.id; });
+        var rel = sameAge.concat(sameCat).concat(others).slice(0, 4);
         Kids.renderGrid(related, rel);
       }
     }

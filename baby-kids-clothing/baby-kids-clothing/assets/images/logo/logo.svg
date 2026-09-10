@@ -8,6 +8,8 @@
       <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#F4511E" flood-opacity="0.25"/>
     </filter>
   </defs>
+  <!-- Outer warm coral squircle with smooth rounded corners -->
   <rect x="3" y="3" width="58" height="58" rx="18" ry="18" fill="url(#lbGrad)" filter="url(#lbGlow)"/>
+  <!-- Inner smooth white rounded aperture/squircle -->
   <rect x="18" y="18" width="28" height="28" rx="9" ry="9" fill="#FFFFFF"/>
 </svg>

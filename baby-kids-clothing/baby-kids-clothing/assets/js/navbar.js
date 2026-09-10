@@ -4,8 +4,7 @@
    File   : assets/js/navbar.js
    Usage  : Include <div id="navbar-container"></div> in the page body, then
             load this script at the end of the body (before footer.js/main.js).
-   Notes  : Edit the NAV data below to customize the menu. The active link is
-            detected automatically from the URL.
+   Notes  : Features dedicated "Shop by Age" and categorized "Shop" menus.
    ========================================================================== */
 (function () {
   "use strict";
@@ -34,24 +33,42 @@
       label: "Home",
       href: "index.html",
       dropdown: [
-        { label: "Home 1 (Modern Store)", href: "index.html", icon: "bi-house-heart", desc: "Hero, categories & trending" },
-        { label: "Home 2 (Story & Boutique)", href: "home-2.html", icon: "bi-stars", desc: "Curated collections & nursery" }
+        { label: "Home 1 (Modern Store)", href: "index.html", icon: "bi-house-heart", desc: "Hero, Age Categories & Trending" },
+        { label: "Home 2 (Story & Boutique)", href: "home-2.html", icon: "bi-stars", desc: "Curated Collections & Nursery" }
       ]
     },
-    { label: "About", href: "about.html" },
     {
-      label: "Shop",
+      label: "Shop by Age",
       href: "shop.html",
       dropdown: [
-        { label: "All Products", href: "shop.html", icon: "bi-grid", desc: "Explore full catalog" },
-        { label: "New Arrivals", href: "shop.html?collection=new-arrivals", icon: "bi-sparkles", desc: "Fresh styles just in" },
-        { label: "Baby & Newborn", href: "shop.html?age=newborn", icon: "bi-emoji-smile", desc: "0-12 months essentials" },
-        { label: "Toddlers (1-3Y)", href: "shop.html?age=toddler", icon: "bi-balloon", desc: "Everyday play outfits" },
-        { label: "Kids (3-8Y)", href: "shop.html?age=kids3-5", icon: "bi-backpack", desc: "Dresses, sets & school" },
-        { label: "Special Offers", href: "sale.html", icon: "bi-tag", desc: "Up to 40% OFF" }
+        { label: "👶 Newborn (0–3m)", href: "shop.html?age=newborn", icon: "bi-heart-pulse", desc: "Hospital bags, swaddles & first rompers" },
+        { label: "🍼 0–2 Years", href: "shop.html?age=0-2y", icon: "bi-balloon", desc: "Crawling sets, onesies & soft basics" },
+        { label: "🎈 3–5 Years", href: "shop.html?age=3-5y", icon: "bi-puzzle", desc: "Preschool play sets, twirl dresses & denim" },
+        { label: "🎒 6–9 Years", href: "shop.html?age=6-9y", icon: "bi-backpack", desc: "School wear, sporty jackets & active sets" },
+        { label: "🌟 10+ Years", href: "shop.html?age=10plus", icon: "bi-stars", desc: "Pre-teens & teens hoodies, cargo & chic styles" }
       ]
     },
+    {
+      label: "Categories",
+      href: "shop.html",
+      dropdown: [
+        { label: "All Products", href: "shop.html", icon: "bi-grid", desc: "Explore the full store catalog" },
+        { label: "New Arrivals", href: "shop.html?collection=new-arrivals", icon: "bi-sparkles", desc: "Fresh styles just landed" },
+        { label: "Dresses & Skirts", href: "shop.html?category=dresses", icon: "bi-flower1", desc: "Party, casual & twirl dresses" },
+        { label: "Tops & T-Shirts", href: "shop.html?category=tops", icon: "bi-tag", desc: "Graphic tees, shirts & hoodies" },
+        { label: "Matching Sets", href: "shop.html?category=sets", icon: "bi-collection", desc: "Coordinated sets & dungarees" },
+        { label: "School Uniforms", href: "shop.html?category=school", icon: "bi-award", desc: "Durable school shirts, pants & sweaters" },
+        { label: "Sleepwear & Pajamas", href: "shop.html?category=sleepwear", icon: "bi-moon-stars", desc: "Organic bamboo & fleece sleepwear" },
+        { label: "Gift Hampers & Boxes", href: "gifting.html", icon: "bi-gift", desc: "Pre-packaged baby shower gifts" }
+      ]
+    },
+    {
+      label: "Offers",
+      href: "sale.html",
+      hot: true
+    },
     { label: "Size Guide", href: "size-guide.html" },
+    { label: "About", href: "about.html" },
     { label: "Blog", href: "blog.html" },
     { label: "Contact", href: "contact.html" }
   ];
@@ -69,11 +86,6 @@
   }
   function childActive(item) {
     if (item.dropdown) return item.dropdown.some(function (c) { return active(c.href); });
-    if (item.mega) {
-      return item.mega.cols.some(function (col) {
-        return col.links.some(function (l) { return active(l.href); });
-      });
-    }
     return false;
   }
   function iconTag(c) {
@@ -127,7 +139,7 @@
           '<li class="nav-item">' +
             link.replace("</a>", '<i class="bi bi-chevron-down caret" data-mobile-caret></i></a>') +
             '<ul class="dropdown-menu">' +
-              links.map(function (c) {
+              item.dropdown.map(function (c) {
                 return '<li><a class="dropdown-item" href="' + c.href + '">' + iconTag(c) + "<span>" + c.label + "</span></a></li>";
               }).join("") +
             "</ul>" +
@@ -139,32 +151,36 @@
   }
 
   /* ------------------------------------------------------------
+     Brand Logo SVG (consistent, zero-dependency, immune to file path issues)
+     ------------------------------------------------------------ */
+  var BRAND_LOGO_SVG =
+    '<span class="brand-logo-wrap">' +
+      '<svg class="brand-logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="36" height="36" aria-hidden="true">' +
+        '<defs>' +
+          '<linearGradient id="lbNavLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">' +
+            '<stop offset="0%" stop-color="#FF8A65"/>' +
+            '<stop offset="100%" stop-color="#F4511E"/>' +
+          '</linearGradient>' +
+          '<filter id="lbNavLogoGlow" x="-10%" y="-10%" width="120%" height="120%">' +
+            '<feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#F4511E" flood-opacity="0.25"/>' +
+          '</filter>' +
+        '</defs>' +
+        '<rect x="3" y="3" width="58" height="58" rx="18" ry="18" fill="url(#lbNavLogoGrad)" filter="url(#lbNavLogoGlow)"/>' +
+        '<rect x="18" y="18" width="28" height="28" rx="9" ry="9" fill="#FFFFFF"/>' +
+      '</svg>' +
+    '</span>';
+
+  /* ------------------------------------------------------------
      Header markup
      ------------------------------------------------------------ */
   var headerHTML =
     '<header class="site-header" id="siteHeader">' +
-      /* -------- Top Announcement Bar -------- */
-      '<div class="top-announcement-bar">' +
-        '<div class="container d-flex justify-content-between align-items-center">' +
-          '<div class="announcement-left d-flex align-items-center gap-2">' +
-            '<span class="announcement-pill"><i class="bi bi-stars"></i> SPECIAL OFFER</span>' +
-            '<span class="announcement-text">Spring Super Sale: Up to <strong>40% OFF</strong> + Free Shipping on Orders $50+</span>' +
-          '</div>' +
-          '<div class="announcement-right d-none d-lg-flex align-items-center gap-3">' +
-            '<a href="contact.html" class="topbar-link"><i class="bi bi-headset me-1"></i>Support</a>' +
-            '<a href="faq.html" class="topbar-link"><i class="bi bi-truck me-1"></i>Track Order</a>' +
-            '<span class="topbar-divider"></span>' +
-            '<span class="topbar-currency"><i class="bi bi-globe2 me-1"></i>USD ($)</span>' +
-          '</div>' +
-        '</div>' +
-      '</div>' +
-
       /* -------- Main navbar -------- */
       '<nav class="navbar navbar-expand-lg main-nav sticky-top" id="mainNav" aria-label="Main navigation">' +
         '<div class="container">' +
           /* Brand logo */
           '<a class="navbar-brand d-flex align-items-center gap-2" href="index.html" aria-label="LittleBloom Home">' +
-            '<span class="brand-logo-wrap"><img src="assets/images/logo/logo.svg" alt="LittleBloom Logo" width="36" height="36" class="brand-logo-img"></span>' +
+            BRAND_LOGO_SVG +
             '<span class="brand-name"><span class="brand-name-dark">Little</span><span class="brand-name-coral">Bloom</span></span>' +
           '</a>' +
 
@@ -188,6 +204,9 @@
             '<button type="button" class="rtl-toggle icon-btn d-none d-sm-inline-flex" id="rtlToggle" title="Toggle RTL / LTR" aria-label="Toggle RTL layout">' +
               '<i class="bi bi-text-right"></i>' +
             '</button>' +
+            '<a href="shop.html" class="btn btn-brand btn-sm d-none d-lg-inline-flex align-items-center gap-1 ms-1 header-shop-btn" aria-label="Shop Collection">' +
+              '<i class="bi bi-bag-check-fill"></i><span>Shop Now</span>' +
+            '</a>' +
             '<button class="navbar-toggler border-0 d-lg-none icon-btn ms-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileNav" aria-controls="mobileNav" aria-label="Toggle navigation">' +
               '<i class="bi bi-list fs-4"></i>' +
             '</button>' +
@@ -205,7 +224,7 @@
         '<div class="offcanvas-header border-bottom">' +
           '<h5 class="offcanvas-title mb-0" id="mobileNavLabel">' +
             '<a class="navbar-brand d-flex align-items-center gap-2" href="index.html">' +
-              '<img src="assets/images/logo/logo.svg" alt="" width="30" height="30">' +
+              BRAND_LOGO_SVG +
               '<span class="brand-name"><span class="brand-name-dark">Little</span><span class="brand-name-coral">Bloom</span></span>' +
             '</a>' +
           '</h5>' +
@@ -222,7 +241,8 @@
           '</div>' +
           '<ul class="navbar-nav flex-column">' + mobileNavItems() + '</ul>' +
           '<div class="d-grid gap-2 mt-4 pt-3 border-top">' +
-            '<a href="login.html" class="btn btn-brand"><i class="bi bi-person me-1"></i>Login / Register</a>' +
+            '<a href="shop.html" class="btn btn-brand mb-1"><i class="bi bi-bag-check-fill me-2"></i>Shop Collection</a>' +
+            '<a href="login.html" class="btn btn-soft"><i class="bi bi-person me-1"></i>Login / Register</a>' +
             '<div class="d-flex align-items-center justify-content-between mt-3">' +
               '<div class="socials d-flex">' +
                 SOCIALS.map(function (s) {
@@ -238,6 +258,7 @@
 
   var host = document.getElementById("navbar-container");
   if (host) {
+    host.style.minHeight = "72px";
     host.innerHTML = headerHTML;
     var headerEl = host.querySelector(".site-header");
     function syncNavHeight() {
@@ -245,7 +266,9 @@
     }
     syncNavHeight();
     window.addEventListener("resize", syncNavHeight);
+    window.addEventListener("load", syncNavHeight);
 
+    // Initial badge update if modules loaded
     try {
       if (window.Cart) {
         var cc = document.getElementById("cartCount");
@@ -261,7 +284,7 @@
     } catch (e) {}
   }
 
-  /* Mobile submenu toggling */
+  /* Mobile submenu toggling (works with Bootstrap offcanvas) */
   if (host) {
     host.querySelectorAll("[data-mobile-caret]").forEach(function (caret) {
       var link = caret.closest(".nav-link");

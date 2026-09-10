@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Shop all baby &amp; kids clothing at LittleBloom — filter by category, age, size, color and price. Newborn to kids 8 years, dresses, uniforms, sets and more.">
-  <meta name="keywords" content="kids clothing shop, baby clothes, boys, girls, school uniform, sale">
+  <meta name="description" content="Shop all baby &amp; kids clothing at LittleBloom — organized by age group: Newborn (0-3m), 0-2 Years, 3-5 Years, 6-9 Years, and 10+ Years. Filter by age, category, size, color and price.">
+  <meta name="keywords" content="kids clothing shop, baby clothes, newborn, toddler, kids 3-5, kids 6-9, teens 10+, school uniform, sale">
   <meta name="author" content="LittleBloom">
-  <title>Shop — All Kids Clothing | LittleBloom</title>
+  <title>Shop — All Kids Clothing by Age Group | LittleBloom</title>
   <link rel="icon" type="image/svg+xml" href="assets/images/logo/favicon.svg">
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Shop All — LittleBloom Kids Clothing">
-  <meta property="og:description" content="Filter and sort the full LittleBloom kids collection.">
+  <meta property="og:title" content="Shop All — LittleBloom Kids Clothing Store">
+  <meta property="og:description" content="Filter and shop by age group: Newborn, 0-2y, 3-5y, 6-9y, and 10+ years.">
   <meta property="og:image" content="assets/images/logo/logo.svg">
   <meta property="og:site_name" content="LittleBloom">
 
@@ -67,9 +67,9 @@
         <span class="blob b2"></span>
       </div>
       <div class="container position-relative" style="z-index:2">
-        <span class="hero-badge"><i class="bi bi-bag"></i> The Full Collection</span>
-        <h1 class="mt-3">Shop All Kids Clothing</h1>
-        <p>Every favorite, all in one place. Filter by age, size, color and price to find the perfect fit.</p>
+        <span class="hero-badge"><i class="bi bi-bag-heart"></i> Complete Online Store</span>
+        <h1 class="mt-3">Shop Clothing by Age Group</h1>
+        <p>Explore outfits curated for every stage of childhood: Newborn (0–3m), 0–2 Years, 3–5 Years, 6–9 Years, and 10+ Years.</p>
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="index.html">Home</a></li>
@@ -82,6 +82,23 @@
     <!-- ============ SHOP CONTENT ============ -->
     <section class="section">
       <div class="container">
+
+        <!-- Quick Age Group Fast Filter Strip -->
+        <div class="shop-age-fast-bar mb-4 p-3 rounded-4 bg-surface-2 border shadow-xs">
+          <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-2">
+            <span class="fw-bold small text-muted"><i class="bi bi-funnel text-brand me-1"></i>Filter by Age Category:</span>
+            <span class="badge bg-light text-brand small fw-bold">Click to filter instantly</span>
+          </div>
+          <div class="d-flex flex-wrap gap-2" id="shopAgeChips">
+            <button type="button" class="btn btn-sm shop-age-chip active" data-age-filter="all">All Ages</button>
+            <button type="button" class="btn btn-sm shop-age-chip" data-age-filter="newborn">👶 Newborn (0–3m)</button>
+            <button type="button" class="btn btn-sm shop-age-chip" data-age-filter="0-2y">🍼 0–2 Years</button>
+            <button type="button" class="btn btn-sm shop-age-chip" data-age-filter="3-5y">🎈 3–5 Years</button>
+            <button type="button" class="btn btn-sm shop-age-chip" data-age-filter="6-9y">🎒 6–9 Years</button>
+            <button type="button" class="btn btn-sm shop-age-chip" data-age-filter="10plus">🌟 10+ Years</button>
+          </div>
+        </div>
+
         <div class="row g-4">
 
           <!-- Sidebar filters -->
@@ -93,35 +110,33 @@
               </div>
 
               <div id="filterPanel">
-                <!-- Category -->
+                <!-- Age Group Widget -->
                 <div class="filter-widget">
-                  <h6>Category <button type="button" class="clear-f js-reset-filters">Reset</button></h6>
+                  <h6>Age Group <button type="button" class="clear-f js-reset-filters">Reset</button></h6>
                   <ul class="filter-list">
-                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="category" value="tops"> Tops</label></li>
-                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="category" value="bottoms"> Bottoms</label></li>
-                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="category" value="dresses"> Dresses</label></li>
-                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="category" value="tshirts"> T-Shirts</label></li>
-                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="category" value="shirts"> Shirts</label></li>
-                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="category" value="shorts"> Shorts</label></li>
-                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="category" value="pants"> Pants</label></li>
-                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="category" value="sets"> Sets</label></li>
-                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="category" value="sleepwear"> Sleepwear</label></li>
-                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="category" value="party"> Party Wear</label></li>
-                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="category" value="school"> School Wear</label></li>
-                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="category" value="accessories"> Accessories</label></li>
-                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="category" value="gifts"> Gift Boxes</label></li>
+                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="age" value="newborn"> 👶 Newborn (0–3m)</label></li>
+                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="age" value="0-2y"> 🍼 0–2 Years (Baby &amp; Toddler)</label></li>
+                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="age" value="3-5y"> 🎈 3–5 Years (Preschool)</label></li>
+                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="age" value="6-9y"> 🎒 6–9 Years (Kids)</label></li>
+                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="age" value="10plus"> 🌟 10+ Years (Pre-Teens &amp; Teens)</label></li>
                   </ul>
                 </div>
 
-                <!-- Age -->
+                <!-- Category -->
                 <div class="filter-widget">
-                  <h6>Age Group</h6>
+                  <h6>Category</h6>
                   <ul class="filter-list">
-                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="age" value="newborn"> Newborn (0–12m)</label></li>
-                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="age" value="baby"> Baby (0–24m)</label></li>
-                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="age" value="toddler"> Toddler (1–3y)</label></li>
-                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="age" value="kids3-5"> Kids (3–5y)</label></li>
-                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="age" value="kids6-8"> Kids (6–8y)</label></li>
+                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="category" value="tops"> Tops &amp; Hoodies</label></li>
+                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="category" value="bottoms"> Bottoms &amp; Pants</label></li>
+                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="category" value="dresses"> Dresses &amp; Skirts</label></li>
+                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="category" value="tshirts"> T-Shirts</label></li>
+                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="category" value="shirts"> Shirts</label></li>
+                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="category" value="sets"> Outfit Sets</label></li>
+                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="category" value="sleepwear"> Sleepwear</label></li>
+                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="category" value="party"> Party Wear</label></li>
+                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="category" value="school"> School Uniforms</label></li>
+                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="category" value="accessories"> Accessories</label></li>
+                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="category" value="gifts"> Gift Hampers</label></li>
                   </ul>
                 </div>
 
@@ -131,27 +146,33 @@
                   <ul class="filter-list">
                     <li><label><input type="checkbox" class="form-check-input f-check" data-filter="gender" value="boys"> Boys</label></li>
                     <li><label><input type="checkbox" class="form-check-input f-check" data-filter="gender" value="girls"> Girls</label></li>
-                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="gender" value="unisex"> Unisex</label></li>
+                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="gender" value="unisex"> Unisex / All</label></li>
                   </ul>
                 </div>
 
                 <!-- Size -->
                 <div class="filter-widget">
-                  <h6>Size</h6>
+                  <h6>Size by Age</h6>
                   <ul class="filter-list">
+                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="size" value="0-1m"> 0–1 month (Newborn)</label></li>
                     <li><label><input type="checkbox" class="form-check-input f-check" data-filter="size" value="0-3m"> 0–3 months</label></li>
                     <li><label><input type="checkbox" class="form-check-input f-check" data-filter="size" value="3-6m"> 3–6 months</label></li>
                     <li><label><input type="checkbox" class="form-check-input f-check" data-filter="size" value="6-9m"> 6–9 months</label></li>
                     <li><label><input type="checkbox" class="form-check-input f-check" data-filter="size" value="9-12m"> 9–12 months</label></li>
                     <li><label><input type="checkbox" class="form-check-input f-check" data-filter="size" value="12-18m"> 12–18 months</label></li>
                     <li><label><input type="checkbox" class="form-check-input f-check" data-filter="size" value="18-24m"> 18–24 months</label></li>
-                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="size" value="2Y"> 2 years</label></li>
                     <li><label><input type="checkbox" class="form-check-input f-check" data-filter="size" value="3Y"> 3 years</label></li>
                     <li><label><input type="checkbox" class="form-check-input f-check" data-filter="size" value="4Y"> 4 years</label></li>
                     <li><label><input type="checkbox" class="form-check-input f-check" data-filter="size" value="5Y"> 5 years</label></li>
                     <li><label><input type="checkbox" class="form-check-input f-check" data-filter="size" value="6Y"> 6 years</label></li>
                     <li><label><input type="checkbox" class="form-check-input f-check" data-filter="size" value="7Y"> 7 years</label></li>
                     <li><label><input type="checkbox" class="form-check-input f-check" data-filter="size" value="8Y"> 8 years</label></li>
+                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="size" value="9Y"> 9 years</label></li>
+                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="size" value="10Y"> 10 years</label></li>
+                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="size" value="11Y"> 11 years</label></li>
+                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="size" value="12Y"> 12 years</label></li>
+                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="size" value="13-14Y"> 13–14 years</label></li>
+                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="size" value="15-16Y"> 15–16 years</label></li>
                   </ul>
                 </div>
 
@@ -187,14 +208,12 @@
                   <ul class="filter-list">
                     <li><label><input type="checkbox" class="form-check-input f-check" data-filter="collection" value="new-arrivals"> New Arrivals</label></li>
                     <li><label><input type="checkbox" class="form-check-input f-check" data-filter="collection" value="bestsellers"> Best Sellers</label></li>
-                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="collection" value="summer"> Summer</label></li>
-                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="collection" value="winter"> Winter</label></li>
-                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="collection" value="school"> School</label></li>
-                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="collection" value="party"> Party</label></li>
-                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="collection" value="festive"> Festive</label></li>
-                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="collection" value="gifts"> Gift Boxes</label></li>
-                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="collection" value="matching"> Matching Sets</label></li>
-                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="collection" value="sleepwear"> Sleepwear</label></li>
+                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="collection" value="summer"> Summer 2026</label></li>
+                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="collection" value="winter"> Cozy Winter</label></li>
+                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="collection" value="school"> School &amp; Campus</label></li>
+                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="collection" value="party"> Celebration &amp; Party</label></li>
+                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="collection" value="gifts"> Gift Sets</label></li>
+                    <li><label><input type="checkbox" class="form-check-input f-check" data-filter="collection" value="matching"> Matching Sibling Sets</label></li>
                   </ul>
                 </div>
 
@@ -262,15 +281,15 @@
 
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/navbar.js?v=2"></script>
-  <script src="assets/js/footer.js?v=2"></script>
-  <script src="assets/js/products.js?v=2"></script>
-  <script src="assets/js/theme.js?v=2"></script>
-  <script src="assets/js/rtl.js?v=2"></script>
-  <script src="assets/js/cart.js?v=2"></script>
-  <script src="assets/js/wishlist.js?v=2"></script>
-  <script src="assets/js/filters.js?v=3"></script>
-  <script src="assets/js/validation.js?v=2"></script>
-  <script src="assets/js/main.js?v=2"></script>
+  <script src="assets/js/navbar.js?v=3"></script>
+  <script src="assets/js/footer.js?v=3"></script>
+  <script src="assets/js/products.js?v=3"></script>
+  <script src="assets/js/theme.js?v=3"></script>
+  <script src="assets/js/rtl.js?v=3"></script>
+  <script src="assets/js/cart.js?v=3"></script>
+  <script src="assets/js/wishlist.js?v=3"></script>
+  <script src="assets/js/filters.js?v=4"></script>
+  <script src="assets/js/validation.js?v=3"></script>
+  <script src="assets/js/main.js?v=3"></script>
 </body>
 </html>

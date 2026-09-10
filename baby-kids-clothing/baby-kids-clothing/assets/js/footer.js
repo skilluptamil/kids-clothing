@@ -43,6 +43,26 @@
     { label: "Terms of Service", href: "terms.html" }
   ];
 
+  /* ------------------------------------------------------------
+     Brand Logo SVG (identical to header)
+     ------------------------------------------------------------ */
+  var BRAND_LOGO_SVG =
+    '<span class="brand-logo-wrap">' +
+      '<svg class="brand-logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="36" height="36" aria-hidden="true">' +
+        '<defs>' +
+          '<linearGradient id="lbFootLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">' +
+            '<stop offset="0%" stop-color="#FF8A65"/>' +
+            '<stop offset="100%" stop-color="#F4511E"/>' +
+          '</linearGradient>' +
+          '<filter id="lbFootLogoGlow" x="-10%" y="-10%" width="120%" height="120%">' +
+            '<feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#F4511E" flood-opacity="0.25"/>' +
+          '</filter>' +
+        '</defs>' +
+        '<rect x="3" y="3" width="58" height="58" rx="18" ry="18" fill="url(#lbFootLogoGrad)" filter="url(#lbFootLogoGlow)"/>' +
+        '<rect x="18" y="18" width="28" height="28" rx="9" ry="9" fill="#FFFFFF"/>' +
+      '</svg>' +
+    '</span>';
+
   var footerHTML =
     '<footer class="site-footer">' +
       /* -------- Trust Perks Bar -------- */
@@ -75,10 +95,10 @@
           '<div class="row g-4">' +
             /* Brand */
             '<div class="col-lg-4 col-md-6 pe-lg-4">' +
-              '<div class="d-flex align-items-center gap-2 mb-3">' +
-                '<span class="brand-logo-wrap"><img src="assets/images/logo/logo.svg" alt="LittleBloom Logo" width="34" height="34" class="brand-logo-img"></span>' +
-                '<span class="font-heading fs-4 fw-bold"><span class="brand-name-dark">Little</span><span class="brand-name-coral">Bloom</span></span>' +
-              '</div>' +
+              '<a href="index.html" class="d-inline-flex align-items-center gap-2 mb-3 text-decoration-none navbar-brand footer-brand" aria-label="LittleBloom Home">' +
+                BRAND_LOGO_SVG +
+                '<span class="brand-name"><span class="brand-name-dark">Little</span><span class="brand-name-coral">Bloom</span></span>' +
+              '</a>' +
               '<p class="about-text text-muted mb-4">Thoughtfully designed, ultra-soft clothing for newborn to kids 8 years. Made with love, tested by real parents, and built for all everyday adventures.</p>' +
               '<div class="footer-social">' +
                 SOCIALS.map(function (s) {
@@ -151,6 +171,7 @@
   if (host) {
     host.innerHTML = footerHTML;
 
+    // Newsletter submit handling
     var nlForm = host.querySelector("#newsletterForm");
     if (nlForm) {
       nlForm.addEventListener("submit", function (e) {

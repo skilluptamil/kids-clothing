@@ -173,3 +173,28 @@
   border-color: #334155;
   color: #F8FAFC;
 }
+
+[data-bs-theme="dark"] .shop-age-fast-bar {
+  background: #162032;
+  border-color: #334155;
+}
+[data-bs-theme="dark"] .shop-age-chip,
+[data-bs-theme="dark"] .home-age-tab-btn {
+  background: #1E293B;
+  border-color: #334155;
+  color: #F8FAFC;
+}
+[data-bs-theme="dark"] .shop-age-chip:hover,
+[data-bs-theme="dark"] .home-age-tab-btn:hover {
+  background: rgba(255, 111, 89, 0.15);
+  border-color: var(--brand);
+  color: var(--brand);
+}
+[data-bs-theme="dark"] .age-card {
+  border-color: #334155;
+}
+[data-bs-theme="dark"] .age-card .age-card-badge {
+  background: rgba(15, 23, 42, 0.85);
+  color: #F8FAFC;
+}
+
