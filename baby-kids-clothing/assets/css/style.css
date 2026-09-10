@@ -666,6 +666,26 @@ p {
   box-shadow: 0 10px 24px rgba(255, 111, 89, 0.45);
 }
 
+/* Page Banner (Inner Pages) */
+.page-banner {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, #FFF6F2 0%, #FFFFFF 100%);
+  padding: 4.5rem 0 4rem;
+}
+.page-banner h1 {
+  font-size: clamp(2rem, 3.8vw, 3rem);
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  color: var(--ink);
+}
+.page-banner p {
+  color: var(--muted);
+  font-size: 1.05rem;
+  max-width: 650px;
+  margin-bottom: 1.25rem;
+}
+
 /* --------------------------------------------------------------------------
    7. HERO SECTIONS (HOMEPAGE 1 & 2)
    -------------------------------------------------------------------------- */
@@ -1398,8 +1418,8 @@ p {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: #F8FAFC;
-  border: 1px solid var(--border-soft);
+  background: var(--surface-2);
+  border: 1px solid var(--border-medium);
   color: var(--ink);
   display: inline-flex;
   align-items: center;
@@ -1410,7 +1430,7 @@ p {
 }
 .footer-social a:hover {
   background: var(--brand-gradient);
-  color: #FFFFFF;
+  color: #FFFFFF !important;
   border-color: transparent;
   transform: translateY(-3px);
 }
@@ -1614,4 +1634,252 @@ p {
   border-color: transparent;
   box-shadow: var(--shadow-brand);
 }
+
+/* --------------------------------------------------------------------------
+   17. CONTACT PAGE DESIGN
+   -------------------------------------------------------------------------- */
+.contact-channel-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-medium);
+  border-radius: 1.5rem;
+  padding: 2rem 1.6rem;
+  box-shadow: var(--shadow-xs);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.contact-channel-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+  border-color: #FFDACD;
+}
+.channel-icon-wrap {
+  width: 60px;
+  height: 60px;
+  border-radius: 20px;
+  background: var(--brand-surface);
+  color: var(--brand);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.65rem;
+  margin-bottom: 1.25rem;
+  transition: transform 0.3s ease;
+}
+.contact-channel-card:hover .channel-icon-wrap {
+  transform: scale(1.1) rotate(4deg);
+}
+.channel-icon-wrap.baby-blue {
+  background: var(--baby-blue-bg);
+  color: #0284C7;
+}
+.channel-icon-wrap.mint {
+  background: var(--mint-bg);
+  color: #059669;
+}
+.channel-icon-wrap.lavender {
+  background: var(--lavender-bg);
+  color: #7C3AED;
+}
+.contact-channel-card h5 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  margin-bottom: 0.35rem;
+}
+.contact-channel-card p {
+  font-size: 0.92rem;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+.channel-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  background: var(--surface-2);
+  color: var(--ink);
+  border: 1px solid var(--border-medium);
+  margin-top: auto;
+}
+
+/* Contact Main Section Cards */
+.contact-form-card,
+.contact-info-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-medium);
+  border-radius: 1.85rem;
+  padding: 2.75rem 2.4rem;
+  box-shadow: var(--shadow-sm);
+  height: 100%;
+}
+
+.contact-card-header {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border-soft);
+}
+.contact-header-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: var(--brand-surface);
+  color: var(--brand);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+.contact-card-header h3 {
+  font-size: 1.45rem;
+  font-weight: 800;
+  margin-bottom: 0.2rem;
+  letter-spacing: -0.02em;
+}
+
+/* Form Controls in Contact */
+.contact-form .form-label {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.45rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.contact-form .form-control,
+.contact-form .form-select {
+  border-radius: 0.85rem;
+  padding: 0.82rem 1.15rem;
+  font-size: 0.95rem;
+  border: 1.5px solid var(--border-medium);
+}
+.contact-form textarea.form-control {
+  min-height: 140px;
+  resize: vertical;
+}
+
+/* Interactive Map Frame */
+.contact-map-wrap {
+  border-radius: 1.25rem;
+  overflow: hidden;
+  border: 1px solid var(--border-medium);
+  box-shadow: var(--shadow-xs);
+  min-height: 250px;
+  height: 270px;
+  position: relative;
+  margin-bottom: 1.85rem;
+}
+.contact-map-wrap iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+/* Structured Contact Detail List */
+.contact-details-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+.contact-detail-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 1rem;
+  background: var(--surface-2);
+  border: 1px solid var(--border-soft);
+  transition: all 0.25s ease;
+}
+.contact-detail-item:hover {
+  background: #FFFFFF;
+  border-color: #FFDACD;
+  box-shadow: var(--shadow-xs);
+  transform: translateX(4px);
+}
+.contact-detail-item .item-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: var(--brand-surface);
+  color: var(--brand);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.contact-detail-item .item-info {
+  flex-grow: 1;
+}
+.contact-detail-item .item-label {
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 800;
+  color: var(--muted);
+  margin-bottom: 0.15rem;
+}
+.contact-detail-item .item-val {
+  font-size: 0.94rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.4;
+  margin: 0;
+}
+.contact-detail-item .item-val a {
+  color: var(--ink);
+}
+.contact-detail-item .item-val a:hover {
+  color: var(--brand);
+}
+
+/* FAQ Help Banner in Contact */
+.contact-faq-banner {
+  background: linear-gradient(135deg, #FFF5F1 0%, #FFFFFF 100%);
+  border: 1px solid #FFE4DB;
+  border-radius: 2rem;
+  padding: 3.5rem 3rem;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Value Guarantees Strip */
+.contact-guarantee-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  background: #FFFFFF;
+  border: 1px solid var(--border-medium);
+  border-radius: 1.25rem;
+  box-shadow: var(--shadow-xs);
+  height: 100%;
+}
+.contact-guarantee-card .g-icon {
+  font-size: 1.8rem;
+  line-height: 1;
+}
+.contact-guarantee-card strong {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--ink);
+  margin-bottom: 0.15rem;
+}
+.contact-guarantee-card span {
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
 

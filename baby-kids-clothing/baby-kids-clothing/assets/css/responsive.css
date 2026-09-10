@@ -178,3 +178,53 @@
   .h1-cat { min-height: 170px; padding: 1.4rem .8rem; }
   .h1-cat .h1-cat-icon { width: 56px; height: 56px; font-size: 1.5rem; }
 }
+
+/* Contact Page Responsive */
+@media (max-width: 991.98px) {
+  .contact-form-card,
+  .contact-info-card {
+    padding: 2.2rem 1.6rem;
+  }
+  .contact-faq-banner {
+    padding: 2.5rem 1.6rem;
+  }
+}
+@media (max-width: 575.98px) {
+  .contact-channel-card {
+    padding: 1.4rem 1rem;
+  }
+  .channel-icon-wrap {
+    width: 48px;
+    height: 48px;
+    font-size: 1.35rem;
+    margin-bottom: 0.85rem;
+  }
+  .contact-form-card,
+  .contact-info-card {
+    padding: 1.6rem 1.2rem;
+    border-radius: 1.35rem;
+  }
+  .contact-card-header {
+    gap: 0.75rem;
+    margin-bottom: 1.4rem;
+  }
+  .contact-header-icon {
+    width: 44px;
+    height: 44px;
+    font-size: 1.25rem;
+  }
+  .contact-map-wrap {
+    height: 220px;
+    min-height: 200px;
+  }
+  .contact-detail-item {
+    padding: 0.65rem 0.75rem;
+    gap: 0.75rem;
+  }
+  .contact-detail-item .item-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+  }
+}
+
