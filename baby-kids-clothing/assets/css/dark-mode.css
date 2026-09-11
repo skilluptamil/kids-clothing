@@ -845,6 +845,25 @@
   color: #FFA08F !important;
   border: 1px solid #334155 !important;
 }
+[data-bs-theme="dark"] .testimonial-card .who {
+  border-top-color: #334155 !important;
+}
+[data-bs-theme="dark"] .testimonial-card .who h6 {
+  color: #F8FAFC !important;
+}
+[data-bs-theme="dark"] .testimonial-card .who span {
+  color: #94A3B8 !important;
+}
+[data-bs-theme="dark"] .carousel-control-custom button {
+  background: #1E293B !important;
+  border-color: #334155 !important;
+  color: #F8FAFC !important;
+}
+[data-bs-theme="dark"] .carousel-control-custom button:hover {
+  background: var(--brand-gradient) !important;
+  border-color: transparent !important;
+  color: #FFFFFF !important;
+}
 [data-bs-theme="dark"] .match-card .match-media {
   background: #0F172A !important;
 }
@@ -1275,13 +1294,25 @@
 /* ==========================================================================
    21. BLOG CARDS IN DARK MODE
    ========================================================================== */
-[data-bs-theme="dark"] .blog-card {
+[data-bs-theme="dark"] .blog-card,
+[data-bs-theme="dark"] .featured-post,
+[data-bs-theme="dark"] .img-frame {
   background: #1E293B !important;
   border-color: #334155 !important;
   color: #F8FAFC !important;
 }
-[data-bs-theme="dark"] .blog-card:hover {
+[data-bs-theme="dark"] .blog-card:hover,
+[data-bs-theme="dark"] .featured-post:hover {
   border-color: var(--brand) !important;
+}
+[data-bs-theme="dark"] .featured-post .fp-media {
+  background: #162032 !important;
+}
+[data-bs-theme="dark"] .featured-post .fp-body h2 {
+  color: #F8FAFC !important;
+}
+[data-bs-theme="dark"] .featured-post:hover .fp-body h2 {
+  color: var(--brand) !important;
 }
 [data-bs-theme="dark"] .blog-card .thumb {
   background: #162032 !important;

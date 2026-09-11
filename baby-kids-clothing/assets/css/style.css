@@ -365,16 +365,28 @@ p {
 .section-head {
   margin-bottom: 2rem;
 }
-.section-head.center {
+.section-head.center,
+.section-head.text-center,
+.section-head[class*="text-center"] {
   text-align: center;
 }
-.section-head.center .section-subtitle {
+.section-head.center .section-subtitle,
+.section-head.text-center .section-subtitle,
+.section-head[class*="text-center"] .section-subtitle,
+.text-center .section-subtitle,
+.text-center > .section-subtitle {
   margin-inline: auto;
 }
-.section-head.center .eyebrow {
+.section-head.center .eyebrow,
+.section-head.text-center .eyebrow,
+.section-head[class*="text-center"] .eyebrow,
+.text-center .eyebrow {
   justify-content: center;
 }
-.section-head.center .eyebrow::before {
+.section-head.center .eyebrow::before,
+.section-head.text-center .eyebrow::before,
+.section-head[class*="text-center"] .eyebrow::before,
+.text-center .eyebrow::before {
   display: none;
 }
 
@@ -385,7 +397,9 @@ p {
   background: var(--brand-gradient);
   margin: 1rem 0 0;
 }
-.section-head.center .divider-brand {
+.section-head.center .divider-brand,
+.section-head.text-center .divider-brand,
+.text-center .divider-brand {
   margin-inline: auto;
 }
 
@@ -1501,12 +1515,14 @@ p {
    -------------------------------------------------------------------------- */
 .testimonial-card {
   background: #FFFFFF;
-  border: 1px solid var(--border-soft);
-  border-radius: 1.5rem;
-  padding: 2rem;
+  border: 1px solid var(--border-medium);
+  border-radius: 1.6rem;
+  padding: 2.2rem 1.85rem;
   box-shadow: var(--shadow-xs);
   height: 100%;
-  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .testimonial-card:hover {
   transform: translateY(-6px);
@@ -1514,26 +1530,88 @@ p {
   border-color: #FFDACD;
 }
 .testimonial-card .quote-icon {
-  font-size: 2rem;
-  color: var(--brand-light);
-  margin-bottom: 0.6rem;
+  font-size: 2.2rem;
+  color: var(--brand);
+  line-height: 1;
+  margin-bottom: 0.65rem;
+}
+.testimonial-card .stars {
+  display: flex;
+  gap: 0.25rem;
+  color: #F59E0B;
+  font-size: 0.95rem;
+  margin-bottom: 0.85rem;
 }
 .testimonial-card p {
-  font-size: 0.96rem;
-  color: #334155;
-  margin-bottom: 1.2rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--ink);
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
 }
 .testimonial-card .who {
   display: flex;
   align-items: center;
   gap: 0.85rem;
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-soft);
 }
 .testimonial-card .who img {
-  width: 52px;
-  height: 52px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid var(--brand-light);
+  border: 2px solid var(--brand-surface);
+  box-shadow: var(--shadow-xs);
+  flex-shrink: 0;
+}
+.testimonial-card .who h6 {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--ink);
+  margin-bottom: 0.15rem;
+}
+.testimonial-card .who span {
+  font-size: 0.8rem;
+  color: var(--muted);
+  display: block;
+}
+
+/* Custom Testimonial Carousel Controls */
+.carousel-control-custom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 2.25rem;
+}
+.carousel-control-custom button {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 1.5px solid var(--border-medium);
+  color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  box-shadow: var(--shadow-xs);
+  transition: all 0.25s ease;
+  cursor: pointer;
+  padding: 0;
+}
+.carousel-control-custom button:hover {
+  background: var(--brand-gradient);
+  color: #FFFFFF;
+  border-color: transparent;
+  box-shadow: var(--shadow-brand);
+  transform: translateY(-2px);
+}
+.carousel-control-custom button:active {
+  transform: translateY(0);
 }
 
 /* Instagram Community Grid */
@@ -2441,8 +2519,99 @@ ul.filter-list li,
 }
 
 /* --------------------------------------------------------------------------
-   18. BLOG CARDS & ALIGNMENT
+   18. BLOG CARDS, FEATURED HERO & ARTICLE FRAMES
    -------------------------------------------------------------------------- */
+/* Featured Post Hero Banner in Blog */
+.featured-post {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  background: #FFFFFF;
+  border: 1px solid var(--border-medium);
+  border-radius: 1.85rem;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  margin-bottom: 2.5rem;
+}
+.featured-post:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+  border-color: #FFDACD;
+}
+.featured-post .fp-media {
+  position: relative;
+  overflow: hidden;
+  background: var(--surface-2);
+  min-height: 280px;
+  max-height: 380px;
+}
+.featured-post .fp-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  display: block;
+}
+.featured-post:hover .fp-media img {
+  transform: scale(1.05);
+}
+.featured-post .fp-body {
+  padding: 2.5rem 2.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.featured-post .fp-body h2 {
+  font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1.3;
+  margin-bottom: 0.75rem;
+  transition: color 0.25s ease;
+}
+.featured-post:hover .fp-body h2 {
+  color: var(--brand);
+}
+.featured-post .fp-body p {
+  font-size: 0.96rem;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+/* Article Hero & In-Content Image Frames */
+.img-frame {
+  position: relative;
+  border-radius: 1.75rem;
+  overflow: hidden;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  max-height: 420px;
+  background: var(--surface-2);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-medium);
+  margin-bottom: 2rem;
+}
+.img-frame img,
+#articleMainImg {
+  width: 100%;
+  height: 100%;
+  max-height: 420px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+.caption {
+  font-size: 0.88rem;
+  color: var(--muted);
+  text-align: center;
+  margin-top: -1.25rem;
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+
 .blog-card {
   height: 100%;
   display: flex;
