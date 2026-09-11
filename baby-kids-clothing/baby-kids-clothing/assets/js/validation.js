@@ -59,15 +59,19 @@
   }
 
   /* ------------------------------------------------------------
-     Bind forms
+     Bind forms (excluding newsletter forms)
      ------------------------------------------------------------ */
   function bindForms() {
-    document.querySelectorAll("form[data-validate]").forEach(function (form) {
+    document.querySelectorAll("form[data-validate]:not(.newsletter-form):not(#newsletterForm)").forEach(function (form) {
+      if (form.dataset.lbBound) return;
+      form.dataset.lbBound = "1";
       form.addEventListener("submit", function (e) {
         e.preventDefault();
         var ok = validateForm(form);
         if (!ok) {
-          showToast("Check the form", "Please fix the highlighted fields.", "error");
+          if (typeof window.showToast === "function") {
+            window.showToast("Check the form", "Please fix the highlighted fields.", "error");
+          }
           return;
         }
         /* success */
@@ -77,7 +81,9 @@
             (form.dataset.success || "Thank you! Your submission has been received (demo).") + "</span>";
           successBox.scrollIntoView({ behavior: "smooth", block: "nearest" });
         }
-        showToast("Success", form.dataset.success || "Your request has been submitted.", "ok");
+        if (typeof window.showToast === "function") {
+          window.showToast("Success", form.dataset.success || "Your request has been submitted.", "ok");
+        }
         form.reset();
         form.querySelectorAll(".is-valid").forEach(function (el) { el.classList.remove("is-valid"); });
       });
@@ -115,56 +121,103 @@
   }
 
   /* ------------------------------------------------------------
-     Newsletter forms (footer + standalone sections)
+     Unified Newsletter Submission Handler
+     (Footer + sections + coming soon)
      ------------------------------------------------------------ */
+  function handleNewsletterSubmit(form, e) {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    var input = form.querySelector("input[type=email]") || form.querySelector("#nlEmail");
+    var msg = form.querySelector(".newsletter-msg") || form.querySelector("#newsletterMsg");
+    var btn = form.querySelector("button[type=submit]") || form.querySelector("button");
+
+    if (!input) return;
+
+    var val = input.value.trim();
+    if (!val || !EMAIL_RE.test(val)) {
+      input.focus();
+      input.classList.add("is-invalid");
+      input.classList.remove("is-valid");
+      if (msg) {
+        msg.className = "form-text newsletter-msg small mt-1 text-danger";
+        msg.innerHTML = '<span class="d-inline-flex align-items-center gap-1"><i class="bi bi-exclamation-circle-fill"></i> Please enter a valid email address.</span>';
+      }
+      if (typeof window.showToast === "function") {
+        window.showToast("Invalid Email", "Please enter a valid email address.", "error");
+      }
+      return;
+    }
+
+    input.classList.remove("is-invalid");
+    input.classList.add("is-valid");
+
+    var originalBtnHtml = btn ? btn.innerHTML : "";
+    if (btn && !btn.dataset.submitting) {
+      btn.dataset.submitting = "1";
+      btn.innerHTML = '<i class="bi bi-check2-circle me-1"></i>Subscribed!';
+      btn.classList.add("btn-success");
+      btn.disabled = true;
+    }
+
+    if (msg) {
+      msg.className = "form-text newsletter-msg small mt-1 text-success fw-bold";
+      msg.innerHTML = '<span class="d-inline-flex align-items-center flex-wrap gap-1"><i class="bi bi-check-circle-fill"></i> 🎉 Thank you for joining! Use code <span class="newsletter-badge">BLOOM15</span> for 15% off.</span>';
+    }
+
+    if (typeof window.showToast === "function") {
+      window.showToast("🎉 Welcome to LittleBloom!", "You're subscribed! Use discount code BLOOM15 for 15% off your order.", "ok");
+    }
+
+    input.value = "";
+
+    setTimeout(function () {
+      if (btn) {
+        btn.innerHTML = originalBtnHtml;
+        btn.classList.remove("btn-success");
+        btn.disabled = false;
+        delete btn.dataset.submitting;
+      }
+      if (input) {
+        input.classList.remove("is-valid");
+      }
+    }, 4000);
+  }
+
   function bindNewsletters() {
-    document.querySelectorAll("#newsletterForm").forEach(function (form) {
+    document.querySelectorAll("#newsletterForm, .newsletter-form, form.footer-newsletter, #comingSoonForm").forEach(function (form) {
+      if (form.dataset.nlBound) return;
+      form.dataset.nlBound = "1";
       form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        var input = form.querySelector("input[type=email]");
-        var msg = form.querySelector(".newsletter-msg");
-        if (!input || !EMAIL_RE.test(input.value.trim())) {
-          if (input) input.focus();
-          if (msg) { msg.classList.add("err"); msg.classList.remove("ok"); msg.textContent = "Please enter a valid email address."; }
-          return;
-        }
-        if (msg) { msg.classList.add("ok"); msg.classList.remove("err"); msg.textContent = "🎉 You're subscribed! Watch your inbox for little treats."; }
-        showToast("Subscribed!", "Welcome to the LittleBloom family.", "ok");
-        form.reset();
+        handleNewsletterSubmit(form, e);
       });
     });
   }
 
-  /* ------------------------------------------------------------
-     Coming-soon subscription form
-     ------------------------------------------------------------ */
-  function bindComingSoon() {
-    var form = document.getElementById("comingSoonForm");
-    if (!form) return;
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      var input = form.querySelector("input[type=email]");
-      if (!input || !EMAIL_RE.test(input.value.trim())) {
-        if (input) input.focus();
-        showToast("Check the form", "Please enter a valid email address.", "error");
-        return;
-      }
-      showToast("You're on the list!", "We'll let you know the moment we launch.", "ok");
-      form.reset();
-    });
-  }
+  // Delegated submission listener for dynamically injected footers or templates
+  document.addEventListener("submit", function (e) {
+    var form = e.target.closest("#newsletterForm, .newsletter-form, form.footer-newsletter, #comingSoonForm");
+    if (form) {
+      handleNewsletterSubmit(form, e);
+    }
+  }, true);
+
+  window.bindNewsletters = bindNewsletters;
+  window.handleNewsletterSubmit = handleNewsletterSubmit;
 
   /* ------------------------------------------------------------
      Init
      ------------------------------------------------------------ */
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", function () {
-      bindForms(); bindPasswordToggles(); bindNewsletters(); bindComingSoon();
+      bindForms(); bindPasswordToggles(); bindNewsletters();
     });
   } else {
-    bindForms(); bindPasswordToggles(); bindNewsletters(); bindComingSoon();
+    bindForms(); bindPasswordToggles(); bindNewsletters();
   }
   window.addEventListener("load", function () {
     bindPasswordToggles();
+    bindNewsletters();
   });
 })();

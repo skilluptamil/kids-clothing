@@ -54,7 +54,7 @@
   ];
 
   /* ------------------------------------------------------------------
-     CATALOG (Complete, rich catalog with all 5 age categories)
+     CATALOG (Complete, organized catalog with 100% matching images)
      ------------------------------------------------------------------ */
   var PRODUCTS = [
     /* === 1. NEWBORN (0–3 MONTHS) === */
@@ -74,7 +74,9 @@
       collection: "new-arrivals",
       sizes: ["0-1m", "0-3m"],
       colors: [{n:"Peach",h:"#ffd8c4"},{n:"Mint",h:"#d7f0e4"},{n:"Lavender",h:"#e6e0f8"}],
-      desc: "Ultra-soft organic cotton romper with easy snap buttons and a playful cloud print. Gentle on delicate newborn skin, day and night."
+      image: P + "18746931.jpg",
+      image2: P + "14474507.jpg",
+      desc: "Ultra-soft organic cotton baby romper with easy snap buttons and delicate ruffle trim. Gentle on delicate newborn skin, day and night."
     },
     {
       id: 7,
@@ -92,7 +94,9 @@
       collection: "winter",
       sizes: ["0-1m", "0-3m"],
       colors: [{n:"Mint",h:"#d7f0e4"},{n:"Beige",h:"#eee3d1"}],
-      desc: "Cozy fleece-lined romper with matching cap and booties. Fleece inner, cloud-soft outer, and easy front zip for hospital outings."
+      image: P + "11023372.jpg",
+      image2: P + "11258764.jpg",
+      desc: "Cozy fleece-lined winter snow romper with matching beanie and mittens. Keeps baby snug and protected during cold winter outings."
     },
     {
       id: 12,
@@ -110,11 +114,13 @@
       collection: "gifts",
       sizes: ["0-3m"],
       colors: [{n:"Peach",h:"#ffd8c4"},{n:"Mint",h:"#d7f0e4"}],
-      desc: "The complete baby-shower gift: 3 rompers, booties, mittens, swaddle and a keepsake gift box — beautifully wrapped and ready to gift."
+      image: P + "29790928.jpg",
+      image2: P + "19652886.jpg",
+      desc: "The complete baby-shower gift hamper: 3 organic rompers, cuddly plush teddy bear, knitted booties, swaddle, and a keepsake gift box."
     },
     {
       id: 18,
-      name: "Cardigan & Cap Knit Set",
+      name: "Cardigan & Beanie Knit Set",
       category: "sets",
       catLabel: "Winter Sets",
       age: "newborn",
@@ -127,12 +133,14 @@
       badge: "limited",
       collection: "winter",
       sizes: ["0-1m", "0-3m"],
-      colors: [{n:"Beige",h:"#eee3d1"},{n:"Mint",h:"#d7f0e4"}],
-      desc: "Hand-knit-look cardigan with matching beanie and booties. Warmth and cuteness crafted with hypoallergenic pure combed cotton."
+      colors: [{n:"White",h:"#f8f4ef"},{n:"Mint",h:"#d7f0e4"}],
+      image: P + "14657994.jpg",
+      image2: P + "18033632.jpg",
+      desc: "Soft ribbed cotton baby onesie with an adorable bear knit beanie cap. Breathable combed cotton for all-day warmth and comfort."
     },
     {
       id: 25,
-      name: "Organic Swaddle Romper Set",
+      name: "Holiday Print Sleepsuit",
       category: "sleepwear",
       catLabel: "Sleepwear",
       age: "newborn",
@@ -143,14 +151,16 @@
       rating: 4.9,
       reviews: 118,
       badge: "new",
-      collection: "new-arrivals",
+      collection: "sleepwear",
       sizes: ["0-1m", "0-3m"],
       colors: [{n:"White",h:"#f8f4ef"},{n:"Lavender",h:"#e6e0f8"}],
-      desc: "Two-way zip sleepsuit with mitten cuffs and coordinating stretchy swaddle blanket. Designed for peaceful, cozy newborn sleep."
+      image: P + "14476216.jpg",
+      image2: P + "19652886.jpg",
+      desc: "Festive deer and holiday motif pure cotton sleepsuit with fold-over mitten cuffs and two-way zipper for easy midnight changes."
     },
     {
       id: 30,
-      name: "Kimono Newborn Bodysuit (3-Pack)",
+      name: "Avocado Organic Cotton Romper",
       category: "tops",
       catLabel: "Bodysuits",
       age: "newborn",
@@ -163,8 +173,10 @@
       badge: "bestseller",
       collection: "bestsellers",
       sizes: ["0-1m", "0-3m"],
-      colors: [{n:"Peach",h:"#ffd8c4"},{n:"Mint",h:"#d7f0e4"},{n:"White",h:"#f8f4ef"}],
-      desc: "Wrap-over kimono style bodysuits with side snaps so you never have to pull clothes over a fragile newborn's head."
+      colors: [{n:"Mint",h:"#d7f0e4"},{n:"Peach",h:"#ffd8c4"}],
+      image: P + "14474514.jpg",
+      image2: P + "14474507.jpg",
+      desc: "Super-cute green organic cotton bodysuit with easy front snaps. Hypoallergenic, breathable, and ultra-gentle on newborn skin."
     },
     {
       id: 35,
@@ -181,8 +193,30 @@
       badge: "sale",
       collection: "winter",
       sizes: ["0-1m", "0-3m"],
-      colors: [{n:"Lavender",h:"#e6e0f8"},{n:"Peach",h:"#ffd8c4"}],
+      colors: [{n:"White",h:"#f8f4ef"},{n:"Peach",h:"#ffd8c4"}],
+      image: P + "19515504.jpg",
+      image2: P + "11258764.jpg",
       desc: "Teddy bear hooded pram suit with fold-over mittens and enclosed feet. Kept ultra-cozy for winter strolls and hospital trips."
+    },
+    {
+      id: 37,
+      name: "Baby Bear Grip Socks (5-Pack)",
+      category: "accessories",
+      catLabel: "Accessories",
+      age: "newborn",
+      ageLabel: "Newborn (0–3m)",
+      gender: "unisex",
+      price: 12,
+      discount: 25,
+      rating: 4.8,
+      reviews: 421,
+      badge: "sale",
+      collection: "accessories",
+      sizes: ["0-1m", "0-3m", "3-6m"],
+      colors: [{n:"Mint",h:"#d7f0e4"},{n:"Peach",h:"#ffd8c4"}],
+      image: P + "14195487.jpg",
+      image2: P + "7009391.jpg",
+      desc: "Pastel bear-face cotton socks with soft silicone non-slip grips. Keeps little feet cozy, warm, and secure."
     },
 
     /* === 2. 0–2 YEARS (BABY & TODDLER) === */
@@ -202,11 +236,13 @@
       collection: "party",
       sizes: ["3-6m", "6-9m", "9-12m", "12-18m", "18-24m"],
       colors: [{n:"Pink",h:"#f2a6be"},{n:"Peach",h:"#ffd8c4"}],
-      desc: "A sweet floral dress in breathable cotton with a soft tulle skirt and bow back detail. Perfect for birthdays, milestones and garden parties."
+      image: P + "14671426.jpg",
+      image2: P + "13167232.jpg",
+      desc: "Sweet floral party dress in breathable cotton with a soft ruffled tulle skirt and matching headband. Perfect for birthdays and milestones."
     },
     {
       id: 3,
-      name: "Dino Print Play T-Shirt",
+      name: "Dino Print Toddler T-Shirt",
       category: "tshirts",
       catLabel: "T-Shirts",
       age: "0-2y",
@@ -220,7 +256,9 @@
       collection: "new-arrivals",
       sizes: ["6-9m", "9-12m", "12-18m", "18-24m"],
       colors: [{n:"Blue",h:"#8fc3e8"},{n:"Mint",h:"#d7f0e4"}],
-      desc: "Roaring fun in a pre-shrunk combed cotton tee with a friendly dinosaur print. Machine washable and built for everyday toddler crawling."
+      image: P + "13710211.jpg",
+      image2: P + "17328941.jpg",
+      desc: "Roaring fun in a pre-shrunk combed cotton tee with friendly dinosaur graphics. Built for everyday toddler crawling and play."
     },
     {
       id: 6,
@@ -238,11 +276,13 @@
       collection: "new-arrivals",
       sizes: ["9-12m", "12-18m", "18-24m"],
       colors: [{n:"Blue",h:"#8fc3e8"},{n:"White",h:"#f8f4ef"}],
-      desc: "Crisp cotton button-down with rolled sleeves and a playful check pattern. Dresses up shorts or denim in seconds."
+      image: P + "28097495.jpg",
+      image2: P + "34370387.jpg",
+      desc: "Crisp cotton button-down plaid shirt with a smart tie and rolled cuffs. Pairs easily with trousers or denim."
     },
     {
       id: 11,
-      name: "Peek-a-Boo Pocket Romper",
+      name: "Fox Pocket Denim Overalls",
       category: "sets",
       catLabel: "Rompers",
       age: "0-2y",
@@ -255,12 +295,14 @@
       badge: "new",
       collection: "new-arrivals",
       sizes: ["3-6m", "6-9m", "9-12m", "12-18m"],
-      colors: [{n:"Lavender",h:"#e6e0f8"},{n:"Yellow",h:"#f3d389"}],
-      desc: "Snap-crotch romper with a cute peek-a-boo animal pocket. Silky-soft bamboo blend, hypoallergenic and gentle on skin."
+      colors: [{n:"Blue",h:"#8fc3e8"},{n:"Yellow",h:"#f3d389"}],
+      image: P + "13768126.jpg",
+      image2: P + "14474518.jpg",
+      desc: "Denim overalls featuring a charming embroidered fox face bib pocket and adjustable button straps. Soft washed denim for comfortable movement."
     },
     {
       id: 13,
-      name: "Striped Toddler Longsleeve",
+      name: "Striped Toddler Knit Cardigan",
       category: "tops",
       catLabel: "Tops",
       age: "0-2y",
@@ -274,11 +316,13 @@
       collection: "new-arrivals",
       sizes: ["6-9m", "9-12m", "12-18m", "18-24m"],
       colors: [{n:"White",h:"#f8f4ef"},{n:"Blue",h:"#8fc3e8"}],
-      desc: "Classic Breton-stripe tee with contrast cuffs. Soft combed cotton that keeps its shape wash after wash."
+      image: P + "18033632.jpg",
+      image2: P + "29500226.jpg",
+      desc: "Classic nautical-striped button cardigan in soft ribbed cotton. Keeps toddlers warm and stylish through every season."
     },
     {
       id: 16,
-      name: "1st Birthday Party Tutu Dress",
+      name: "1st Birthday Polka Tutu Dress",
       category: "dresses",
       catLabel: "Party Wear",
       age: "0-2y",
@@ -292,25 +336,29 @@
       collection: "party",
       sizes: ["6-9m", "9-12m", "12-18m", "18-24m"],
       colors: [{n:"Pink",h:"#f2a6be"},{n:"Peach",h:"#ffd8c4"}],
-      desc: "First-birthday favorite: smocked bodice, flutter sleeves and a full satin-soft skirt. Match with our headbands and socks."
+      image: P + "14760732.jpg",
+      image2: P + "14671426.jpg",
+      desc: "Polka-dot layered tulle party dress with matching ear headband and angel motif. Ideal for cake smashes and 1st birthday photos."
     },
     {
       id: 20,
-      name: "Baby Grip Socks (5-Pack)",
-      category: "accessories",
-      catLabel: "Accessories",
+      name: "Boys Linen Button Collar Shirt",
+      category: "shirts",
+      catLabel: "Shirts",
       age: "0-2y",
       ageLabel: "0–2 Years",
-      gender: "unisex",
-      price: 12,
-      discount: 25,
-      rating: 4.8,
-      reviews: 421,
-      badge: "sale",
-      collection: "accessories",
-      sizes: ["3-6m", "6-12m", "12-24m"],
-      colors: [{n:"Mixed",h:"#c9b8e0"}],
-      desc: "Five pairs of non-slip, stay-on baby socks with silicone grips and soft ribbed cuffs. Cotton-rich and machine washable."
+      gender: "boys",
+      price: 24,
+      discount: 10,
+      rating: 4.7,
+      reviews: 135,
+      badge: "new",
+      collection: "new-arrivals",
+      sizes: ["9-12m", "12-18m", "18-24m"],
+      colors: [{n:"Blue",h:"#8fc3e8"},{n:"White",h:"#f8f4ef"}],
+      image: P + "34370387.jpg",
+      image2: P + "28097495.jpg",
+      desc: "Vibrant blue linen-cotton blend shirt with neat collar and wooden buttons. Lightweight, breathable, and refined for family gatherings."
     },
     {
       id: 23,
@@ -328,7 +376,9 @@
       collection: "new-arrivals",
       sizes: ["9-12m", "12-18m", "18-24m"],
       colors: [{n:"Blue",h:"#8fc3e8"},{n:"Mint",h:"#d7f0e4"}],
-      desc: "Classic dungarees with chest pocket and adjustable straps, paired with a soft tee. The ultimate easy-care outfit."
+      image: P + "16878046.jpg",
+      image2: P + "13768126.jpg",
+      desc: "Denim dungaree shorts paired with a colorful striped tee. Durable, machine washable, and ready for adventurous toddlers."
     },
 
     /* === 3. 3–5 YEARS (PRESCHOOL) === */
@@ -348,11 +398,13 @@
       collection: "bestsellers",
       sizes: ["3Y", "4Y", "5Y"],
       colors: [{n:"Blue",h:"#8fc3e8"}],
-      desc: "Soft-wash denim jacket and jeans combo with an elastic waist for growing preschool kids. Stylish, durable and comfy for all-day wear."
+      image: P + "12158341.jpg",
+      image2: P + "13768126.jpg",
+      desc: "Soft-wash denim jacket and jeans set with layered printed shirt. Stylish, durable, and comfortable for active preschool days."
     },
     {
       id: 5,
-      name: "Girls Tulle Twirl Party Dress",
+      name: "Girls Velvet & Ruffle Ballgown",
       category: "dresses",
       catLabel: "Party Wear",
       age: "3-5y",
@@ -365,14 +417,16 @@
       badge: "sale",
       collection: "party",
       sizes: ["3Y", "4Y", "5Y"],
-      colors: [{n:"Lavender",h:"#e6e0f8"},{n:"Pink",h:"#f2a6be"}],
-      desc: "A twirl-worthy party dress with layered tulle, satin sash and hidden side zip. Lined for comfort — made for celebrations."
+      colors: [{n:"Pink",h:"#f2a6be"},{n:"Lavender",h:"#e6e0f8"}],
+      image: P + "35051542.jpg",
+      image2: P + "35051541.jpg",
+      desc: "Dramatic birthday ballgown featuring a sleek black bodice and tiered blush ruffle rosette skirt. Made for unforgettable celebrations."
     },
     {
       id: 14,
-      name: "Explorer Cargo Shorts Set",
+      name: "Explorer Graphic Tee & Pants Set",
       category: "bottoms",
-      catLabel: "Shorts",
+      catLabel: "Pants",
       age: "3-5y",
       ageLabel: "3–5 Years",
       gender: "boys",
@@ -384,16 +438,18 @@
       collection: "summer",
       sizes: ["3Y", "4Y", "5Y"],
       colors: [{n:"Mint",h:"#d7f0e4"},{n:"Peach",h:"#ffd8c4"}],
-      desc: "Play-friendly cargo shorts with real pockets, an adjustable waist and reinforced knees for climbing, digging and exploring."
+      image: P + "545070.jpg",
+      image2: P + "9554843.jpg",
+      desc: "Teal car-print graphic tee paired with comfortable beige cotton trousers. Built for running, jumping, and preschool playground fun."
     },
     {
       id: 15,
-      name: "Lavender Starry Pajama Set",
+      name: "Kids Safari Animal Pajama Set",
       category: "sleepwear",
       catLabel: "Sleepwear",
       age: "3-5y",
       ageLabel: "3–5 Years",
-      gender: "girls",
+      gender: "unisex",
       price: 26,
       discount: 15,
       rating: 4.8,
@@ -402,34 +458,38 @@
       collection: "sleepwear",
       sizes: ["3Y", "4Y", "5Y"],
       colors: [{n:"Lavender",h:"#e6e0f8"},{n:"Pink",h:"#f2a6be"}],
-      desc: "Buttery-soft bamboo pajama set with a starry night print and snug cuffs. Naturally breathable for sound, cozy sleep."
+      image: P + "18863554.jpg",
+      image2: P + "18820123.jpg",
+      desc: "Buttery-soft organic cotton pajamas with adorable safari animal illustrations and snug ribbed cuffs for cozy slumber."
     },
     {
       id: 21,
-      name: "Festive Celebration Kurta Set",
+      name: "Preschool Birthday Sequin Dress",
       category: "party",
       catLabel: "Party Wear",
       age: "3-5y",
       ageLabel: "3–5 Years",
-      gender: "unisex",
+      gender: "girls",
       price: 58,
       discount: 15,
       rating: 4.9,
       reviews: 132,
       badge: "hot",
-      collection: "festive",
+      collection: "party",
       sizes: ["3Y", "4Y", "5Y"],
-      colors: [{n:"Peach",h:"#ffd8c4"},{n:"Mint",h:"#d7f0e4"}],
-      desc: "Celebration-ready traditional style top with matching bottoms and a shimmer dupatta. Comfort-first festive dressing."
+      colors: [{n:"Lavender",h:"#e6e0f8"},{n:"Pink",h:"#f2a6be"}],
+      image: P + "36046009.jpg",
+      image2: P + "35051542.jpg",
+      desc: "Sparkling purple sequined party dress with tiered tulle skirt. The ultimate show-stopping outfit for preschool birthdays."
     },
     {
       id: 24,
-      name: "Swim Trunks & UPF Rashie Set",
+      name: "Kids UPF Beach Rashie & Swim Set",
       category: "sets",
       catLabel: "Swimwear",
       age: "3-5y",
       ageLabel: "3–5 Years",
-      gender: "boys",
+      gender: "unisex",
       price: 27,
       discount: 5,
       rating: 4.5,
@@ -437,37 +497,41 @@
       badge: "",
       collection: "summer",
       sizes: ["3Y", "4Y", "5Y"],
-      colors: [{n:"Blue",h:"#8fc3e8"},{n:"Yellow",h:"#f3d389"}],
-      desc: "UPF 50+ rash guard and quick-dry swim trunks. Sand-resistant, chlorine-friendly and designed for water splash fun."
+      colors: [{n:"Blue",h:"#8fc3e8"},{n:"Mint",h:"#d7f0e4"}],
+      image: P + "7863359.jpg",
+      image2: P + "8925983.jpg",
+      desc: "UPF 50+ sun protection rash guard top and quick-dry ruffle swim bottoms. Chlorine-friendly and sand-resistant for seaside splashing."
     },
     {
       id: 29,
-      name: "Preschool Rainbow Ruffle Top",
-      category: "tops",
-      catLabel: "Tops",
+      name: "Toddler Tiered Denim Dress",
+      category: "dresses",
+      catLabel: "Dresses",
       age: "3-5y",
       ageLabel: "3–5 Years",
       gender: "girls",
-      price: 19,
+      price: 28,
       discount: 0,
       rating: 4.7,
       reviews: 84,
       badge: "new",
       collection: "new-arrivals",
       sizes: ["3Y", "4Y", "5Y"],
-      colors: [{n:"Pink",h:"#f2a6be"},{n:"Yellow",h:"#f3d389"}],
-      desc: "Adorable flutter sleeve top with embroidered pastel rainbows. Made of breathable organic cotton for everyday preschool play."
+      colors: [{n:"Blue",h:"#8fc3e8"}],
+      image: P + "13167232.jpg",
+      image2: P + "14760732.jpg",
+      desc: "Charming buttoned denim frock with tiered flare skirt and chest pockets. Sturdy yet soft washed cotton for daily preschool wear."
     },
 
     /* === 4. 6–9 YEARS (KIDS / PRIMARY) === */
     {
       id: 8,
-      name: "Kids Adventure Summer Outfit",
+      name: "Kids Sporty Tee & Shorts Set",
       category: "sets",
       catLabel: "Summer Sets",
       age: "6-9y",
       ageLabel: "6–9 Years",
-      gender: "unisex",
+      gender: "boys",
       price: 28,
       discount: 10,
       rating: 4.6,
@@ -475,44 +539,50 @@
       badge: "new",
       collection: "summer",
       sizes: ["6Y", "7Y", "8Y", "9Y"],
-      colors: [{n:"Peach",h:"#ffd8c4"},{n:"Yellow",h:"#f3d389"}],
-      desc: "Lightweight short-sleeve tee and breathable shorts set in airy jersey. Sun-safe, sweat-wicking and ready for park adventures."
+      colors: [{n:"Grey",h:"#b9b2ab"},{n:"Navy",h:"#4a5d75"}],
+      image: P + "9554843.jpg",
+      image2: P + "15227236.jpg",
+      desc: "Colorblocked athletic crewneck tee and breathable drawstring shorts. Light, sweat-wicking, and ideal for sports practice and playground games."
     },
     {
       id: 9,
-      name: "School Uniform Oxford Shirt",
+      name: "School Uniform Pleated Skirt Set",
       category: "school",
       catLabel: "School Wear",
       age: "6-9y",
       ageLabel: "6–9 Years",
       gender: "unisex",
-      price: 18,
+      price: 32,
       discount: 0,
-      rating: 4.7,
+      rating: 4.8,
       reviews: 356,
       badge: "bestseller",
       collection: "school",
       sizes: ["6Y", "7Y", "8Y", "9Y"],
-      colors: [{n:"White",h:"#f8f4ef"},{n:"Blue",h:"#8fc3e8"}],
-      desc: "Sturdy, easy-iron cotton school shirt with double-stitched seams and reinforced buttons. Tunic and regular lengths available."
+      colors: [{n:"Navy",h:"#4a5d75"},{n:"White",h:"#f8f4ef"}],
+      image: P + "35128474.jpg",
+      image2: P + "8926544.jpg",
+      desc: "Formal school uniform with white collared shirt, suspender trousers, and knife-pleated skirt. High-durability crease-resistant fabric."
     },
     {
       id: 10,
-      name: "School Uniform Reinforced Trousers",
+      name: "Classroom Formal Uniform Set",
       category: "school",
       catLabel: "School Wear",
       age: "6-9y",
       ageLabel: "6–9 Years",
-      gender: "boys",
-      price: 20,
+      gender: "unisex",
+      price: 34,
       discount: 0,
-      rating: 4.6,
+      rating: 4.7,
       reviews: 289,
       badge: "",
       collection: "school",
       sizes: ["6Y", "7Y", "8Y", "9Y"],
-      colors: [{n:"Navy",h:"#4a5d75"},{n:"Grey",h:"#b9b2ab"}],
-      desc: "Hard-wearing, crease-resistant school trousers with adjustable waistband and knee reinforcement for active school days."
+      colors: [{n:"Navy",h:"#4a5d75"},{n:"White",h:"#f8f4ef"}],
+      image: P + "8926544.jpg",
+      image2: P + "10646537.jpg",
+      desc: "Classic classroom school uniform with crisp button shirt, matching tie/bowtie, and tailored school bottoms. Built to last the academic year."
     },
     {
       id: 19,
@@ -524,31 +594,35 @@
       gender: "unisex",
       price: 24,
       discount: 0,
-      rating: 4.5,
+      rating: 4.8,
       reviews: 178,
       badge: "bestseller",
       collection: "school",
       sizes: ["6Y", "7Y", "8Y", "9Y"],
-      colors: [{n:"Navy",h:"#4a5d75"},{n:"Grey",h:"#b9b2ab"}],
-      desc: "V-neck school sweater in acrylic-cotton blend, machine washable with reinforced shoulder seams. Resists pilling wash after wash."
+      colors: [{n:"Blue",h:"#8fc3e8"},{n:"Navy",h:"#4a5d75"}],
+      image: P + "14909652.jpg",
+      image2: P + "35107586.jpg",
+      desc: "V-neck school sweater in an acrylic-cotton blend, machine washable with reinforced shoulder seams. Resists pilling wash after wash."
     },
     {
       id: 22,
-      name: "Hooded Kids All-Weather Jacket",
-      category: "tops",
-      catLabel: "Jackets",
+      name: "Girls Birthday Rosette Party Gown",
+      category: "party",
+      catLabel: "Party Wear",
       age: "6-9y",
       ageLabel: "6–9 Years",
-      gender: "unisex",
-      price: 44,
+      gender: "girls",
+      price: 54,
       discount: 20,
-      rating: 4.7,
-      reviews: 93,
+      rating: 4.9,
+      reviews: 124,
       badge: "sale",
-      collection: "winter",
+      collection: "party",
       sizes: ["6Y", "7Y", "8Y", "9Y"],
-      colors: [{n:"Blue",h:"#8fc3e8"},{n:"Peach",h:"#ffd8c4"}],
-      desc: "Water-repellent padded jacket with a fuzzy hood, zip front and cozy fleece-lined pockets. Packable and lightweight."
+      colors: [{n:"Pink",h:"#f2a6be"},{n:"Lavender",h:"#e6e0f8"}],
+      image: P + "38414487.jpg",
+      image2: P + "35875002.jpg",
+      desc: "Stunning rose pink rosette tiered party gown with smocked bodice and satin bow. Perfect for birthday parties, recitals, and celebrations."
     },
     {
       id: 28,
@@ -565,50 +639,56 @@
       badge: "hot",
       collection: "matching",
       sizes: ["6Y", "7Y", "8Y", "9Y"],
-      colors: [{n:"Blue",h:"#8fc3e8"},{n:"Pink",h:"#f2a6be"}],
-      desc: "Coordinating tops and bottoms for siblings. One listing, two adorable matching outfits — perfect for family portraits."
+      colors: [{n:"Pink",h:"#f2a6be"},{n:"Mint",h:"#d7f0e4"}],
+      image: P + "20100110.jpg",
+      image2: P + "33489883.jpg",
+      desc: "Coordinating brother & sister outfits: watermelon print sundress and tropical Hawaiian shirt. Perfect for holidays and family photos."
     },
     {
       id: 33,
-      name: "Kids Sporty Tracksuit Set",
-      category: "sets",
-      catLabel: "Activewear",
+      name: "Girls Organic Cotton Nightdress",
+      category: "sleepwear",
+      catLabel: "Sleepwear",
       age: "6-9y",
       ageLabel: "6–9 Years",
-      gender: "unisex",
-      price: 36,
+      gender: "girls",
+      price: 28,
       discount: 15,
       rating: 4.8,
       reviews: 105,
       badge: "new",
-      collection: "new-arrivals",
+      collection: "sleepwear",
       sizes: ["6Y", "7Y", "8Y", "9Y"],
-      colors: [{n:"Navy",h:"#4a5d75"},{n:"Mint",h:"#d7f0e4"}],
-      desc: "Breathable zip-up athletic jacket and tapered joggers with zippered pockets. Perfect for sports day, running and playground games."
+      colors: [{n:"White",h:"#f8f4ef"}],
+      image: P + "6182710.jpg",
+      image2: P + "18820123.jpg",
+      desc: "Pure organic cotton vintage-style nightgowns with delicate lace trim. Breathable, hypoallergenic, and soothing for restful slumber."
     },
 
     /* === 5. 10+ YEARS (PRE-TEENS & TEENS) === */
     {
       id: 17,
-      name: "Urban Streetwear Oversized Hoodie",
-      category: "tops",
-      catLabel: "Hoodies",
+      name: "Urban Style Kids Graphic Tee",
+      category: "tshirts",
+      catLabel: "T-Shirts",
       age: "10plus",
       ageLabel: "10+ Years",
       gender: "unisex",
-      price: 42,
+      price: 22,
       discount: 15,
       rating: 4.9,
       reviews: 188,
       badge: "hot",
       collection: "new-arrivals",
       sizes: ["10Y", "11Y", "12Y", "13-14Y", "15-16Y"],
-      colors: [{n:"Lavender",h:"#e6e0f8"},{n:"Navy",h:"#4a5d75"},{n:"White",h:"#f8f4ef"}],
-      desc: "Heavyweight organic cotton loopback fleece hoodie with drop shoulders and kangaroo pocket. Trendy relaxed fit for pre-teens and teens."
+      colors: [{n:"Black",h:"#1e293b"},{n:"White",h:"#f8f4ef"}],
+      image: P + "15227236.jpg",
+      image2: P + "17328941.jpg",
+      desc: "Relaxed streetwear t-shirt in heavyweight organic cotton with bold typography print. Trendy casual fit for pre-teens and teens."
     },
     {
       id: 26,
-      name: "Teen Relaxed Vintage Denim Jacket",
+      name: "Teen Vintage Stonewash Denim",
       category: "tops",
       catLabel: "Jackets",
       age: "10plus",
@@ -621,14 +701,16 @@
       badge: "bestseller",
       collection: "bestsellers",
       sizes: ["10Y", "11Y", "12Y", "13-14Y", "15-16Y"],
-      colors: [{n:"Blue",h:"#8fc3e8"},{n:"Grey",h:"#b9b2ab"}],
+      colors: [{n:"Blue",h:"#8fc3e8"}],
+      image: P + "12158341.jpg",
+      image2: P + "15227236.jpg",
       desc: "Classic trucker style denim jacket in vintage stonewash with brass buttons and deep interior phone pockets."
     },
     {
       id: 27,
-      name: "Pre-Teen Wide-Leg Cargo Pants",
-      category: "bottoms",
-      catLabel: "Pants",
+      name: "Kids Sushi Print Pajama Set",
+      category: "sleepwear",
+      catLabel: "Sleepwear",
       age: "10plus",
       ageLabel: "10+ Years",
       gender: "unisex",
@@ -637,50 +719,56 @@
       rating: 4.7,
       reviews: 95,
       badge: "new",
-      collection: "new-arrivals",
+      collection: "sleepwear",
       sizes: ["10Y", "11Y", "12Y", "13-14Y", "15-16Y"],
-      colors: [{n:"Beige",h:"#eee3d1"},{n:"Navy",h:"#4a5d75"}],
-      desc: "Trendy utility cargo trousers with elastic back waistband, deep side flap pockets and adjustable toggle hems."
+      colors: [{n:"White",h:"#f8f4ef"},{n:"Mint",h:"#d7f0e4"}],
+      image: P + "18820123.jpg",
+      image2: P + "18863554.jpg",
+      desc: "Playful sushi motif two-piece pajama set with long sleeves and elasticated jogger bottoms. Soft combed cotton jersey."
     },
     {
       id: 31,
-      name: "Teen Chic Pleated Skater Dress",
-      category: "dresses",
-      catLabel: "Dresses",
+      name: "Floral Birthday Princess Gown",
+      category: "party",
+      catLabel: "Party Wear",
       age: "10plus",
       ageLabel: "10+ Years",
       gender: "girls",
-      price: 45,
+      price: 48,
       discount: 20,
       rating: 4.9,
       reviews: 167,
       badge: "sale",
       collection: "party",
       sizes: ["10Y", "11Y", "12Y", "13-14Y", "15-16Y"],
-      colors: [{n:"Lavender",h:"#e6e0f8"},{n:"Pink",h:"#f2a6be"}],
-      desc: "Contemporary fit-and-flare skater dress with pleated skirt, discreet pockets and elegant neckline. Perfect for parties and graduations."
+      colors: [{n:"Pink",h:"#f2a6be"},{n:"Lavender",h:"#e6e0f8"}],
+      image: P + "34752454.jpg",
+      image2: P + "35875002.jpg",
+      desc: "Elegant floral maxi party dress with flowing layered skirt and delicate shoulder accents. Ideal for formal graduations and special events."
     },
     {
       id: 32,
-      name: "Heritage Varsity Bomber Jacket",
-      category: "tops",
-      catLabel: "Jackets",
+      name: "Girls Pale Pink Floral Cape Gown",
+      category: "party",
+      catLabel: "Party Wear",
       age: "10plus",
       ageLabel: "10+ Years",
-      gender: "unisex",
+      gender: "girls",
       price: 58,
       discount: 25,
       rating: 4.9,
       reviews: 124,
       badge: "sale",
-      collection: "winter",
+      collection: "party",
       sizes: ["10Y", "11Y", "12Y", "13-14Y", "15-16Y"],
-      colors: [{n:"Navy",h:"#4a5d75"},{n:"White",h:"#f8f4ef"}],
-      desc: "Sporty varsity letterman jacket with ribbed striped collar, snap front closure and soft brushed interior lining."
+      colors: [{n:"Pink",h:"#f2a6be"},{n:"Peach",h:"#ffd8c4"}],
+      image: P + "35875002.jpg",
+      image2: P + "38414487.jpg",
+      desc: "Fairytale birthday gown with delicate sheer floral embroidery cape and full soft-tulle ballgown skirt."
     },
     {
       id: 34,
-      name: "Pre-Teen Graphic Oversized Tee",
+      name: "Striped Pocket Crewneck Tee",
       category: "tshirts",
       catLabel: "T-Shirts",
       age: "10plus",
@@ -693,36 +781,52 @@
       badge: "hot",
       collection: "new-arrivals",
       sizes: ["10Y", "11Y", "12Y", "13-14Y", "15-16Y"],
-      colors: [{n:"White",h:"#f8f4ef"},{n:"Blue",h:"#8fc3e8"}],
-      desc: "100% sustainable organic cotton boxy-fit tee featuring minimalist typography print. Durable collar and pre-shrunk fabric."
+      colors: [{n:"Yellow",h:"#f3d389"},{n:"White",h:"#f8f4ef"}],
+      image: P + "29500226.jpg",
+      image2: P + "545070.jpg",
+      desc: "100% sustainable organic cotton boxy-fit horizontal striped tee with contrast chest pocket. Durable collar and pre-shrunk fabric."
     },
     {
       id: 36,
-      name: "Tech-Fleece Tapered Joggers",
-      category: "bottoms",
-      catLabel: "Pants",
+      name: "Siblings Striped Pinafore Set",
+      category: "sets",
+      catLabel: "Match Sets",
       age: "10plus",
       ageLabel: "10+ Years",
       gender: "unisex",
-      price: 32,
+      price: 46,
       discount: 10,
       rating: 4.8,
       reviews: 89,
       badge: "bestseller",
-      collection: "bestsellers",
+      collection: "matching",
       sizes: ["10Y", "11Y", "12Y", "13-14Y", "15-16Y"],
-      colors: [{n:"Grey",h:"#b9b2ab"},{n:"Navy",h:"#4a5d75"}],
-      desc: "Streamlined fleece joggers with bonded zip pockets, ribbed cuffs and elastic drawcord waist. Built for casual style and athletics."
+      colors: [{n:"Blue",h:"#8fc3e8"},{n:"White",h:"#f8f4ef"}],
+      image: P + "33489883.jpg",
+      image2: P + "20100110.jpg",
+      desc: "Coordinating brother & sister blue and white striped pinafore dress and matching dungaree set. High-comfort cotton linen blend."
+    },
+    {
+      id: 38,
+      name: "Primary School Uniform Group Set",
+      category: "school",
+      catLabel: "School Wear",
+      age: "10plus",
+      ageLabel: "10+ Years",
+      gender: "unisex",
+      price: 35,
+      discount: 0,
+      rating: 4.9,
+      reviews: 112,
+      badge: "bestseller",
+      collection: "school",
+      sizes: ["10Y", "11Y", "12Y", "13-14Y"],
+      colors: [{n:"Navy",h:"#4a5d75"},{n:"White",h:"#f8f4ef"}],
+      image: P + "10646537.jpg",
+      image2: P + "35128474.jpg",
+      desc: "Durable school uniform set with collared shirt, necktie, and pleated shorts/skirts. Reinforced stitching built for active students."
     }
   ];
-
-  /* ------------------------------------------------------------------
-     PRODUCT IMAGES ASSIGNMENT
-     ------------------------------------------------------------------ */
-  PRODUCTS.forEach(function (p, i) {
-    p.image = img(i * 2);
-    p.image2 = img(i * 2 + 1);
-  });
 
   /* ------------------------------------------------------------------
      HELPERS

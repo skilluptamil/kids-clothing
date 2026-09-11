@@ -33,15 +33,15 @@
       label: "Home",
       href: "index.html",
       dropdown: [
-        { label: "Home 1", href: "index.html", icon: "bi-house-heart", desc: "Modern Store & Hero Showcase" },
-        { label: "Home 2", href: "home-2.html", icon: "bi-stars", desc: "Story & Curated Collections" }
+        { label: "Home 1", href: "index.html", icon: "bi-house-heart" },
+        { label: "Home 2", href: "home-2.html", icon: "bi-stars" }
       ]
     },
-    { label: "Shop", href: "shop.html" },
     { label: "About Us", href: "about.html" },
+    { label: "Shop", href: "shop.html" },
     { label: "Size Guide", href: "size-guide.html" },
     { label: "Blog", href: "blog.html" },
-    { label: "Contact", href: "contact.html" }
+    { label: "Contact Us", href: "contact.html" }
   ];
 
   /* ------------------------------------------------------------
@@ -85,7 +85,7 @@
             '</a>' +
             '<ul class="dropdown-menu shadow-lg border-0">' +
               item.dropdown.map(function (c) {
-                return '<li><a class="dropdown-item' + (active(c.href) ? " active" : "") + '" href="' + c.href + '">' + iconTag(c) + '<div><div class="item-title">' + c.label + '</div>' + descTag(c) + '</div></a></li>';
+                return '<li><a class="dropdown-item' + (active(c.href) ? " active" : "") + '" href="' + c.href + '">' + iconTag(c) + '<span class="item-title">' + c.label + '</span>' + descTag(c) + '</a></li>';
               }).join("") +
             "</ul>" +
           "</li>"
@@ -124,7 +124,7 @@
             '</div>' +
             '<ul class="dropdown-menu mobile-sub-menu shadow-sm" style="display:none;padding:0.4rem 0.5rem;border-radius:1rem;margin:0.25rem 0 0.5rem 0.75rem">' +
               item.dropdown.map(function (c) {
-                return '<li><a class="dropdown-item' + (active(c.href) ? " active" : "") + '" href="' + c.href + '">' + iconTag(c) + '<div style="margin-left:0.5rem"><div class="item-title" style="font-size:0.88rem">' + c.label + '</div>' + descTag(c) + '</div></a></li>';
+                return '<li><a class="dropdown-item' + (active(c.href) ? " active" : "") + '" href="' + c.href + '">' + iconTag(c) + '<span class="item-title" style="margin-left:0.5rem;font-size:0.88rem">' + c.label + '</span>' + descTag(c) + '</a></li>';
               }).join("") +
             "</ul>" +
           '</li>'
@@ -142,15 +142,37 @@
       '<svg class="brand-logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="36" height="36" aria-hidden="true">' +
         '<defs>' +
           '<linearGradient id="lbNavLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">' +
-            '<stop offset="0%" stop-color="#FF8A65"/>' +
+            '<stop offset="0%" stop-color="#FF9E80"/>' +
+            '<stop offset="50%" stop-color="#FF6F61"/>' +
             '<stop offset="100%" stop-color="#F4511E"/>' +
           '</linearGradient>' +
+          '<linearGradient id="lbNavPetalGrad" x1="0%" y1="0%" x2="100%" y2="100%">' +
+            '<stop offset="0%" stop-color="#FFFFFF"/>' +
+            '<stop offset="100%" stop-color="#FFF3E0"/>' +
+          '</linearGradient>' +
+          '<linearGradient id="lbNavCenterGrad" x1="0%" y1="0%" x2="100%" y2="100%">' +
+            '<stop offset="0%" stop-color="#FFE082"/>' +
+            '<stop offset="100%" stop-color="#FFB300"/>' +
+          '</linearGradient>' +
           '<filter id="lbNavLogoGlow" x="-10%" y="-10%" width="120%" height="120%">' +
-            '<feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#F4511E" flood-opacity="0.25"/>' +
+            '<feDropShadow dx="0" dy="3" stdDeviation="3.5" flood-color="#F4511E" flood-opacity="0.3"/>' +
           '</filter>' +
         '</defs>' +
         '<rect x="3" y="3" width="58" height="58" rx="18" ry="18" fill="url(#lbNavLogoGrad)" filter="url(#lbNavLogoGlow)"/>' +
-        '<rect x="18" y="18" width="28" height="28" rx="9" ry="9" fill="#FFFFFF"/>' +
+        '<path d="M 6 22 C 6 12, 12 6, 22 6 L 42 6 C 28 10, 10 21, 6 42 Z" fill="#FFFFFF" opacity="0.18"/>' +
+        '<g fill="url(#lbNavPetalGrad)">' +
+          '<ellipse cx="32" cy="21.5" rx="6.5" ry="8.5"/>' +
+          '<ellipse cx="32" cy="42.5" rx="6.5" ry="8.5"/>' +
+          '<ellipse cx="21.5" cy="32" rx="8.5" ry="6.5"/>' +
+          '<ellipse cx="42.5" cy="32" rx="8.5" ry="6.5"/>' +
+          '<ellipse cx="24.5" cy="24.5" rx="5.5" ry="7" transform="rotate(-45 24.5 24.5)" opacity="0.95"/>' +
+          '<ellipse cx="39.5" cy="24.5" rx="5.5" ry="7" transform="rotate(45 39.5 24.5)" opacity="0.95"/>' +
+          '<ellipse cx="24.5" cy="39.5" rx="5.5" ry="7" transform="rotate(45 24.5 39.5)" opacity="0.95"/>' +
+          '<ellipse cx="39.5" cy="39.5" rx="5.5" ry="7" transform="rotate(-45 39.5 39.5)" opacity="0.95"/>' +
+        '</g>' +
+        '<circle cx="32" cy="32" r="8.5" fill="url(#lbNavCenterGrad)"/>' +
+        '<path d="M 32 35.8 C 32 35.8 28.2 33.3 28.2 31.1 C 28.2 29.6 29.4 28.6 30.7 28.6 C 31.4 28.6 31.8 28.9 32 29.3 C 32.2 28.9 32.6 28.6 33.3 28.6 C 34.6 28.6 35.8 29.6 35.8 31.1 C 35.8 33.3 32 35.8 32 35.8 Z" fill="#E64A19"/>' +
+        '<path d="M 48 13 Q 48 17 52 17 Q 48 17 48 21 Q 48 17 44 17 Q 48 17 48 13 Z" fill="#FFFFFF" opacity="0.9"/>' +
       '</svg>' +
     '</span>';
 
